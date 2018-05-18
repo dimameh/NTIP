@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Library_Cards
 {
-	/// <summary>
-	/// Диссертация
-	/// </summary>
-	public class Dissertation : ICards
+    //TODO: аналогично Names и Miscellanea
+    /// <summary>
+    /// Диссертация
+    /// </summary>
+    public class Dissertation : ICards
 	{
 		/// <summary>
 		/// Имя автора диссертации

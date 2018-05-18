@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Library_Cards
 {
-	/// <summary>
-	/// Сборник
-	/// </summary>
-	public class Miscellanea : ICards
+    //TODO: не стандартное слово для сборника.
+    //TODO: Это не сборник, а СТАТЬЯ в сборнике. Разве нет?
+    /// <summary>
+    /// Сборник
+    /// </summary>
+    public class Miscellanea : ICards
 	{
 		//Private переменные и методы
 		//----------------------------------------------
@@ -86,7 +88,9 @@ namespace Library_Cards
 			_date = new DateTime(1, 1, 1);
 			_cityOfPublication = "";
 		}
-		public Miscellanea(Names author1, Names author2, DateTime date, string title = "", string materialType = "", int firstPage = -1, int lastPage = -1, string cityOfPublication = "")
+
+        //TODO: А у статьи в сборнике может быть только два автора? Или всё-таки от 1 до n?
+        public Miscellanea(Names author1, Names author2, DateTime date, string title = "", string materialType = "", int firstPage = -1, int lastPage = -1, string cityOfPublication = "")
 		{
 			_authors = new List<Names> { author1, author2 };
 			_title = title;
@@ -205,9 +209,10 @@ namespace Library_Cards
 		/// <returns>Всю информацию об издании</returns>
 		public string GetBibliographyInfo()
 		{
-			//Проверка заполнены ли все поля
-			try
-			{
+            //TODO: зачем try catch, если ты все равно прокидываешь пойманное исключение выше?
+            //Проверка заполнены ли все поля
+            try
+            {
 				FillingExceptions();
 			}
 			catch (Exception exception)

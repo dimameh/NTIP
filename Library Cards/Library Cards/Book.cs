@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Library_Cards
 {
-	/// <summary>
-	/// Книга
-	/// </summary>
-	public class Book : ICards
+    //TODO: Во всех классах есть общие поля (имена авторов, название, год и место издательства). 
+    // Так может стоит создать базовый класс, чтобы избавиться от дублирования?
+    //TODO: аналогично Names и Miscellanea
+    /// <summary>
+    /// Книга
+    /// </summary>
+    public class Book : ICards
 	{
 		//Private переменные и методы
 		//----------------------------------------------
@@ -91,7 +94,9 @@ namespace Library_Cards
 			_volume = -1;
 			_cityOfPublication = "";
 		}
-		public Book(Names author1, Names author2, string title = "", string materialType = "", string publishingHouse = "", int year = -1, int volume = -1, string cityOfPublication = "", string additionalInfo = "")
+
+        //TODO: А у книги может быть только два автора? Или всё-таки от 1 до n?
+        public Book(Names author1, Names author2, string title = "", string materialType = "", string publishingHouse = "", int year = -1, int volume = -1, string cityOfPublication = "", string additionalInfo = "")
 		{
 			_authors = new List<Names> { author1, author2 };
 			_title = title;

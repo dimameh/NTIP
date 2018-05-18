@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Library_Cards
 {
-	/// <summary>
-	/// Журнал
-	/// </summary>
-	public class Journal : ICards
+    //TODO: аналогично Names и Miscellanea
+    /// <summary>
+    /// Журнал
+    /// </summary>
+    public class Journal : ICards
 	{
 		//Private переменные и методы
 		//----------------------------------------------
@@ -86,6 +87,8 @@ namespace Library_Cards
 			_lastPage = -1;
 			_year = -1;
 		}
+
+        //TODO: А у журнальной статьи может быть только два автора? Или всё-таки от 1 до n?
 		public Journal(Names author1, Names author2, string title = "", string materialType = "", int journalNumber = -1, int firstPage = -1, int lastPage = -1, int year = -1)
 		{
 

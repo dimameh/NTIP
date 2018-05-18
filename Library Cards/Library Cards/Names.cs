@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace Library_Cards
 {
-	public class Names
+    //TODO: неправильное название класса. Класс выражает много имен или только одно имя?
+    //TODO: нет xml комментария к классу
+    public class Names
 	{
-		//Private переменные и методы
-		//----------------------------------------------
-		/// <summary>
-		/// Фамилия
-		/// </summary>
-		private string _surname;
+        //TODO: это делается с помощью #region, а не комментариями. Почитать про регионы и исправить
+        //Private переменные и методы
+        //----------------------------------------------
+        /// <summary>
+        /// Фамилия
+        /// </summary>
+        private string _surname;
 		/// Имя
 		/// </summary>
 		private string _name;
@@ -40,31 +43,41 @@ namespace Library_Cards
 				throw new Exception("No patronymic");
 			}
 		}
-		//Конструктор
-		Names(string surname = "", string name = "", string patronymic = "")
+        //TODO: xml
+        //TODO: string.Empty вместо ""
+        //Конструктор
+        Names(string surname = "", string name = "", string patronymic = "")
 		{
-			_surname = surname;
+            //TODO: присвоение полей в обход проверок в сеттерах
+            _surname = surname;
 			_name = name;
 			_patronymic = patronymic;
 		}
 
-		public Names()
+        //TODO: xml
+        //TODO: использовать наследование конструкторов
+        public Names()
 		{
-			_surname = "";
+            //TODO: string.Empty вместо ""
+            //TODO: присвоение полей в обход проверок в сеттерах
+            _surname = "";
 			_name = "";
 			_patronymic = "";
 		}
 
-		/// <summary>
-		/// Заполнены ли все поля класса
-		/// true если заполнены, false если не заполнены
-		/// </summary>
-		/// <returns>true если заполнены, false если не заполнены</returns>
-		//Public методы
-		//----------------------------------------------
-		public bool IsNameFilled()
+        /// <summary>
+        /// Заполнены ли все поля класса
+        /// true если заполнены, false если не заполнены
+        /// </summary>
+        /// <returns>true если заполнены, false если не заполнены</returns>
+        //TODO: использовать #region
+        //Public методы
+        //----------------------------------------------
+        public bool IsNameFilled()
 		{
-			if (_surname == "")
+            //TODO: вместо кучи условий обернуть в один оператор return
+            //TODO: string.Empty
+            if (_surname == "")
 			{
 				return false;
 			}
@@ -78,12 +91,14 @@ namespace Library_Cards
 			}
 			return true;
 		}
-		/// <summary>
-		/// Проверка имен собственных на корректность ввода
-		/// </summary>
-		/// <param noun="noun"></param>
-		/// <returns>true если введено корректно, false если некорректно</returns>
-		public static bool IsProperNoun(string noun)
+
+        //TODO: зачем этот метод торчит наружу? Проверка правильности имени ответственность класса имени
+        /// <summary>
+        /// Проверка имен собственных на корректность ввода
+        /// </summary>
+        /// <param noun="noun"></param>
+        /// <returns>true если введено корректно, false если некорректно</returns>
+        public static bool IsProperNoun(string noun)
 		{
 			//Не может быть пустой строкой
 			if (string.IsNullOrWhiteSpace(noun))
@@ -103,8 +118,8 @@ namespace Library_Cards
 					return false;
 				}
 			}
-			//Должно начинаться с большой буквы
-			if (noun[0] >= 'а' && noun[0] <= 'я')
+            //Должно начинаться с большой буквы
+            if (noun[0] >= 'а' && noun[0] <= 'я')
 			{
 				return false;
 			}
@@ -118,16 +133,19 @@ namespace Library_Cards
 			}
 			return true;
 		}
-		/// <summary>
-		/// Возвращает фамилия
-		/// </summary>
-		/// <returns>фамилия</returns>
-		public string GetSurname() => _surname;
-		/// <summary>
-		/// Задать Имя
-		/// </summary>
-		/// <param name="Surname"></param>
-		public void SetSurname(string value)
+
+        //TODO: переделать методы на свойства
+        /// <summary>
+        /// Возвращает фамилия
+        /// </summary>
+        /// <returns>фамилия</returns>
+        public string GetSurname() => _surname;
+        //TODO: переделать методы на свойства
+        /// <summary>
+        /// Задать Имя
+        /// </summary>
+        /// <param name="Surname"></param>
+        public void SetSurname(string value)
 		{
 			if (IsProperNoun(value))
 			{
@@ -138,16 +156,18 @@ namespace Library_Cards
 				throw new Exception("Incorrect surname: " + _surname);
 			}
 		}
-		/// <summary>
-		///  Возвращает имя
-		/// </summary>
-		/// <returns>имя</returns>
-		public string GetName() => _name;
-		/// <summary>
-		/// Задать Имя
-		/// </summary>
-		/// <param name="Name"></param>
-		public void SetName(string value)
+        //TODO: переделать методы на свойства
+        /// <summary>
+        ///  Возвращает имя
+        /// </summary>
+        /// <returns>имя</returns>
+        public string GetName() => _name;
+        //TODO: переделать методы на свойства
+        /// <summary>
+        /// Задать Имя
+        /// </summary>
+        /// <param name="Name"></param>
+        public void SetName(string value)
 		{
 			if (IsProperNoun(value))
 			{
@@ -158,16 +178,18 @@ namespace Library_Cards
 				throw new Exception("Incorrect name: " + _name);
 			}
 		}
-		/// <summary>
-		///  Возвращает фамилию
-		/// </summary>
-		/// <returns>фамилия</returns>
-		public string GetPatronymic() => _patronymic;
-		/// <summary>
-		/// Задать Отчество
-		/// </summary>
-		/// <param name="Patronymic"></param>
-		public void SetPatronymic(string value)
+        //TODO: переделать методы на свойства
+        /// <summary>
+        ///  Возвращает фамилию
+        /// </summary>
+        /// <returns>фамилия</returns>
+        public string GetPatronymic() => _patronymic;
+        /// <summary>
+        /// Задать Отчество
+        /// </summary>
+        /// <param name="Patronymic"></param>
+        //TODO: переделать методы на свойства
+        public void SetPatronymic(string value)
 		{
 			if (IsProperNoun(value))
 			{
@@ -193,7 +215,9 @@ namespace Library_Cards
 		/// <returns>Name[0] + ". " + Patronymic[0] + '.'</returns>
 		public string GetInitials()
 		{
-			FillingExceptions(true);
+            //TODO: если сделать присвоение полей строго через проверки, тогда этот метод здесь не нужен.
+            //TODO: Более того, разработчик не будет ожидать, что при вызове метода Get у него может вылететь исключение
+            FillingExceptions(true);
 			return _name[0] + ". " + _patronymic[0] + '.';
 		}
 		/// <summary>
@@ -202,7 +226,9 @@ namespace Library_Cards
 		/// <returns>Surname + ' ' + Name + ' ' + Patronymic</returns>
 		public string GetFullName()
 		{
-			FillingExceptions();
+            //TODO: если сделать присвоение полей строго через проверки, тогда этот метод здесь не нужен.
+            //TODO: Более того, разработчик не будет ожидать, что при вызове метода Get у него может вылететь исключение
+            FillingExceptions();
 			return _surname + ' ' + _name + ' ' + _patronymic;
 		}
 	}
