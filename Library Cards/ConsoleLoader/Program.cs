@@ -11,7 +11,7 @@ namespace ConsoleLoader
 	class Program
 	{
 
-		static Names GenerateFullName()
+		static FullName GenerateFullName()
 		{
 			string[] femaleNames =
 			{
@@ -65,7 +65,7 @@ namespace ConsoleLoader
 				"Павлов" ,
 				"Маслов" ,
 				"Соловьев" ,
-				"Бобилёв" ,
+				"Бобилев" ,
 				"Гробовозов"
 			};
 			string[] malePatronymics =
@@ -92,31 +92,24 @@ namespace ConsoleLoader
 				return SetNames(femaleNames, femaleSurnames, femalePatronymics);
 			}
 		}
-		static Names SetNames(string[] names, string[] surnames, string[] patronymics)
+		static FullName SetNames(string[] names, string[] surnames, string[] patronymics)
 		{
 			Random rand = new Random(DateTime.Now.Millisecond);
 			int randomNumber = rand.Next(0, 7);
-			Names fullName = new Names();
-
-			fullName.SetName(names[randomNumber]);
-
-			randomNumber = rand.Next(0,7);
-			fullName.SetSurname(surnames[randomNumber]);
-			
-			randomNumber = rand.Next(0, 7);
-			fullName.SetPatronymic(patronymics[randomNumber]);
+			FullName fullName = new FullName(surnames[randomNumber], names[randomNumber] , patronymics[randomNumber]);
 
 			return fullName;
 		}
 		
 		static void Main()
 		{
-			ICards card;
+			ICard card;
 
-			var journal = new Journal
+			List<FullName> authors = new List<FullName> { GenerateFullName(), GenerateFullName() };
+
+			var journal = new ArticleInJournal
 				(
-					GenerateFullName(), 
-					GenerateFullName(), 
+					authors, 
 					"Глубокая переработка отходов виноделия с применением экстракции диоксидом углерода", 
 					"Пищевая промышленность", 
 					8, 
@@ -124,7 +117,7 @@ namespace ConsoleLoader
 					19, 
 					2014
 				);
-			var dissertation = new Dissertation
+			var dissertation = new ArticleInDissertation
 				(
 					GenerateFullName(), 
 					"Особенности регулирования труда творческих работников театров ", 
@@ -134,10 +127,10 @@ namespace ConsoleLoader
 					"Москва", 
 					"12.00.05"
 				);
-			var book = new Book
+			authors = new List<FullName> { GenerateFullName(), GenerateFullName() };
+			var book = new ArticleInBook
 				(
-					GenerateFullName(), 
-					GenerateFullName(), 
+					authors,
 					"Информатика", 
 					"Учебник для вузов", 
 					"Питер", 
@@ -145,10 +138,10 @@ namespace ConsoleLoader
 					573, 
 					"Санкт-Петербург"
 				);
-			var miscellanea = new Miscellanea
+			authors = new List<FullName> { GenerateFullName(), GenerateFullName() };
+			var miscellanea = new ArticleInCollection
 				(
-					GenerateFullName(), 
-					GenerateFullName(), 
+					authors, 
 					new DateTime(2013, 06, 30), 
 					"Энерго- и ресурсосбережение – XXI век", 
 					"материалы XI международной научно-практической интернет-конференции", 
@@ -158,13 +151,13 @@ namespace ConsoleLoader
 				);
 
 			card = journal;
-			Console.WriteLine(card.GetBibliographyInfo() + "\n\n ---------------------------------------- \n");
+			Console.WriteLine(card.BibliographyInfo + "\n\n ---------------------------------------- \n");
 			card = dissertation;
-			System.Console.WriteLine(card.GetBibliographyInfo() + "\n\n ---------------------------------------- \n");
+			System.Console.WriteLine(card.BibliographyInfo + "\n\n ---------------------------------------- \n");
 			card = book;
-			System.Console.WriteLine(card.GetBibliographyInfo() + "\n\n ---------------------------------------- \n");
+			System.Console.WriteLine(card.BibliographyInfo + "\n\n ---------------------------------------- \n");
 			card = miscellanea;
-			System.Console.WriteLine(card.GetBibliographyInfo() + "\n\n ---------------------------------------- \n");
+			System.Console.WriteLine(card.BibliographyInfo + "\n\n ---------------------------------------- \n");
 
 			Console.Read();
 		}
