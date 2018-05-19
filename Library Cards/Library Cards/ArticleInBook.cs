@@ -53,7 +53,7 @@ namespace Library_Cards
 		/// </summary>
 		private void FillingExceptions()
 		{
-			if (_firstAuthor == null)
+			if (FirstAuthor == null)
 			{
 				throw new Exception("No authors");
 			}
@@ -177,7 +177,7 @@ namespace Library_Cards
 		/// </summary>
 		public void RemoveAllAuthors()
 		{
-			if (_firstAuthor != null)
+			if (FirstAuthor != null)
 			{
 				_firstAuthor = null;
 				_authors.Clear();
@@ -307,7 +307,7 @@ namespace Library_Cards
 				string firstPart = _firstAuthor.SurnameWithInitials + ' ' + Title + " : " + MaterialType + " / ";
 				//Все авторы издания
 				string allAuthors = "";
-				allAuthors += _firstAuthor.Initials + ' ' + _firstAuthor.Surname + ", ";
+				allAuthors += FirstAuthor.Initials + ' ' + FirstAuthor.Surname + ", ";
 				for (int i = 1; i < _authors.Count - 1; i++)
 				{
 					allAuthors += _authors[i].Initials + ' ' + _authors[i].Surname + ", ";
@@ -327,7 +327,7 @@ namespace Library_Cards
 				switch (_authors.Count)
 				{
 					case 1:
-						return firstPart + _firstAuthor.Initials + ' ' + _firstAuthor.Surname + additionalInfoTemp + publicationInfo;
+						return firstPart + FirstAuthor.Initials + ' ' + FirstAuthor.Surname + additionalInfoTemp + publicationInfo;
 					case 2:
 						return firstPart + allAuthors + additionalInfoTemp + publicationInfo;
 					case 3:

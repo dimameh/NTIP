@@ -75,7 +75,7 @@ namespace Library_Cards
 		/// </summary>
 		private void FillingExceptions()
 		{
-			if(_firstAuthor == null)
+			if(FirstAuthor == null)
 			{
 				throw new Exception("No authors");
 			}
@@ -112,7 +112,7 @@ namespace Library_Cards
 		/// <param name="author"></param>
 		public ArticleInDissertation(FullName author)
 		{
-			FirstAuthor = author;
+			_firstAuthor = author;
 			Title = "";
 			Page = -1;
 			AuthorStatus = "";
@@ -132,7 +132,7 @@ namespace Library_Cards
 		/// <param name="specializationNumber"></param>
 		public ArticleInDissertation(FullName author, string title = "", int page = -1, string authorStatus = "", int year = -1, string cityOfPublication = "", string specializationNumber = "00.00.00")
 		{
-			FirstAuthor = author;
+			_firstAuthor = author;
 			Title = title;
 			Page = page;
 			AuthorStatus = authorStatus;
@@ -150,7 +150,7 @@ namespace Library_Cards
 		{
 			if (author != null)
 			{
-				FirstAuthor = author;
+				_firstAuthor = author;
 			}
 		}
 		/// <summary>
@@ -158,7 +158,7 @@ namespace Library_Cards
 		/// </summary>
 		public void RemoveAuthor()
 		{
-			FirstAuthor = null;
+			_firstAuthor = null;
 		}
 
 		#region Get Set свойства

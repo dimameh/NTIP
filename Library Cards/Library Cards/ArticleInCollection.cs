@@ -49,7 +49,7 @@ namespace Library_Cards
 		/// </summary>
 		private void FillingExceptions()
 		{
-			if (_firstAuthor == null)
+			if (FirstAuthor == null)
 			{
 				throw new Exception("No authors");
 			}
@@ -169,7 +169,7 @@ namespace Library_Cards
 		/// </summary>
 		public void RemoveAllAuthors()
 		{
-			if (_firstAuthor != null)
+			if (FirstAuthor != null)
 			{
 				_firstAuthor = null;
 				_authors.Clear();
@@ -297,7 +297,7 @@ namespace Library_Cards
 				//составные части результирующей строки
 				//Все авторы издания
 				string allAuthors = "";
-				allAuthors += _firstAuthor.Initials + ' ' + _firstAuthor.Surname + ", ";
+				allAuthors += FirstAuthor.Initials + ' ' + FirstAuthor.Surname + ", ";
 				for (int i = 1; i < _authors.Count - 1; i++)
 				{
 					allAuthors += _authors[i].Initials + ' ' + _authors[i].Surname + ", ";
@@ -305,7 +305,7 @@ namespace Library_Cards
 				allAuthors += _authors[_authors.Count - 1].Initials + ' ' + _authors[_authors.Count - 1].Surname;
 				allAuthors += ' ';
 				//Первая часть карточки, один автор, название и тип материала
-				string firstPart = _firstAuthor.SurnameWithInitials + ' ' + Title + " / " + allAuthors + " // ";
+				string firstPart = FirstAuthor.SurnameWithInitials + ' ' + Title + " / " + allAuthors + " // ";
 
 				//Информация о публикации
 				string publicationInfo = MaterialType + ", " + Date.ToLongDateString() + ", г. " + CityOfPublication + ". - " + CityOfPublication + ", " + Date.Year + ". - C. " + FirstPage + '-' + LastPage + '.';
