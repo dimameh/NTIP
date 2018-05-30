@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleInBook.cs" />
-    <Compile Include="ArticleInDissertation.cs" />
+    <Compile Include="BookArticle.cs" />
+    <Compile Include="Dissertation.cs" />
     <Compile Include="ICard.cs" />
-    <Compile Include="ArticleInJournal.cs" />
+    <Compile Include="JournalArticle.cs" />
     <Compile Include="ArticleInCollection.cs" />
     <Compile Include="FullName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

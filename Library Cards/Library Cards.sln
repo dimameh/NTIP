@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryCards", "Library Cards\LibraryCards.csproj", "{0F133BA2-A0C8-4E49-8BC1-12694AF7A61A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MainWindow", "WindowsFormsApp1\MainWindow.csproj", "{33B3A386-22D4-4299-864F-4A7C5A9CD97E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLoader", "ConsoleLoader\ConsoleLoader.csproj", "{B9168678-C311-4D78-82A6-4A42613ABC68}"
 EndProject
 Global
@@ -17,6 +19,10 @@ Global
 		{0F133BA2-A0C8-4E49-8BC1-12694AF7A61A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F133BA2-A0C8-4E49-8BC1-12694AF7A61A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F133BA2-A0C8-4E49-8BC1-12694AF7A61A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33B3A386-22D4-4299-864F-4A7C5A9CD97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33B3A386-22D4-4299-864F-4A7C5A9CD97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33B3A386-22D4-4299-864F-4A7C5A9CD97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33B3A386-22D4-4299-864F-4A7C5A9CD97E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9168678-C311-4D78-82A6-4A42613ABC68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9168678-C311-4D78-82A6-4A42613ABC68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9168678-C311-4D78-82A6-4A42613ABC68}.Release|Any CPU.ActiveCfg = Release|Any CPU

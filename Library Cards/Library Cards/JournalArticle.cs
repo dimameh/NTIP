@@ -4,51 +4,51 @@ using System.Collections.Generic;
 namespace LibraryCards
 {
 	/// <summary>
-	///     Статья в сборнике
+	///     Статья в журнале
 	/// </summary>
-	public class CollectionArticle : ICard
+	public class JournalArticle : ICard
 	{
 		#region Private переменные и методы
 
 		/// <summary>
-		///     Первый автор сборника
+		///     Первый автор статьи
 		/// </summary>
 		private FullName _firstAuthor;
 
 		/// <summary>
-		///     Авторы сборника
+		///     Автор(ры) статьи
 		/// </summary>
 		private List<FullName> _authors;
 
 		/// <summary>
-		///     Название/тема сборника
+		///     Название статьи
 		/// </summary>
 		private string _title;
 
 		/// <summary>
-		///     Информация о тематике сборника и о том откуда взяты материалы для него
+		///     Название периодического издания
 		/// </summary>
 		private string _materialType;
 
 		/// <summary>
-		///     Первая ссылаемая страница
+		///     Номер выпуска
+		/// </summary>
+		private int _journalNumber;
+
+		/// <summary>
+		///     Начальная страница статьи
 		/// </summary>
 		private int _firstPage;
 
 		/// <summary>
-		///     Последняя ссылаемая страница
+		///     Последняя страница статьи
 		/// </summary>
 		private int _lastPage;
 
 		/// <summary>
-		///     Дата публикации
+		///     Год выпуска
 		/// </summary>
-		private DateTime _date;
-
-		/// <summary>
-		///     Город публикации
-		/// </summary>
-		private string _cityOfPublication;
+		private int _year;
 
 		/// <summary>
 		///     Формирует ошибку если одно из полей не заполнено
@@ -57,43 +57,44 @@ namespace LibraryCards
 		{
 			if (FirstAuthor == null)
 				throw new Exception("No authors");
-			if (Title == "")
-				throw new Exception("No title");
-			if (MaterialType == "")
-				throw new Exception("No material type");
-			if (FirstPage == -1)
-				throw new Exception("No first page");
-			if (LastPage == -1)
-				throw new Exception("No last page");
-			if (Date == new DateTime(1, 1, 1))
-				throw new Exception("No date");
-			if (CityOfPublication == "") throw new Exception("No city");
+			if (FirstAuthor == null)
+				if (Title == "")
+					throw new Exception("No title");
+				else if (MaterialType == "")
+					throw new Exception("No material type");
+				else if (JournalNumber == -1)
+					throw new Exception("No journal number");
+				else if (Year == -1)
+					throw new Exception("No year");
+				else if (FirstPage == -1)
+					throw new Exception("No first page");
+				else if (LastPage == -1) throw new Exception("No last page");
 		}
 
 		#endregion
 
 		/// <summary>
-		///     Конструктор с заданием всех параметров
+		///     Конструктор с доп. параметрами
 		/// </summary>
 		/// <param name="authors"></param>
-		/// <param name="date"></param>
 		/// <param name="title"></param>
 		/// <param name="materialType"></param>
+		/// <param name="journalNumber"></param>
 		/// <param name="firstPage"></param>
 		/// <param name="lastPage"></param>
-		/// <param name="cityOfPublication"></param>
-		public CollectionArticle(List<FullName> authors, DateTime date, string title, string materialType, int firstPage,
-			int lastPage, string cityOfPublication)
+		/// <param name="year"></param>
+		public JournalArticle(List<FullName> authors, string title, string materialType, int journalNumber, int firstPage,
+			int lastPage, int year)
 		{
 			SetAuthors(authors);
 			Title = title;
 			MaterialType = materialType;
+			JournalNumber = journalNumber;
 			FirstPage = firstPage;
 			LastPage = lastPage;
-			Date = date;
-			CityOfPublication = cityOfPublication;
+			Year = year;
 		}
-
+		
 		#region Public методы
 
 		/// <summary>
@@ -190,6 +191,18 @@ namespace LibraryCards
 		}
 
 		/// <summary>
+		///     Возвращает и задает номер журнала
+		/// </summary>
+		public int JournalNumber
+		{
+			get => _journalNumber;
+			set
+			{
+				if (value >= 0) _journalNumber = value;
+			}
+		}
+
+		/// <summary>
 		///     Возвращает и задает Номер первой страницы
 		/// </summary>
 		public int FirstPage
@@ -214,34 +227,14 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Дату публикации
+		///     Возвращает и задает год издания
 		/// </summary>
-		/// <returns>дата публикации</returns>
-		public DateTime Date
+		public int Year
 		{
-			get => _date;
+			get => _year;
 			set
 			{
-				if (value > new DateTime(1, 1, 1) && value <= DateTime.Now)
-					_date = value;
-				else
-					throw new Exception("Wrong date");
-			}
-		}
-
-		/// <summary>
-		///     Возвращает и задает Город, в котором был представлен сборник
-		/// </summary>
-		/// <returns>город, в котором был представлен сборник</returns>
-		public string CityOfPublication
-		{
-			get => _cityOfPublication;
-			set
-			{
-				if (FullName.IsProperNoun(value))
-					_cityOfPublication = value;
-				else
-					throw new Exception("Wrong city");
+				if (value > 0 && value <= DateTime.Now.Year) _year = value;
 			}
 		}
 
@@ -258,7 +251,6 @@ namespace LibraryCards
 			{
 				//Проверка заполнены ли все поля
 				FillingExceptions();
-
 				//составные части результирующей строки
 				//Все авторы издания
 				var allAuthors = "";
@@ -270,8 +262,8 @@ namespace LibraryCards
 				var firstPart = FirstAuthor.SurnameWithInitials + ' ' + Title + " / " + allAuthors + " // ";
 
 				//Информация о публикации
-				var publicationInfo = MaterialType + ", " + Date.ToLongDateString() + ", г. " + CityOfPublication + ". - " +
-				                      CityOfPublication + ", " + Date.Year + ". - C. " + FirstPage + '-' + LastPage + '.';
+				var publicationInfo = MaterialType + ". - " + Year + ". - №" + JournalNumber + ". - C. " + FirstPage + ' ' +
+				                      LastPage + '.';
 				//Генерация нужной строки
 
 				return firstPart + publicationInfo;
