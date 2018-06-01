@@ -53,15 +53,14 @@
 			this.label9 = new System.Windows.Forms.Label();
 			this.NameTextBox = new System.Windows.Forms.TextBox();
 			this.label8 = new System.Windows.Forms.Label();
-			this.button2 = new System.Windows.Forms.Button();
+			this.RemoveButton = new System.Windows.Forms.Button();
 			this.AddAuthor = new System.Windows.Forms.Button();
 			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Surname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.AuthorName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Patronymic = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TextBox1 = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.button3 = new System.Windows.Forms.Button();
+			this.OKButton = new System.Windows.Forms.Button();
+			this.CancelButton = new System.Windows.Forms.Button();
+			this.RandomButton = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
@@ -75,9 +74,9 @@
 			this.groupBox1.Controls.Add(this.DissertationRadioButton);
 			this.groupBox1.Controls.Add(this.BookRadioButton);
 			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.groupBox1.Location = new System.Drawing.Point(13, 2);
+			this.groupBox1.Location = new System.Drawing.Point(13, 8);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(766, 68);
+			this.groupBox1.Size = new System.Drawing.Size(753, 68);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Select the type of record";
@@ -86,7 +85,7 @@
 			// 
 			this.CollectionRadioButton.AutoSize = true;
 			this.CollectionRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.CollectionRadioButton.Location = new System.Drawing.Point(603, 30);
+			this.CollectionRadioButton.Location = new System.Drawing.Point(597, 30);
 			this.CollectionRadioButton.Name = "CollectionRadioButton";
 			this.CollectionRadioButton.Size = new System.Drawing.Size(104, 24);
 			this.CollectionRadioButton.TabIndex = 3;
@@ -98,7 +97,7 @@
 			// 
 			this.JournalRadioButton.AutoSize = true;
 			this.JournalRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.JournalRadioButton.Location = new System.Drawing.Point(430, 30);
+			this.JournalRadioButton.Location = new System.Drawing.Point(426, 30);
 			this.JournalRadioButton.Name = "JournalRadioButton";
 			this.JournalRadioButton.Size = new System.Drawing.Size(85, 24);
 			this.JournalRadioButton.TabIndex = 2;
@@ -110,7 +109,7 @@
 			// 
 			this.DissertationRadioButton.AutoSize = true;
 			this.DissertationRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DissertationRadioButton.Location = new System.Drawing.Point(229, 30);
+			this.DissertationRadioButton.Location = new System.Drawing.Point(219, 30);
 			this.DissertationRadioButton.Name = "DissertationRadioButton";
 			this.DissertationRadioButton.Size = new System.Drawing.Size(121, 24);
 			this.DissertationRadioButton.TabIndex = 1;
@@ -123,7 +122,7 @@
 			this.BookRadioButton.AutoSize = true;
 			this.BookRadioButton.Checked = true;
 			this.BookRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.BookRadioButton.Location = new System.Drawing.Point(71, 30);
+			this.BookRadioButton.Location = new System.Drawing.Point(65, 30);
 			this.BookRadioButton.Name = "BookRadioButton";
 			this.BookRadioButton.Size = new System.Drawing.Size(68, 24);
 			this.BookRadioButton.TabIndex = 0;
@@ -152,7 +151,7 @@
 			this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.groupBox2.Location = new System.Drawing.Point(13, 81);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(766, 622);
+			this.groupBox2.Size = new System.Drawing.Size(753, 696);
 			this.groupBox2.TabIndex = 1;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Fields";
@@ -161,7 +160,7 @@
 			// 
 			this.maskedTextBox4.Location = new System.Drawing.Point(248, 170);
 			this.maskedTextBox4.Name = "maskedTextBox4";
-			this.maskedTextBox4.Size = new System.Drawing.Size(512, 27);
+			this.maskedTextBox4.Size = new System.Drawing.Size(492, 27);
 			this.maskedTextBox4.TabIndex = 4;
 			this.maskedTextBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.maskedTextBox4_KeyPress);
 			// 
@@ -178,7 +177,7 @@
 			// 
 			this.TextBox6.Location = new System.Drawing.Point(248, 265);
 			this.TextBox6.Name = "TextBox6";
-			this.TextBox6.Size = new System.Drawing.Size(512, 27);
+			this.TextBox6.Size = new System.Drawing.Size(492, 27);
 			this.TextBox6.TabIndex = 6;
 			this.TextBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox6_KeyPress);
 			// 
@@ -195,7 +194,7 @@
 			// 
 			this.TextBox5.Location = new System.Drawing.Point(248, 218);
 			this.TextBox5.Name = "TextBox5";
-			this.TextBox5.Size = new System.Drawing.Size(512, 27);
+			this.TextBox5.Size = new System.Drawing.Size(492, 27);
 			this.TextBox5.TabIndex = 5;
 			this.TextBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox5_KeyPress);
 			// 
@@ -212,7 +211,7 @@
 			// 
 			this.AdditionalInfoTextBox.Location = new System.Drawing.Point(248, 311);
 			this.AdditionalInfoTextBox.Name = "AdditionalInfoTextBox";
-			this.AdditionalInfoTextBox.Size = new System.Drawing.Size(512, 27);
+			this.AdditionalInfoTextBox.Size = new System.Drawing.Size(492, 27);
 			this.AdditionalInfoTextBox.TabIndex = 7;
 			this.AdditionalInfoTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AdditionalInfoTextBox_KeyPress);
 			// 
@@ -229,7 +228,7 @@
 			// 
 			this.TextBox3.Location = new System.Drawing.Point(248, 123);
 			this.TextBox3.Name = "TextBox3";
-			this.TextBox3.Size = new System.Drawing.Size(512, 27);
+			this.TextBox3.Size = new System.Drawing.Size(492, 27);
 			this.TextBox3.TabIndex = 3;
 			this.TextBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox3_KeyPress);
 			// 
@@ -246,7 +245,7 @@
 			// 
 			this.TextBox2.Location = new System.Drawing.Point(248, 76);
 			this.TextBox2.Name = "TextBox2";
-			this.TextBox2.Size = new System.Drawing.Size(512, 27);
+			this.TextBox2.Size = new System.Drawing.Size(492, 27);
 			this.TextBox2.TabIndex = 2;
 			this.TextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox2_KeyPress);
 			// 
@@ -267,19 +266,19 @@
 			this.groupBox3.Controls.Add(this.label9);
 			this.groupBox3.Controls.Add(this.NameTextBox);
 			this.groupBox3.Controls.Add(this.label8);
-			this.groupBox3.Controls.Add(this.button2);
+			this.groupBox3.Controls.Add(this.RemoveButton);
 			this.groupBox3.Controls.Add(this.AddAuthor);
 			this.groupBox3.Controls.Add(this.dataGridView1);
 			this.groupBox3.Location = new System.Drawing.Point(10, 355);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(750, 261);
+			this.groupBox3.Size = new System.Drawing.Size(737, 330);
 			this.groupBox3.TabIndex = 2;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Authors";
 			// 
 			// PatronymicTextBox
 			// 
-			this.PatronymicTextBox.Location = new System.Drawing.Point(154, 221);
+			this.PatronymicTextBox.Location = new System.Drawing.Point(161, 93);
 			this.PatronymicTextBox.Name = "PatronymicTextBox";
 			this.PatronymicTextBox.Size = new System.Drawing.Size(255, 27);
 			this.PatronymicTextBox.TabIndex = 10;
@@ -287,7 +286,7 @@
 			// 
 			// SurnameTextBox
 			// 
-			this.SurnameTextBox.Location = new System.Drawing.Point(154, 188);
+			this.SurnameTextBox.Location = new System.Drawing.Point(161, 60);
 			this.SurnameTextBox.Name = "SurnameTextBox";
 			this.SurnameTextBox.Size = new System.Drawing.Size(255, 27);
 			this.SurnameTextBox.TabIndex = 9;
@@ -296,7 +295,7 @@
 			// label10
 			// 
 			this.label10.AutoSize = true;
-			this.label10.Location = new System.Drawing.Point(10, 224);
+			this.label10.Location = new System.Drawing.Point(17, 96);
 			this.label10.Name = "label10";
 			this.label10.Size = new System.Drawing.Size(93, 20);
 			this.label10.TabIndex = 18;
@@ -305,7 +304,7 @@
 			// label9
 			// 
 			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(10, 191);
+			this.label9.Location = new System.Drawing.Point(17, 63);
 			this.label9.Name = "label9";
 			this.label9.Size = new System.Drawing.Size(76, 20);
 			this.label9.TabIndex = 17;
@@ -313,7 +312,7 @@
 			// 
 			// NameTextBox
 			// 
-			this.NameTextBox.Location = new System.Drawing.Point(154, 155);
+			this.NameTextBox.Location = new System.Drawing.Point(161, 27);
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(255, 27);
 			this.NameTextBox.TabIndex = 8;
@@ -322,26 +321,27 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(10, 158);
+			this.label8.Location = new System.Drawing.Point(17, 30);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(53, 20);
 			this.label8.TabIndex = 15;
 			this.label8.Text = "Name";
 			// 
-			// button2
+			// RemoveButton
 			// 
-			this.button2.Location = new System.Drawing.Point(593, 202);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(151, 52);
-			this.button2.TabIndex = 12;
-			this.button2.Text = "Remove Author";
-			this.button2.UseVisualStyleBackColor = true;
+			this.RemoveButton.Location = new System.Drawing.Point(579, 27);
+			this.RemoveButton.Name = "RemoveButton";
+			this.RemoveButton.Size = new System.Drawing.Size(151, 93);
+			this.RemoveButton.TabIndex = 12;
+			this.RemoveButton.Text = "Remove Author";
+			this.RemoveButton.UseVisualStyleBackColor = true;
+			this.RemoveButton.Click += new System.EventHandler(this.RemoveAuthor_Click);
 			// 
 			// AddAuthor
 			// 
-			this.AddAuthor.Location = new System.Drawing.Point(593, 144);
+			this.AddAuthor.Location = new System.Drawing.Point(422, 27);
 			this.AddAuthor.Name = "AddAuthor";
-			this.AddAuthor.Size = new System.Drawing.Size(151, 52);
+			this.AddAuthor.Size = new System.Drawing.Size(151, 93);
 			this.AddAuthor.TabIndex = 11;
 			this.AddAuthor.Text = "Add Author";
 			this.AddAuthor.UseVisualStyleBackColor = true;
@@ -352,40 +352,18 @@
 			this.dataGridView1.AllowUserToAddRows = false;
 			this.dataGridView1.AllowUserToDeleteRows = false;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Surname,
-            this.AuthorName,
-            this.Patronymic});
-			this.dataGridView1.Location = new System.Drawing.Point(7, 27);
+			this.dataGridView1.Location = new System.Drawing.Point(10, 126);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.ReadOnly = true;
 			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(737, 111);
+			this.dataGridView1.Size = new System.Drawing.Size(720, 198);
 			this.dataGridView1.TabIndex = 13;
-			// 
-			// Surname
-			// 
-			this.Surname.HeaderText = "Surname";
-			this.Surname.Name = "Surname";
-			this.Surname.ReadOnly = true;
-			// 
-			// AuthorName
-			// 
-			this.AuthorName.HeaderText = "Name";
-			this.AuthorName.Name = "AuthorName";
-			this.AuthorName.ReadOnly = true;
-			// 
-			// Patronymic
-			// 
-			this.Patronymic.HeaderText = "Patronymic";
-			this.Patronymic.Name = "Patronymic";
-			this.Patronymic.ReadOnly = true;
 			// 
 			// TextBox1
 			// 
 			this.TextBox1.Location = new System.Drawing.Point(248, 29);
 			this.TextBox1.Name = "TextBox1";
-			this.TextBox1.Size = new System.Drawing.Size(512, 27);
+			this.TextBox1.Size = new System.Drawing.Size(492, 27);
 			this.TextBox1.TabIndex = 1;
 			this.TextBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TextBox1_KeyPress);
 			// 
@@ -398,25 +376,51 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Title";
 			// 
-			// button3
+			// OKButton
 			// 
-			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.button3.Location = new System.Drawing.Point(312, 709);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(175, 57);
-			this.button3.TabIndex = 2;
-			this.button3.Text = "OK";
-			this.button3.UseVisualStyleBackColor = true;
+			this.OKButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.OKButton.Location = new System.Drawing.Point(96, 783);
+			this.OKButton.Name = "OKButton";
+			this.OKButton.Size = new System.Drawing.Size(257, 38);
+			this.OKButton.TabIndex = 2;
+			this.OKButton.Text = "OK";
+			this.OKButton.UseVisualStyleBackColor = true;
+			this.OKButton.Click += new System.EventHandler(this.OK_Click);
+			// 
+			// CancelButton
+			// 
+			this.CancelButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.CancelButton.Location = new System.Drawing.Point(445, 783);
+			this.CancelButton.Name = "CancelButton";
+			this.CancelButton.Size = new System.Drawing.Size(257, 38);
+			this.CancelButton.TabIndex = 3;
+			this.CancelButton.Text = "Canсel";
+			this.CancelButton.UseVisualStyleBackColor = true;
+			this.CancelButton.Click += new System.EventHandler(this.Cancel_Click);
+			// 
+			// RandomButton
+			// 
+			this.RandomButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.RandomButton.Location = new System.Drawing.Point(359, 783);
+			this.RandomButton.Name = "RandomButton";
+			this.RandomButton.Size = new System.Drawing.Size(80, 38);
+			this.RandomButton.TabIndex = 4;
+			this.RandomButton.Text = "Rand";
+			this.RandomButton.UseVisualStyleBackColor = true;
+			this.RandomButton.Click += new System.EventHandler(this.Rand_Click);
 			// 
 			// AddRecord
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(791, 771);
-			this.Controls.Add(this.button3);
+			this.ClientSize = new System.Drawing.Size(775, 829);
+			this.Controls.Add(this.RandomButton);
+			this.Controls.Add(this.CancelButton);
+			this.Controls.Add(this.OKButton);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Name = "AddRecord";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Add Record";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
@@ -454,16 +458,15 @@
 		private System.Windows.Forms.DataGridView dataGridView1;
 		private System.Windows.Forms.TextBox NameTextBox;
 		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.Button RemoveButton;
 		private System.Windows.Forms.Button AddAuthor;
 		private System.Windows.Forms.TextBox PatronymicTextBox;
 		private System.Windows.Forms.TextBox SurnameTextBox;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Surname;
-		private System.Windows.Forms.DataGridViewTextBoxColumn AuthorName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Patronymic;
+		private System.Windows.Forms.Button OKButton;
 		private System.Windows.Forms.MaskedTextBox maskedTextBox4;
+		private System.Windows.Forms.Button CancelButton;
+		private System.Windows.Forms.Button RandomButton;
 	}
 }

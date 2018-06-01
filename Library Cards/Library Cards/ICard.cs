@@ -1,4 +1,7 @@
-﻿namespace LibraryCards
+﻿using System;
+using System.Runtime.Serialization;
+
+namespace LibraryCards
 {
 	/// <summary>
 	///     интерфейс библиотечных карточек
@@ -22,4 +25,7 @@
 		/// <returns>Всю информацию об издании</returns>
 		string BibliographyInfo { get; }
 	}
+
+
+
 }

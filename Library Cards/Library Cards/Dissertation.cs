@@ -5,6 +5,7 @@ namespace LibraryCards
 	/// <summary>
 	///     Статья в диссертации
 	/// </summary>
+	[Serializable]
 	public class Dissertation : ICard
 	{
 		#region Private переменные и методы
@@ -90,6 +91,8 @@ namespace LibraryCards
 
 		#endregion
 
+		#region Конструктор
+
 		/// <summary>
 		///     Конструктор с доп. параметрами
 		/// </summary>
@@ -111,6 +114,8 @@ namespace LibraryCards
 			CityOfPublication = cityOfPublication;
 			SpecializationNumber = specializationNumber;
 		}
+
+		#endregion
 
 		#region Public методы
 
@@ -233,7 +238,8 @@ namespace LibraryCards
 				FillingExceptions();
 				//Составные части результирующей строки
 				//Первая часть карточки, один автор, название и тип материала
-				var firstPart = FirstAuthor.SurnameWithInitials + ' ' + Title + " : дис. ..." + AuthorStatus + " : " +
+				FullName tempQualifier = FirstAuthor;
+				var firstPart = tempQualifier.Surname + ", " + tempQualifier.Name[0] + ". " + tempQualifier.Patronymic[0] + '.' + ' ' + Title + " : дис. ..." + AuthorStatus + " : " +
 				                SpecializationNumber + " / " + FirstAuthor.GetFullName() + ". - ";
 				//Информация о публикации
 				var publicationInfo = CityOfPublication + ", " + Year + ". - " + Page + " c.";

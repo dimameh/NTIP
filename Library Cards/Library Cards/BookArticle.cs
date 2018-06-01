@@ -6,6 +6,7 @@ namespace LibraryCards
 	/// <summary>
 	///     Статья в книгу
 	/// </summary>
+	[Serializable]
 	public class BookArticle : ICard
 	{
 		#region Private переменные и методы
@@ -177,6 +178,15 @@ namespace LibraryCards
 
 		#region Get Set свойства
 
+		public List<FullName> Authors
+		{
+			get
+			{
+				List<FullName> authorsCopy = new List<FullName>(_authors);
+				return authorsCopy;
+			}
+		}
+
 		/// <summary>
 		///     Возвращает и задает имя автора диссертиции
 		/// </summary>
@@ -276,12 +286,12 @@ namespace LibraryCards
 				//составные части результирующей строки
 
 				//Первая часть карточки, один автор, название и тип материала
-				var firstPart = _firstAuthor.SurnameWithInitials + ' ' + Title + " : " + MaterialType + " / ";
+				var firstPart = _firstAuthor.GetSurnameWithInitials() + ' ' + Title + " : " + MaterialType + " / ";
 				//Все авторы издания
 				var allAuthors = "";
-				allAuthors += FirstAuthor.Initials + ' ' + FirstAuthor.Surname + ", ";
-				for (var i = 1; i < _authors.Count - 1; i++) allAuthors += _authors[i].Initials + ' ' + _authors[i].Surname + ", ";
-				allAuthors += _authors[_authors.Count - 1].Initials + ' ' + _authors[_authors.Count - 1].Surname;
+				allAuthors += FirstAuthor.GetInitials() + ' ' + FirstAuthor.Surname + ", ";
+				for (var i = 1; i < _authors.Count - 1; i++) allAuthors += _authors[i].GetInitials() + ' ' + _authors[i].Surname + ", ";
+				allAuthors += _authors[_authors.Count - 1].GetInitials() + ' ' + _authors[_authors.Count - 1].Surname;
 				allAuthors += ' ';
 				//Информация о публикации
 				var publicationInfo = ". - " + CityOfPublication + " : " + PublishingHouse + ", " + Year + ". - " + Volume + " c.";
@@ -293,7 +303,7 @@ namespace LibraryCards
 				switch (_authors.Count)
 				{
 					case 1:
-						return firstPart + FirstAuthor.Initials + ' ' + FirstAuthor.Surname + additionalInfoTemp + publicationInfo;
+						return firstPart + FirstAuthor.GetInitials() + ' ' + FirstAuthor.Surname + additionalInfoTemp + publicationInfo;
 					case 2:
 						return firstPart + allAuthors + additionalInfoTemp + publicationInfo;
 					case 3:

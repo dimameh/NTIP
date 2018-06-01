@@ -6,6 +6,7 @@ namespace LibraryCards
 	/// <summary>
 	///     Статья в журнале
 	/// </summary>
+	[Serializable]
 	public class JournalArticle : ICard
 	{
 		#region Private переменные и методы
@@ -73,6 +74,8 @@ namespace LibraryCards
 
 		#endregion
 
+		#region Конструктор
+
 		/// <summary>
 		///     Конструктор с доп. параметрами
 		/// </summary>
@@ -94,7 +97,9 @@ namespace LibraryCards
 			LastPage = lastPage;
 			Year = year;
 		}
-		
+
+		#endregion
+
 		#region Public методы
 
 		/// <summary>
@@ -166,6 +171,15 @@ namespace LibraryCards
 		}
 
 		#region Get Set свойства
+
+		public List<FullName> Authors
+		{
+			get
+			{
+				List<FullName> authorsCopy = new List<FullName>(_authors);
+				return authorsCopy;
+			}
+		}
 
 		/// <summary>
 		///     Возвращает и задает имя автора диссертиции
@@ -254,12 +268,13 @@ namespace LibraryCards
 				//составные части результирующей строки
 				//Все авторы издания
 				var allAuthors = "";
-				allAuthors += FirstAuthor.Initials + ' ' + FirstAuthor.Surname + ", ";
-				for (var i = 1; i < _authors.Count - 1; i++) allAuthors += _authors[i].Initials + ' ' + _authors[i].Surname + ", ";
-				allAuthors += _authors[_authors.Count - 1].Initials + ' ' + _authors[_authors.Count - 1].Surname;
+				allAuthors += FirstAuthor.GetInitials() + ' ' + FirstAuthor.Surname + ", ";
+				for (var i = 1; i < _authors.Count - 1; i++) allAuthors += _authors[i].GetInitials() + ' ' + _authors[i].Surname + ", ";
+				allAuthors += _authors[_authors.Count - 1].GetInitials() + ' ' + _authors[_authors.Count - 1].Surname;
 				allAuthors += ' ';
 				//Первая часть карточки, один автор, название и тип материала
-				var firstPart = FirstAuthor.SurnameWithInitials + ' ' + Title + " / " + allAuthors + " // ";
+				FullName tempQualifier = FirstAuthor;
+				var firstPart = tempQualifier.Surname + ", " + tempQualifier.Name[0] + ". " + tempQualifier.Patronymic[0] + '.' + ' ' + Title + " / " + allAuthors + " // ";
 
 				//Информация о публикации
 				var publicationInfo = MaterialType + ". - " + Year + ". - №" + JournalNumber + ". - C. " + FirstPage + ' ' +
