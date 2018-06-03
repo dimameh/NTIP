@@ -5,7 +5,6 @@ namespace LibraryCards
 	/// <summary>
 	///     Статья в диссертации
 	/// </summary>
-	[Serializable]
 	public class Dissertation : ICard
 	{
 		#region Private переменные и методы

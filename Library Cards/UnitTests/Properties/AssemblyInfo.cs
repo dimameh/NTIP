@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("LibraryCardsApp")]
+[assembly: AssemblyTitle("UnitTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("LibraryCardsApp")]
+[assembly: AssemblyProduct("UnitTests")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("33b3a386-22d4-4299-864f-4a7c5a9cd97e")]
+[assembly: Guid("f24a77bf-dcf9-4f82-aa1f-9ef8f4798274")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //

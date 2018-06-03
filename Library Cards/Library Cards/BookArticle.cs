@@ -6,7 +6,6 @@ namespace LibraryCards
 	/// <summary>
 	///     Статья в книгу
 	/// </summary>
-	[Serializable]
 	public class BookArticle : ICard
 	{
 		#region Private переменные и методы

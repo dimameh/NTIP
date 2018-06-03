@@ -4,11 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-//TODO: неправильное название проекта: MainWindow - это одно окно, а не проект
-//TODO: пространство имен не совпадает с именем проекта!
-namespace WindowsFormsApp1
+namespace CardListApp
 {
-    //TODO: имя решения не должно содержать пробелов!
 	static class Program
 	{
 		/// <summary>
@@ -19,7 +16,7 @@ namespace WindowsFormsApp1
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainWindow());
+			Application.Run(new MainForm());
 		}
 	}
 }

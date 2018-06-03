@@ -1,23 +1,22 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 using LibraryCards;
 
-namespace WindowsFormsApp1
+namespace CardListApp
 {
-    //TODO: В названии нет слова Form - неправильно.
-    //TODO: зачем менял стили форм по умолчанию?
-    public partial class AddRecord : Form
+	public partial class AddRecordForm : Form
 	{
-		public AddRecord(MainWindow parentForm)
+		public AddRecordForm()
 		{
 			InitializeComponent();
 #if !DEBUG
 			CreateRandomData.Visible = false;
 #endif
-			_parent = parentForm;
+			Icon = new Icon("ico.ico");
 			_authors = new BindingList<FullName>();
 		}
 
@@ -28,43 +27,27 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private const int DefaultTextBoxLength = 32767;
 
-        //TODO: архитектурно-неправильная связь. Форма СЛИШКОМ много знает о родителе и в итоге ЖЕЛЕЗНО к ней привязывается
-        /// <summary>
-        ///     Главная форма
-        /// </summary>
-        private readonly MainWindow _parent;
+		/// <summary>
+		///     Список добавляемых авторов
+		/// </summary>
+		private readonly BindingList<FullName> _authors;
 
-        /// <summary>
-        ///     Список добавляемых авторов
-        /// </summary>
-        private readonly BindingList<FullName> _authors;
+		#endregion
 
-        #endregion
+		#region Frontand changing methods
 
-        #region Frontand changing methods
-
-        //TODO: может, сделать один метод, который принимает булеву переменную?
-        /// <summary>
-        ///     Скрыть поле дополнительной информации
-        /// </summary>
-        private void AdditionalInfoDisable()
+		/// <summary>
+		///     Скрыть поле дополнительной информации
+		/// </summary>
+		private bool IsAdditionalInfoShow
 		{
-			AdditionalInfoLabel.Visible = false;
-			AdditionalInfoLabel.Enabled = false;
-			AdditionalInfoTextBox.Visible = false;
-			AdditionalInfoTextBox.Enabled = false;
-		}
-
-        //TODO: может, сделать один метод, который принимает булеву переменную?
-        /// <summary>
-        ///     Показать поле дополнительной информации
-        /// </summary>
-        private void AdditionalInfoEnable()
-		{
-			AdditionalInfoLabel.Visible = true;
-			AdditionalInfoLabel.Enabled = true;
-			AdditionalInfoTextBox.Visible = true;
-			AdditionalInfoTextBox.Enabled = true;
+			set
+			{
+				AdditionalInfoLabel.Visible = value;
+				AdditionalInfoLabel.Enabled = value;
+				AdditionalInfoTextBox.Visible = value;
+				AdditionalInfoTextBox.Enabled = value;
+			}
 		}
 
 		/// <summary>
@@ -72,7 +55,7 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void SetDefaultFields()
 		{
-			AdditionalInfoDisable();
+			IsAdditionalInfoShow = false;
 
 			//сброс настроек длины поля
 			TextBox2.MaxLength = DefaultTextBoxLength;
@@ -99,75 +82,92 @@ namespace WindowsFormsApp1
 
 		#endregion
 
-		#region Radiobuttons chekcings
+		#region Random methods
 
-		/// <summary>
-		///     Переключатель "Book"
-		/// </summary>
-		private void BookRadioButton_CheckedChanged(object sender, EventArgs e)
+		private static FullName GenerateFullName()
 		{
-			SetDefaultFields();
+			string[] femaleNames =
+			{
+				"София",
+				"Альвина",
+				"Арина",
+				"Амира",
+				"Алиса",
+				"Сафина",
+				"Лиза",
+				"марина"
+			};
+			string[] femaleSurnames =
+			{
+				"Цветкова",
+				"Кононова",
+				"Белоусова",
+				"Воронова",
+				"Емельянова",
+				"Беспалова",
+				"Новикава",
+				"Белядко"
+			};
+			string[] femalePatronymics =
+			{
+				"Иванова",
+				"Антониновна",
+				"Серпантиновна",
+				"Петровна",
+				"Максимовна",
+				"Евсеевна",
+				"Вртемовна",
+				"Дмитреевна"
+			};
+			string[] maleNames =
+			{
+				"Леонард",
+				"Кондратий",
+				"Феликс",
+				"Виктор",
+				"Родион",
+				"Даниил",
+				"Август",
+				"Антуан"
+			};
+			string[] maleSurnames =
+			{
+				"Третяков",
+				"Михеев",
+				"Терентьев",
+				"Павлов",
+				"Маслов",
+				"Соловьев",
+				"Бобилев",
+				"Гробовозов"
+			};
+			string[] malePatronymics =
+			{
+				"Агафонович",
+				"Михайлович",
+				"Германович",
+				"Владимирович",
+				"Аристархович",
+				"Глебович",
+				"Мэлсович",
+				"Борисович"
+			};
 
-			AdditionalInfoEnable();
+			var rand = new Random();
+			var sex = rand.Next(100) <= 50 ? true : false;
 
-			label2.Text = "Genre";
-			label3.Text = "Publishing house";
-			label4.Text = "City of publication";
-			label5.Text = "Year";
-			label6.Text = "Volume (Pages)";
-
-			TextBox5.MaxLength = 4;
+			if (sex)
+				return SetNames(maleNames, maleSurnames, malePatronymics);
+			return SetNames(femaleNames, femaleSurnames, femalePatronymics);
 		}
 
-		/// <summary>
-		///     Переключатель "Dissertation"
-		/// </summary>
-		private void DissertationRadioButton_CheckedChanged(object sender, EventArgs e)
+		private static FullName SetNames(string[] names, string[] surnames, string[] patronymics)
 		{
-			SetDefaultFields();
+			var rand = new Random(DateTime.Now.Millisecond);
+			var randomNumber = rand.Next(0, 7);
+			var fullName = new FullName(surnames[randomNumber], names[randomNumber], patronymics[randomNumber]);
 
-			label2.Text = "Page";
-			label3.Text = "Science degree";
-			label4.Text = "Specialization number";
-			label5.Text = "Year";
-			label6.Text = "City of publication";
-
-			maskedTextBox4.Culture = new CultureInfo("en-CA");
-			maskedTextBox4.Mask = "00.00.00";
-
-			TextBox5.MaxLength = 4;
-		}
-
-		/// <summary>
-		///     Переключатель "Journal"
-		/// </summary>
-		private void JournalRadioButton_CheckedChanged(object sender, EventArgs e)
-		{
-			SetDefaultFields();
-
-			label2.Text = "Title of the periodical";
-			label3.Text = "Journal number";
-			label4.Text = "Starting page";
-			label5.Text = "Last page";
-			label6.Text = "Year";
-
-			TextBox6.MaxLength = 4;
-		}
-
-		/// <summary>
-		///     Переключатель "Collecton"
-		/// </summary>
-		private void CollectionRadioButton_CheckedChanged(object sender, EventArgs e)
-		{
-			SetDefaultFields();
-
-			label2.Text = "Theme of the collection";
-			label3.Text = "City of publication";
-			label4.Text = "Date of publication";
-			label5.Text = "First page";
-			label6.Text = "Last page";
-
-			maskedTextBox4.Mask = "99/99/9999";
+			return fullName;
 		}
 
 		#endregion
@@ -252,6 +252,79 @@ namespace WindowsFormsApp1
 			return TextBox1.Text != string.Empty && TextBox2.Text != string.Empty && TextBox3.Text != string.Empty &&
 			       maskedTextBox4.Text != string.Empty && TextBox5.Text != string.Empty && TextBox6.Text != string.Empty &&
 			       _authors.Count != 0;
+		}
+
+		#endregion
+
+		#region Radiobuttons chekcings
+
+		/// <summary>
+		///     Переключатель "Book"
+		/// </summary>
+		private void BookRadioButton_CheckedChanged(object sender, EventArgs e)
+		{
+			SetDefaultFields();
+
+			IsAdditionalInfoShow = true;
+
+			label2.Text = "Genre";
+			label3.Text = "Publishing house";
+			label4.Text = "City of publication";
+			label5.Text = "Year";
+			label6.Text = "Volume (Pages)";
+
+			TextBox5.MaxLength = 4;
+		}
+
+		/// <summary>
+		///     Переключатель "Dissertation"
+		/// </summary>
+		private void DissertationRadioButton_CheckedChanged(object sender, EventArgs e)
+		{
+			SetDefaultFields();
+
+			label2.Text = "Page";
+			label3.Text = "Science degree";
+			label4.Text = "Specialization number";
+			label5.Text = "Year";
+			label6.Text = "City of publication";
+
+			maskedTextBox4.Culture = new CultureInfo("en-CA");
+			maskedTextBox4.Mask = "00.00.00";
+
+			TextBox5.MaxLength = 4;
+		}
+
+		/// <summary>
+		///     Переключатель "Journal"
+		/// </summary>
+		private void JournalRadioButton_CheckedChanged(object sender, EventArgs e)
+		{
+			SetDefaultFields();
+
+			label2.Text = "Title of the periodical";
+			label3.Text = "Journal number";
+			label4.Text = "Starting page";
+			label5.Text = "Last page";
+			label6.Text = "Year";
+
+			TextBox6.MaxLength = 4;
+		}
+
+		/// <summary>
+		///     Переключатель "Collecton"
+		/// </summary>
+		private void CollectionRadioButton_CheckedChanged(object sender, EventArgs e)
+		{
+			SetDefaultFields();
+
+			label2.Text = "Theme of the collection";
+			label3.Text = "City of publication";
+			label4.Text = "Date of publication";
+			label5.Text = "First page";
+			label6.Text = "Last page";
+
+			maskedTextBox4.Mask = "99/99/9999";
 		}
 
 		#endregion
@@ -390,7 +463,6 @@ namespace WindowsFormsApp1
 						MessageBox.Show(exception.Message, "Input error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 
-					dataGridView1.DataSource = null;
 					dataGridView1.DataSource = _authors;
 				}
 			}
@@ -409,7 +481,6 @@ namespace WindowsFormsApp1
 			if (dataGridView1.CurrentRow != null)
 			{
 				dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
-				dataGridView1.DataSource = null;
 				dataGridView1.DataSource = _authors;
 			}
 			else
@@ -418,54 +489,49 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		/// <summary>
-		///     Выполняет внесение новых данных в Главную таблицу и закрывает форму добавления записи
-		/// </summary>
-		private void OK_Click(object sender, EventArgs e)
+		public ICard NewCard
 		{
-            //TODO: Эта форма НИЧЕГО НЕ ДОЛЖНА ЗНАТЬ ИЛИ ИСПОЛЬЗОВАТЬ ИЗ РОДИТЕЛЬСКОЙ ФОРМЫ
-            // все поля должны быть заполнены
-            if (IsFieldsFilled())
+			get
 			{
-				if (BookRadioButton.Checked)
-					_parent.AddBookInList(new BookArticle
-					(
-						_authors.ToList(),
-						TextBox1.Text,
-						TextBox2.Text,
-						TextBox3.Text,
-						Convert.ToInt32(TextBox5.Text),
-						Convert.ToInt32(TextBox6.Text),
-						maskedTextBox4.Text,
-						AdditionalInfoTextBox.Text
-					));
+				if (IsFieldsFilled())
+				{
+					if (BookRadioButton.Checked)
+						return new BookArticle
+						(
+							_authors.ToList(),
+							TextBox1.Text,
+							TextBox2.Text,
+							TextBox3.Text,
+							Convert.ToInt32(TextBox5.Text),
+							Convert.ToInt32(TextBox6.Text),
+							maskedTextBox4.Text,
+							AdditionalInfoTextBox.Text
+						);
 
-				else if (DissertationRadioButton.Checked)
-					_parent.AddDissertationInList(new Dissertation
-					(
-						_authors[0],
-						TextBox1.Text,
-						Convert.ToInt32(TextBox2.Text),
-						TextBox3.Text,
-						Convert.ToInt32(TextBox5.Text),
-						TextBox6.Text,
-						maskedTextBox4.Text
-					));
+					if (DissertationRadioButton.Checked)
+						return new Dissertation
+						(
+							_authors[0],
+							TextBox1.Text,
+							Convert.ToInt32(TextBox2.Text),
+							TextBox3.Text,
+							Convert.ToInt32(TextBox5.Text),
+							TextBox6.Text,
+							maskedTextBox4.Text
+						);
 
-				else if (JournalRadioButton.Checked)
-					_parent.AddJournalInList(new JournalArticle
-					(
-						_authors.ToList(),
-						TextBox1.Text,
-						TextBox2.Text,
-						Convert.ToInt32(TextBox3.Text),
-						Convert.ToInt32(maskedTextBox4.Text),
-						Convert.ToInt32(TextBox5.Text),
-						Convert.ToInt32(TextBox6.Text)
-					));
-
-				else if (CollectionRadioButton.Checked)
-					_parent.AddCollectionInList(new CollectionArticle
+					if (JournalRadioButton.Checked)
+						return new JournalArticle
+						(
+							_authors.ToList(),
+							TextBox1.Text,
+							TextBox2.Text,
+							Convert.ToInt32(TextBox3.Text),
+							Convert.ToInt32(maskedTextBox4.Text),
+							Convert.ToInt32(TextBox5.Text),
+							Convert.ToInt32(TextBox6.Text)
+						);
+					return new CollectionArticle
 					(
 						_authors.ToList(),
 						DateTime.Parse(maskedTextBox4.Text),
@@ -474,14 +540,28 @@ namespace WindowsFormsApp1
 						Convert.ToInt32(TextBox5.Text),
 						Convert.ToInt32(TextBox6.Text),
 						TextBox3.Text
-					));
+					);
+				}
 
+				return null;
+			}
+		}
+
+		/// <summary>
+		///     Выполняет внесение новых данных в Главную таблицу и закрывает форму добавления записи
+		/// </summary>
+		private void OK_Click(object sender, EventArgs e)
+		{
+			// все поля должны быть заполнены
+			if (IsFieldsFilled())
+			{
 				Close();
 			}
 			else
 			{
 				MessageBox.Show("All fields must be filled in to add an record.", "Error", MessageBoxButtons.OK,
 					MessageBoxIcon.Error);
+				DialogResult = DialogResult.None;
 			}
 		}
 
@@ -491,9 +571,8 @@ namespace WindowsFormsApp1
 		private void Rand_Click(object sender, EventArgs e)
 		{
 			var rnd = new Random();
-            //TODO: У тебя в консольном приложении есть генератор нормальных авторов. Почему здесь не используешь?
-            // Вынеси генератор в отдельный класс и используй где хочешь
-            switch (rnd.Next(1, 5))
+			// Вынеси генератор в отдельный класс и используй где хочешь
+			switch (rnd.Next(1, 5))
 			{
 				case 1:
 					BookRadioButton.Checked = true;
@@ -504,8 +583,8 @@ namespace WindowsFormsApp1
 					TextBox5.Text = "2018";
 					TextBox6.Text = "222";
 					AdditionalInfoTextBox.Text = "";
-					_authors.Add(new FullName("Surname1", "Name1", "Patronymic1"));
-					_authors.Add(new FullName("Surname2", "Name2", "Patronymic2"));
+					_authors.Add(GenerateFullName());
+					_authors.Add(GenerateFullName());
 					break;
 				case 2:
 					DissertationRadioButton.Checked = true;
@@ -515,7 +594,7 @@ namespace WindowsFormsApp1
 					maskedTextBox4.Text = "000000";
 					TextBox5.Text = "2017";
 					TextBox6.Text = "City";
-					_authors.Add(new FullName("Surname", "Name", "Patronymic"));
+					_authors.Add(GenerateFullName());
 					break;
 				case 3:
 					JournalRadioButton.Checked = true;
@@ -525,8 +604,8 @@ namespace WindowsFormsApp1
 					maskedTextBox4.Text = "222";
 					TextBox5.Text = "333";
 					TextBox6.Text = "2018";
-					_authors.Add(new FullName("Surname1", "Name1", "Patronymic1"));
-					_authors.Add(new FullName("Surname2", "Name2", "Patronymic2"));
+					_authors.Add(GenerateFullName());
+					_authors.Add(GenerateFullName());
 					break;
 				default:
 					CollectionRadioButton.Checked = true;
@@ -536,22 +615,12 @@ namespace WindowsFormsApp1
 					maskedTextBox4.Text = "27/08/1998";
 					TextBox5.Text = "222";
 					TextBox6.Text = "333";
-					_authors.Add(new FullName("Surname1", "Name1", "Patronymic1"));
-					_authors.Add(new FullName("Surname2", "Name2", "Patronymic2"));
+					_authors.Add(GenerateFullName());
+					_authors.Add(GenerateFullName());
 					break;
 			}
 
-			dataGridView1.DataSource = null;
 			dataGridView1.DataSource = _authors;
-		}
-
-		/// <summary>
-		///     Закрывает форму
-		/// </summary>
-		private void Cancel_Click(object sender, EventArgs e)
-		{
-            //TODO: Перед закрытием форма должна инициализировать своё поле DialogResult - чтобы извне можно было знать, успешно ли закрылась форма.
-            Close();
 		}
 
 		#endregion

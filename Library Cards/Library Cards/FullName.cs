@@ -1,11 +1,11 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace LibraryCards
 {
 	/// <summary>
 	///     ФИО
 	/// </summary>
-	[Serializable]
 	public class FullName
 	{
 		#region Private переменные и методы
@@ -30,11 +30,22 @@ namespace LibraryCards
 		/// <param name="surname"></param>
 		/// <param name="name"></param>
 		/// <param name="patronymic"></param>
+		[JsonConstructor]
 		public FullName(string surname, string name, string patronymic)
 		{
 			Surname = surname;
 			Name = name;
 			Patronymic = patronymic;
+		}
+
+		/// <summary>
+		///     Конструктор копирования
+		/// </summary>
+		public FullName(FullName fullName)
+		{
+			Surname = fullName.Surname;
+			Name = fullName.Name;
+			Patronymic = fullName.Patronymic;
 		}
 
 		/// <summary>
