@@ -7,7 +7,10 @@ using LibraryCards;
 
 namespace WindowsFormsApp1
 {
-	public partial class MainWindow : Form
+    //TODO: не Window, а Form - название должно отражать, в какой иерархии наследования находится класс
+    //TODO: Добавить иконку приложению
+    //TODO: Ты хоть в одном приложении видел такие ГИГАНТСКИЕ кнопки, как у тебя?
+    public partial class MainWindow : Form
 	{
 		public MainWindow()
 		{
@@ -16,7 +19,8 @@ namespace WindowsFormsApp1
 			RenameForm();
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
+        //TODO: Пустой обработчик. Зачем?
+        private void Form1_Load(object sender, EventArgs e)
 		{
 		}
 
@@ -25,13 +29,16 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void RenameForm()
 		{
-			Text = Text + " | " + _currentFileName;
+            //TODO: Посмотри на формат заголовка в VS, Office, Paint и сделай также, как делают везде.
+            Text = Text + " | " + _currentFileName;
 		}
 
-		/// <summary>
-		///     Возвращает копию Главного списка карточек
-		/// </summary>
-		public BindingList<ICard> DataList
+        //TODO: Какой еще DataList? Что за абстрактные названия?
+        //TODO: Это главная форма - в ней кроме конструктора вообще ничего на public быть не должно. Нарушение инкапсуляции
+        /// <summary>
+        ///     Возвращает копию Главного списка карточек
+        /// </summary>
+        public BindingList<ICard> DataList
 		{
 			get
 			{
@@ -47,15 +54,18 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private BindingList<ICard> _cardList;
 
-		/// <summary>
-		///     Название файла с которым ведется работа
-		/// </summary>
-		private string _currentFileName = "Not Saved";
+        //TODO: А как обычно называются несохраненные проекты по умолчанию? Переименовать
+        /// <summary>
+        ///     Название файла с которым ведется работа
+        /// </summary>
+        private string _currentFileName = "Not Saved";
 
-		/// <summary>
-		///     Сериализатор для сохранения и открытия файлов
-		/// </summary>
-		private BindingSource _serializer;
+        //TODO: BindingSource занимается сириализацией?!?
+        //TODO: Он же нигде не используется. Удалить лишние поля и методы!
+        /// <summary>
+        ///     Сериализатор для сохранения и открытия файлов
+        /// </summary>
+        private BindingSource _serializer;
 
 		#endregion
 
@@ -66,7 +76,8 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void RefreshTable()
 		{
-			dataGridView1.DataSource = null;
+            //TODO: Зачем null, если потом тут же присваиваешь новое?
+            dataGridView1.DataSource = null;
 			dataGridView1.DataSource = _cardList;
 		}
 
@@ -82,16 +93,18 @@ namespace WindowsFormsApp1
 			return false;
 		}
 
-		/// <summary>
-		///     Добавить книгу в Главный список карточек
-		/// </summary>
-		public void AddBookInList(BookArticle book)
+        //TODO: Зачем тебе 4 одинаковых метода? Полиморфизм тебе для чего придумали?
+        //TODO: Еще и паблик??? Нарушение инкапсуляции
+        /// <summary>
+        ///     Добавить книгу в Главный список карточек
+        /// </summary>
+        public void AddBookInList(BookArticle book)
 		{
 			if (!IsInTable(book))
 			{
 				_cardList.Add(book);
-				RefreshTable();
-			}
+				RefreshTable(); //TODO: зачем делать refresh, если bindingSource при добавлении сам должен обновить интерфейс?
+            }
 			else
 			{
 				MessageBox.Show("That record is already exist.", "Error", MessageBoxButtons.OK,
@@ -99,16 +112,17 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		/// <summary>
-		///     Добавить диссертацию в Главный список карточек
-		/// </summary>
-		public void AddDissertationInList(Dissertation dissertation)
+        //TODO: Зачем тебе 4 одинаковых метода? Полиморфизм тебе для чего придумали?
+        /// <summary>
+        ///     Добавить диссертацию в Главный список карточек
+        /// </summary>
+        public void AddDissertationInList(Dissertation dissertation)
 		{
 			if (!IsInTable(dissertation))
 			{
 				_cardList.Add(dissertation);
-				RefreshTable();
-			}
+				RefreshTable(); //TODO: зачем делать refresh, если bindingSource при добавлении сам должен обновить интерфейс?
+            }
 			else
 			{
 				MessageBox.Show("That record is already exist.", "Error", MessageBoxButtons.OK,
@@ -116,16 +130,17 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		/// <summary>
-		///     Добавить журнал в Главный список карточек
-		/// </summary>
-		public void AddJournalInList(JournalArticle journal)
+        //TODO: Зачем тебе 4 одинаковых метода? Полиморфизм тебе для чего придумали?
+        /// <summary>
+        ///     Добавить журнал в Главный список карточек
+        /// </summary>
+        public void AddJournalInList(JournalArticle journal)
 		{
 			if (!IsInTable(journal))
 			{
 				_cardList.Add(journal);
-				RefreshTable();
-			}
+				RefreshTable(); //TODO: зачем делать refresh, если bindingSource при добавлении сам должен обновить интерфейс?
+            }
 			else
 			{
 				MessageBox.Show("That record is already exist.", "Error", MessageBoxButtons.OK,
@@ -133,16 +148,17 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		/// <summary>
-		///     Добавить сборник в Главный список карточек
-		/// </summary>
-		public void AddCollectionInList(CollectionArticle collections)
+        //TODO: Зачем тебе 4 одинаковых метода? Полиморфизм тебе для чего придумали?
+        /// <summary>
+        ///     Добавить сборник в Главный список карточек
+        /// </summary>
+        public void AddCollectionInList(CollectionArticle collections)
 		{
 			if (!IsInTable(collections))
 			{
 				_cardList.Add(collections);
-				RefreshTable();
-			}
+				RefreshTable(); //TODO: зачем делать refresh, если bindingSource при добавлении сам должен обновить интерфейс?
+            }
 			else
 			{
 				MessageBox.Show("That record is already exist.", "Error", MessageBoxButtons.OK,
@@ -178,7 +194,8 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void AddButtonClick(object sender, EventArgs e)
 		{
-			var newRecordForm = new AddRecord(this);
+            //TODO: Неправильное взаимодействие форм!!! Нельзя передавать экземпляры главной формы во второстепенную!
+            var newRecordForm = new AddRecord(this);
 			newRecordForm.Show();
 		}
 
@@ -187,7 +204,8 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void SearchButton_Click(object sender, EventArgs e)
 		{
-			var newSearchForm = new Search(this);
+            //TODO: Неправильное взаимодействие форм!!! Нельзя передавать экземпляры главной формы во второстепенную!
+            var newSearchForm = new Search(this);
 			newSearchForm.Show();
 		}
 
@@ -198,8 +216,9 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//настройка окна сохранения файла
-			saveFileDialog1.AddExtension = true;
+            //TODO: почему saveFileDialog1? А где 2? Переименовать
+            //настройка окна сохранения файла
+            saveFileDialog1.AddExtension = true;
 			saveFileDialog1.CheckPathExists = true;
 			saveFileDialog1.DefaultExt = ".cardDB";
 			saveFileDialog1.InitialDirectory = "/data";
@@ -212,8 +231,8 @@ namespace WindowsFormsApp1
 			if (saveFileDialog1.ShowDialog() == DialogResult.OK)
 			{
 				var saveStream = new FileStream(saveFileDialog1.FileName, FileMode.Create);
-
-				var serializer = new BinaryFormatter();
+                //TODO: Никакого BinaryFormatter. Только сторонняя библиотека Newtonsoft JSON.NET!
+                var serializer = new BinaryFormatter();
 				serializer.Serialize(saveStream, _cardList);
 				saveStream.Close();
 
@@ -227,8 +246,9 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//настройка окна сохранения файла
-			openFileDialog1.AddExtension = true;
+            //TODO: Почему 1-ый? Где 2-ой? Переименовать
+            //настройка окна сохранения файла
+            openFileDialog1.AddExtension = true;
 			openFileDialog1.CheckPathExists = true;
 			openFileDialog1.CheckFileExists = true;
 			openFileDialog1.DefaultExt = ".cardDB";
@@ -249,7 +269,9 @@ namespace WindowsFormsApp1
 				RenameForm();
 
 				var openStream = openFileDialog1.OpenFile();
-				var desializer = new BinaryFormatter();
+                //TODO: Название переменной с ошибками
+                //TODO: Никакого BinaryFormatter. Только сторонняя библиотека Newtonsoft JSON.NET!
+                var desializer = new BinaryFormatter();
 				_cardList = desializer.Deserialize(openStream) as BindingList<ICard>;
 				openStream.Close();
 
@@ -265,7 +287,8 @@ namespace WindowsFormsApp1
 			if (dataGridView1.CurrentRow != null)
 				dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
 			else
-				MessageBox.Show("Select record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //TODO: Зачем что-то выводить на экран, если что-то не выделено? Тебя бы как пользователя это не бесило?
+                MessageBox.Show("Select record.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 		}
 
 		#endregion

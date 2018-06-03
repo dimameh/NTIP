@@ -7,7 +7,9 @@ using LibraryCards;
 
 namespace WindowsFormsApp1
 {
-	public partial class AddRecord : Form
+    //TODO: В названии нет слова Form - неправильно.
+    //TODO: зачем менял стили форм по умолчанию?
+    public partial class AddRecord : Form
 	{
 		public AddRecord(MainWindow parentForm)
 		{
@@ -26,24 +28,26 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private const int DefaultTextBoxLength = 32767;
 
-		/// <summary>
-		///     Главная форма
-		/// </summary>
-		private readonly MainWindow _parent;
+        //TODO: архитектурно-неправильная связь. Форма СЛИШКОМ много знает о родителе и в итоге ЖЕЛЕЗНО к ней привязывается
+        /// <summary>
+        ///     Главная форма
+        /// </summary>
+        private readonly MainWindow _parent;
 
-		/// <summary>
-		///     Список добавляемых авторов
-		/// </summary>
-		private readonly BindingList<FullName> _authors;
+        /// <summary>
+        ///     Список добавляемых авторов
+        /// </summary>
+        private readonly BindingList<FullName> _authors;
 
-		#endregion
+        #endregion
 
-		#region Frontand changing methods
+        #region Frontand changing methods
 
-		/// <summary>
-		///     Скрыть поле дополнительной информации
-		/// </summary>
-		private void AdditionalInfoDisable()
+        //TODO: может, сделать один метод, который принимает булеву переменную?
+        /// <summary>
+        ///     Скрыть поле дополнительной информации
+        /// </summary>
+        private void AdditionalInfoDisable()
 		{
 			AdditionalInfoLabel.Visible = false;
 			AdditionalInfoLabel.Enabled = false;
@@ -51,10 +55,11 @@ namespace WindowsFormsApp1
 			AdditionalInfoTextBox.Enabled = false;
 		}
 
-		/// <summary>
-		///     Показать поле дополнительной информации
-		/// </summary>
-		private void AdditionalInfoEnable()
+        //TODO: может, сделать один метод, который принимает булеву переменную?
+        /// <summary>
+        ///     Показать поле дополнительной информации
+        /// </summary>
+        private void AdditionalInfoEnable()
 		{
 			AdditionalInfoLabel.Visible = true;
 			AdditionalInfoLabel.Enabled = true;
@@ -418,8 +423,9 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void OK_Click(object sender, EventArgs e)
 		{
-			// все поля должны быть заполнены
-			if (IsFieldsFilled())
+            //TODO: Эта форма НИЧЕГО НЕ ДОЛЖНА ЗНАТЬ ИЛИ ИСПОЛЬЗОВАТЬ ИЗ РОДИТЕЛЬСКОЙ ФОРМЫ
+            // все поля должны быть заполнены
+            if (IsFieldsFilled())
 			{
 				if (BookRadioButton.Checked)
 					_parent.AddBookInList(new BookArticle
@@ -485,8 +491,9 @@ namespace WindowsFormsApp1
 		private void Rand_Click(object sender, EventArgs e)
 		{
 			var rnd = new Random();
-
-			switch (rnd.Next(1, 5))
+            //TODO: У тебя в консольном приложении есть генератор нормальных авторов. Почему здесь не используешь?
+            // Вынеси генератор в отдельный класс и используй где хочешь
+            switch (rnd.Next(1, 5))
 			{
 				case 1:
 					BookRadioButton.Checked = true;
@@ -543,7 +550,8 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private void Cancel_Click(object sender, EventArgs e)
 		{
-			Close();
+            //TODO: Перед закрытием форма должна инициализировать своё поле DialogResult - чтобы извне можно было знать, успешно ли закрылась форма.
+            Close();
 		}
 
 		#endregion

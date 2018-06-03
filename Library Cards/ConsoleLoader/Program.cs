@@ -4,7 +4,8 @@ using LibraryCards;
 
 namespace ConsoleLoader
 {
-	internal class Program
+    //TODO: Этот проект уже не нужен. Удалить
+    internal class Program
 	{
 		private static FullName GenerateFullName()
 		{

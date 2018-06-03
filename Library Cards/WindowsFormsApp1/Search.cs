@@ -6,7 +6,8 @@ using LibraryCards;
 
 namespace WindowsFormsApp1
 {
-	public partial class Search : Form
+    //TODO: неправильное название - должно содержать слово Form
+    public partial class Search : Form
 	{
 		public Search(MainWindow parentForm)
 		{
@@ -18,12 +19,13 @@ namespace WindowsFormsApp1
 			_resultList = new BindingList<ICard>();
 		}
 
-		#region Private properties
+        #region Private properties
 
-		/// <summary>
-		///     Форма предок
-		/// </summary>
-		private readonly MainWindow _parent;
+        //TODO: Нет!
+        /// <summary>
+        ///     Форма предок
+        /// </summary>
+        private readonly MainWindow _parent;
 
 		/// <summary>
 		///     Список, являющийся результатом поиска
@@ -31,19 +33,21 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private readonly BindingList<ICard> _resultList;
 
-		/// <summary>
-		///     Возвращает true, если подсказка формата ввода ФИО открыта, false в других случаях
-		/// </summary>
-		private bool _isHint = true;
+        //TODO: По-хорошему, это всё выносится в отдельный класс, который наследуется от TextBox и добавляет ему новую логику. Потом обсудим, пока пусть так
+        /// <summary>
+        ///     Возвращает true, если подсказка формата ввода ФИО открыта, false в других случаях
+        /// </summary>
+        private bool _isHint = true;
 
-		#endregion
+        #endregion
 
-		#region Frontand changing methods
+        #region Frontand changing methods
 
-		/// <summary>
-		///     Показать подсказку формата ввода ФИО
-		/// </summary>
-		private void ShowHint()
+        //TODO: По-хорошему, это всё выносится в отдельный класс, который наследуется от TextBox и добавляет ему новую логику. Потом обсудим, пока пусть так
+        /// <summary>
+        ///     Показать подсказку формата ввода ФИО
+        /// </summary>
+        private void ShowHint()
 		{
 			//подсказка высвечивается только если поле пустое
 			if (AuthorTextBox.Text == string.Empty)
@@ -54,10 +58,11 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		/// <summary>
-		///     Скрыть подсказку формата ввода ФИО
-		/// </summary>
-		private void HideHint()
+        //TODO: По-хорошему, это всё выносится в отдельный класс, который наследуется от TextBox и добавляет ему новую логику. Потом обсудим, пока пусть так
+        /// <summary>
+        ///     Скрыть подсказку формата ввода ФИО
+        /// </summary>
+        private void HideHint()
 		{
 			if (_isHint)
 			{
@@ -67,22 +72,24 @@ namespace WindowsFormsApp1
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region Fields actions
+        #region Fields actions
 
-		/// <summary>
-		///     Скрывает подсказку при выборе формы ввода автора
-		/// </summary>
-		private void AuthorTextBox_Enter(object sender, EventArgs e)
+        //TODO: По-хорошему, это всё выносится в отдельный класс, который наследуется от TextBox и добавляет ему новую логику. Потом обсудим, пока пусть так
+        /// <summary>
+        ///     Скрывает подсказку при выборе формы ввода автора
+        /// </summary>
+        private void AuthorTextBox_Enter(object sender, EventArgs e)
 		{
 			HideHint();
 		}
 
-		/// <summary>
-		///     Выводит подсказку при выходе из формы ввода автора
-		/// </summary>
-		private void AuthorTextBox_Leave(object sender, EventArgs e)
+        //TODO: По-хорошему, это всё выносится в отдельный класс, который наследуется от TextBox и добавляет ему новую логику. Потом обсудим, пока пусть так
+        /// <summary>
+        ///     Выводит подсказку при выходе из формы ввода автора
+        /// </summary>
+        private void AuthorTextBox_Leave(object sender, EventArgs e)
 		{
 			ShowHint();
 		}
