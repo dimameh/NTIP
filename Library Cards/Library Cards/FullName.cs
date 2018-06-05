@@ -85,7 +85,7 @@ namespace LibraryCards
 		///     Проверка имен собственных на корректность ввода
 		/// </summary>
 		/// <param noun="noun"></param>
-		/// <returns>true если введено корректно, false если некорректно</returns>
+		/// <returns>true если введено корректно, false если некорректно или когда невозможно определить язык</returns>
 		public static bool IsProperNoun(string noun)
 		{
 			//Проверка строки на русском
@@ -97,7 +97,14 @@ namespace LibraryCards
 					return false;
 				}
 				//Не может начинаться и заканчиваться тире
-				if (noun[0] == '-' || noun[noun.Length - 1] == '-')
+				//Второй и предспоследний символы так же не могут быть тире
+				if (noun[0] == '-' || noun[noun.Length - 1] == '-' || noun[1] == '-' || noun[noun.Length - 2] == '-')
+				{
+					return false;
+				}
+				// Не может начинаться и заканчиваться пробелом
+				//Второй и предспоследний символы так же не могут быть пробелом
+				if (noun[0] == ' ' || noun[noun.Length - 1] == ' ' || noun[1] == ' ' || noun[noun.Length - 2] == ' ')
 				{
 					return false;
 				}
@@ -113,17 +120,14 @@ namespace LibraryCards
 				{
 					return false;
 				}
-				//Не может быть двух заглавных букв подряд
-				for (var i = 0; i < noun.Length - 1; i++)
-					if (noun[i] >= 'А' && noun[i] <= 'Я' && noun[i + 1] >= 'А' && noun[i + 1] <= 'Я')
-					{
-						return false;
-					}
+				//Все буквы кроме тех, которые должны быть заглавными, должны быть в нижнем регистре
+				//Если в слове больше одной Заглавной буквы, она должна идти после тире
 				for (var i = 1; i < noun.Length; i++)
-					if (noun[i] >= 'А' && noun[i] <= 'Я')
+					if (noun[i] >= 'А' && noun[i] <= 'Я' && noun[i - 1] != '-')
 					{
 						return false;
 					}
+				//если все проверки пройдены значит это имя собственное
 				return true;
 			}
 			//Проверка строки на английском
@@ -135,7 +139,14 @@ namespace LibraryCards
 					return false;
 				}
 				//Не может начинаться и заканчиваться тире
-				if (noun[0] == '-' || noun[noun.Length - 1] == '-')
+				//Второй и предспоследний символы так же не могут быть тире
+				if (noun[0] == '-' || noun[noun.Length - 1] == '-' || noun[1] == '-' || noun[noun.Length - 2] == '-')
+				{
+					return false;
+				}
+				// Не может начинаться и заканчиваться пробелом
+				//Второй и предспоследний символы так же не могут быть пробелом
+				if (noun[0] == ' ' || noun[noun.Length - 1] == ' ' || noun[1] == ' ' || noun[noun.Length - 2] == ' ')
 				{
 					return false;
 				}
@@ -151,19 +162,17 @@ namespace LibraryCards
 				{
 					return false;
 				}
-				//Не может быть двух заглавных букв подряд
-				for (var i = 0; i < noun.Length - 1; i++)
-					if (noun[i] >= 'A' && noun[i] <= 'Z' && noun[i + 1] >= 'A' && noun[i + 1] <= 'Z')
+				//Все буквы кроме тех, которые должны быть заглавными, должны быть в нижнем регистре
+				//Если в слове больше одной Заглавной буквы, она должна идти после тире
+				for (var i = 1; i < noun.Length; i++)
+					if (noun[i] >= 'A' && noun[i] <= 'Z' && noun[i - 1] != '-')
 					{
 						return false;
 					}
+				//если все проверки пройдены значит это имя собственное
 				return true;
 			}
-			for (var i = 1; i < noun.Length; i++)
-				if (noun[i] >= 'A' && noun[i] <= 'Z')
-				{
-					return false;
-				}
+			//Если не удалось определить язык надо вернуть false
 			return false;
 		}
 

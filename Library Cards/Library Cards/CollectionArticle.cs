@@ -72,6 +72,25 @@ namespace LibraryCards
 			if (CityOfPublication == "") throw new Exception("No city");
 		}
 
+		/// <summary>
+		/// Формирует ошибку если поле начинается или заканчивается пробелом либо путое или null
+		/// </summary>
+		/// <param name="value"></param>
+		private void StringExceptions(string value)
+		{
+			if (!string.IsNullOrEmpty(value))
+			{
+				if (value[0] == ' ' || value[value.Length - 1] == ' ')
+				{
+					throw new Exception("Title can't start or end with a space");
+				}
+			}
+			else
+			{
+				throw new Exception("Title can't be null or empty");
+			}
+		}
+
 		#endregion
 
 		#region Конструктор
@@ -108,7 +127,7 @@ namespace LibraryCards
 		/// <param name="authors"></param>
 		public void AddAuthors(List<FullName> authors)
 		{
-			if (authors != null)
+			if (authors != null || authors.Count == 0)
 			{
 				if (_authors != null)
 				{
@@ -116,9 +135,13 @@ namespace LibraryCards
 				}
 				else
 				{
-					_authors = authors;
+					_authors = new List<FullName>(authors);
 					_firstAuthor = authors[0];
 				}
+			}
+			else
+			{
+				throw new Exception("Adding authors is null or empty");
 			}
 		}
 
@@ -128,6 +151,10 @@ namespace LibraryCards
 		/// <param name="authors"></param>
 		public void SetAuthors(List<FullName> authors)
 		{
+			if (authors == null || authors.Count == 0)
+			{
+				throw new Exception(" list is null or empty");
+			}
 			if (_authors != null) RemoveAllAuthors();
 			if (authors != null) AddAuthors(authors);
 		}
@@ -140,8 +167,20 @@ namespace LibraryCards
 		{
 			if (author != null)
 			{
-				_authors.Add(author);
-				if (_authors.Count == 1) _firstAuthor = author;
+				if (_authors != null)
+				{
+					_authors.Add(author);
+				}
+				else
+				{
+					_authors = new List<FullName>();
+					_authors.Add(author);
+					_firstAuthor = author;
+				}
+			}
+			else
+			{
+				throw new Exception("Adding author is null");
 			}
 		}
 
@@ -152,8 +191,8 @@ namespace LibraryCards
 		{
 			if (FirstAuthor != null)
 			{
-				_firstAuthor = null;
 				_authors.Clear();
+				_firstAuthor = null;
 			}
 		}
 
@@ -167,6 +206,10 @@ namespace LibraryCards
 			{
 				_authors.Remove(author);
 				if (_authors.Count == 0) _firstAuthor = null;
+			}
+			else
+			{
+				throw new Exception("Removing author is null");
 			}
 		}
 
@@ -192,7 +235,11 @@ namespace LibraryCards
 		public string Title
 		{
 			get => _title;
-			set => _title = value;
+			set
+			{
+				StringExceptions(value);
+				_title = value;
+			}
 		}
 
 		/// <summary>
@@ -201,7 +248,11 @@ namespace LibraryCards
 		public string MaterialType
 		{
 			get => _materialType;
-			set => _materialType = value;
+			set
+			{
+				StringExceptions(value);
+				_materialType = value;
+			}
 		}
 
 		/// <summary>
@@ -212,7 +263,14 @@ namespace LibraryCards
 			get => _firstPage;
 			set
 			{
-				if (value > 0) _firstPage = value;
+				if (value > 0)
+				{
+					_firstPage = value;
+				}
+				else
+				{
+					throw new Exception("FirstPage can't be less or equal 0");
+				}
 			}
 		}
 
@@ -224,7 +282,11 @@ namespace LibraryCards
 			get => _lastPage;
 			set
 			{
-				if (value > 0) _lastPage = value;
+				if (value >= FirstPage) _lastPage = value;
+				else
+				{
+					throw new Exception("LastPage can't be less than FirstPage or less or equal 0");
+				}
 			}
 		}
 
@@ -253,10 +315,48 @@ namespace LibraryCards
 			get => _cityOfPublication;
 			set
 			{
-				if (FullName.IsProperNoun(value))
-					_cityOfPublication = value;
+				bool isCompoundWord = false;
+				for (int i = 0; i < value.Length; i++)
+				{
+					if (value[i] == ' ')
+					{
+						isCompoundWord = true;
+						break;
+					}
+				}
+				if (!isCompoundWord)
+				{
+					if (FullName.IsProperNoun(value))
+						_cityOfPublication = value;
+					else
+						throw new Exception("City must be proper noun");
+				}
 				else
-					throw new Exception("Wrong city");
+				{
+					for (int i = 0; i < value.Length-1; i++)
+					{
+						if (value[i] == ' ' && value[i + 1] == ' ')
+						{
+							throw new Exception("Too many spaces in the city name");
+						}
+					}
+					if (value[0] == ' ' || value[value.Length - 1] == ' ')
+					{
+						throw new Exception("City can't begin or end by space symbol");
+					}
+
+					string[] city = value.Split(' ');
+
+					for (int i = 0; i < city.Length; i++)
+					{
+						if (!FullName.IsProperNoun(city[i]))
+						{
+							throw new Exception("City must be proper noun");
+						}
+					}
+
+					_cityOfPublication = value;
+				}
 			}
 		}
 

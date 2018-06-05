@@ -47,7 +47,7 @@
     <Compile Include="Dissertation.cs" />
     <Compile Include="ICard.cs" />
     <Compile Include="JournalArticle.cs" />
-    <Compile Include="ArticleInCollection.cs" />
+    <Compile Include="CollectionArticle.cs" />
     <Compile Include="FullName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

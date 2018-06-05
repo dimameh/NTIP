@@ -88,6 +88,24 @@ namespace LibraryCards
 			if (SpecializationNumber == "") throw new Exception("No specialization number");
 		}
 
+		/// <summary>
+		/// Формирует ошибку если поле начинается или заканчивается пробелом либо путое или null
+		/// </summary>
+		/// <param name="value"></param>
+		private void StringExceptions(string value)
+		{
+			if (!string.IsNullOrEmpty(value))
+			{
+				if (value[0] == ' ' || value[value.Length - 1] == ' ')
+				{
+					throw new Exception("Title can't start or end with a space");
+				}
+			}
+			else
+			{
+				throw new Exception("Title can't be null or empty");
+			}
+		}
 		#endregion
 
 		#region Конструктор
@@ -140,15 +158,33 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает имя автора диссертиции
 		/// </summary>
-		public FullName FirstAuthor => _firstAuthor;
+		public FullName FirstAuthor
+		{
+			get => _firstAuthor;
+			set
+			{
+				if (value != null)
+				{
+					_firstAuthor = value;
+				}
+				else
+				{
+					throw new Exception("Author can't be null");
+				}
+			}
+		}
 
 		/// <summary>
-		///     Возвращает и задает название диссертации
+		///     Возвращает и задает Название
 		/// </summary>
 		public string Title
 		{
 			get => _title;
-			set => _title = value;
+			set
+			{
+				StringExceptions(value);
+				_title = value;
+			}
 		}
 
 		/// <summary>
@@ -159,7 +195,14 @@ namespace LibraryCards
 			get => _page;
 			set
 			{
-				if (value > 0) _page = value;
+				if (value > 0)
+				{
+					_page = value;
+				}
+				else
+				{
+					throw new Exception("FirstPage can't be less or equal 0");
+				}
 			}
 		}
 
@@ -169,7 +212,11 @@ namespace LibraryCards
 		public string AuthorStatus
 		{
 			get => _scienceDegree;
-			set => _scienceDegree = value;
+			set
+			{
+				StringExceptions(value);
+				_scienceDegree = value;
+			}
 		}
 
 		/// <summary>
@@ -191,18 +238,56 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает город, в котором была представлена диссертация
+		///     Возвращает и задает Город, в котором был представлен сборник
 		/// </summary>
-		/// <returns>город, в котором была представлена диссертация</returns>
+		/// <returns>город, в котором был представлен сборник</returns>
 		public string CityOfPublication
 		{
 			get => _cityOfPublication;
 			set
 			{
-				if (FullName.IsProperNoun(value))
-					_cityOfPublication = value;
+				bool isCompoundWord = false;
+				for (int i = 0; i < value.Length; i++)
+				{
+					if (value[i] == ' ')
+					{
+						isCompoundWord = true;
+						break;
+					}
+				}
+				if (!isCompoundWord)
+				{
+					if (FullName.IsProperNoun(value))
+						_cityOfPublication = value;
+					else
+						throw new Exception("City must be proper noun");
+				}
 				else
-					throw new Exception("Wrong city: " + value);
+				{
+					for (int i = 0; i < value.Length - 1; i++)
+					{
+						if (value[i] == ' ' && value[i + 1] == ' ')
+						{
+							throw new Exception("Too many spaces in the city name");
+						}
+					}
+					if (value[0] == ' ' || value[value.Length - 1] == ' ')
+					{
+						throw new Exception("City can't begin or end by space symbol");
+					}
+
+					string[] city = value.Split(' ');
+
+					for (int i = 0; i < city.Length; i++)
+					{
+						if (!FullName.IsProperNoun(city[i]))
+						{
+							throw new Exception("City must be proper noun");
+						}
+					}
+
+					_cityOfPublication = value;
+				}
 			}
 		}
 

@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F24A77BF-DCF9-4F82-AA1F-9EF8F4798274}</ProjectGuid>
+    <ProjectGuid>{9725F380-65B7-464F-86FE-E6920D29D4EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>UnitTests</RootNamespace>
@@ -47,10 +47,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="LibraryCards\ArticleInCollectionTest.cs" />
+    <Compile Include="LibraryCards\BookArticleTest.cs" />
+    <Compile Include="LibraryCards\DissertationTest.cs" />
+    <Compile Include="LibraryCards\FullNameTest.cs" />
+    <Compile Include="LibraryCards\JournalArticleTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Library Cards\LibraryCards.csproj">
+      <Project>{0F133BA2-A0C8-4E49-8BC1-12694AF7A61A}</Project>
+      <Name>LibraryCards</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

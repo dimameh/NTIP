@@ -71,6 +71,25 @@ namespace LibraryCards
 				else if (LastPage == -1) throw new Exception("No last page");
 		}
 
+		/// <summary>
+		/// Формирует ошибку если поле начинается или заканчивается пробелом либо путое или null
+		/// </summary>
+		/// <param name="value"></param>
+		private void StringExceptions(string value)
+		{
+			if (!string.IsNullOrEmpty(value))
+			{
+				if (value[0] == ' ' || value[value.Length-1] == ' ')
+				{
+					throw new Exception("Title can't start or end with a space");
+				}
+			}
+			else
+			{
+				throw new Exception("Title can't be null or empty");
+			}
+		}
+
 		#endregion
 
 		#region Конструктор
@@ -107,7 +126,7 @@ namespace LibraryCards
 		/// <param name="authors"></param>
 		public void AddAuthors(List<FullName> authors)
 		{
-			if (authors != null)
+			if (authors != null || authors.Count == 0)
 			{
 				if (_authors != null)
 				{
@@ -115,9 +134,13 @@ namespace LibraryCards
 				}
 				else
 				{
-					_authors = authors;
+					_authors = new List<FullName>(authors);
 					_firstAuthor = authors[0];
 				}
+			}
+			else
+			{
+				throw new Exception("Adding authors is null or empty");
 			}
 		}
 
@@ -127,6 +150,10 @@ namespace LibraryCards
 		/// <param name="authors"></param>
 		public void SetAuthors(List<FullName> authors)
 		{
+			if (authors == null || authors.Count == 0)
+			{
+				throw new Exception(" list is null or empty");
+			}
 			if (_authors != null) RemoveAllAuthors();
 			if (authors != null) AddAuthors(authors);
 		}
@@ -139,8 +166,20 @@ namespace LibraryCards
 		{
 			if (author != null)
 			{
-				_authors.Add(author);
-				if (_authors.Count == 1) _firstAuthor = author;
+				if (_authors != null)
+				{
+					_authors.Add(author);
+				}
+				else
+				{
+					_authors = new List<FullName>();
+					_authors.Add(author);
+					_firstAuthor = author;
+				}
+			}
+			else
+			{
+				throw new Exception("Adding author is null");
 			}
 		}
 
@@ -151,8 +190,8 @@ namespace LibraryCards
 		{
 			if (FirstAuthor != null)
 			{
-				_firstAuthor = null;
 				_authors.Clear();
+				_firstAuthor = null;
 			}
 		}
 
@@ -166,6 +205,10 @@ namespace LibraryCards
 			{
 				_authors.Remove(author);
 				if (_authors.Count == 0) _firstAuthor = null;
+			}
+			else
+			{
+				throw new Exception("Removing author is null");
 			}
 		}
 
@@ -181,9 +224,12 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает имя автора диссертиции
+		///     Возвращает имя автора статьи
 		/// </summary>
-		public FullName FirstAuthor => _firstAuthor;
+		public FullName FirstAuthor
+		{
+			get => new FullName(_firstAuthor);
+		}
 
 		/// <summary>
 		///     Возвращает и задает Название
@@ -191,7 +237,11 @@ namespace LibraryCards
 		public string Title
 		{
 			get => _title;
-			set => _title = value;
+			set
+			{
+				StringExceptions(value);
+				_title = value;
+			}
 		}
 
 		/// <summary>
@@ -200,7 +250,11 @@ namespace LibraryCards
 		public string MaterialType
 		{
 			get => _materialType;
-			set => _materialType = value;
+			set
+			{
+				StringExceptions(value);
+				_materialType = value;
+			}
 		}
 
 		/// <summary>
@@ -212,6 +266,10 @@ namespace LibraryCards
 			set
 			{
 				if (value >= 0) _journalNumber = value;
+				else
+				{
+					throw new Exception("JournalNumber can't be lower than 0");
+				}
 			}
 		}
 
@@ -223,7 +281,14 @@ namespace LibraryCards
 			get => _firstPage;
 			set
 			{
-				if (value > 0) _firstPage = value;
+				if (value > 0)
+				{
+					_firstPage = value;
+				}
+				else
+				{
+					throw new Exception("FirstPage can't be less or equal 0");
+				}
 			}
 		}
 
@@ -235,7 +300,11 @@ namespace LibraryCards
 			get => _lastPage;
 			set
 			{
-				if (value > 0) _lastPage = value;
+				if (value >= FirstPage) _lastPage = value;
+				else
+				{
+					throw new Exception("LastPage can't be less than FirstPage");
+				}
 			}
 		}
 
@@ -248,6 +317,10 @@ namespace LibraryCards
 			set
 			{
 				if (value > 0 && value <= DateTime.Now.Year) _year = value;
+				else
+				{
+					throw new Exception("Year can't be lower than 0 and bigger than today\'s");
+				}
 			}
 		}
 
