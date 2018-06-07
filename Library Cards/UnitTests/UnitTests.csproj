@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="LibraryCards\ArticleInCollectionTest.cs" />
     <Compile Include="LibraryCards\BookArticleTest.cs" />
     <Compile Include="LibraryCards\DissertationTest.cs" />

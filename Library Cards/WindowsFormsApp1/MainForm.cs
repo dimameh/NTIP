@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -17,7 +18,10 @@ namespace CardListApp
 			_cardList = new BindingList<ICard>();
 			Icon = new Icon("ico.ico");
 			RenameForm();
+			SetDefaultWindowSize();
 		}
+
+		#region Frontand changing methods
 
 		/// <summary>
 		///     Переименовать форму (Используется при сохранении или открытии файла)
@@ -26,6 +30,17 @@ namespace CardListApp
 		{
 			Text = _currentFileName + " - Library Cards";
 		}
+
+		/// <summary>
+		///     Установить начальный размер окна и скрыть информацию о карточках
+		/// </summary>
+		private void SetDefaultWindowSize()
+		{
+			IsLabelVisible = false;
+			Size = new Size(860, 350);
+		}
+
+		#endregion
 
 		#region Private properties
 
@@ -38,6 +53,32 @@ namespace CardListApp
 		///     Название файла с которым ведется работа
 		/// </summary>
 		private string _currentFileName = "New card list";
+
+		/// <summary>
+		///     True делает label'ы видимыми, falsе - скрывает
+		/// </summary>
+		private bool IsLabelVisible
+		{
+			set
+			{
+				label7.Visible = value;
+				label1.Visible = value;
+				label2.Visible = value;
+				label3.Visible = value;
+				label4.Visible = value;
+				label5.Visible = value;
+				label6.Visible = value;
+				label7.Visible = value;
+
+				label11.Visible = value;
+				label12.Visible = value;
+				label13.Visible = value;
+				label14.Visible = value;
+				label15.Visible = value;
+				label16.Visible = value;
+				label17.Visible = value;
+			}
+		}
 
 		#endregion
 
@@ -63,7 +104,7 @@ namespace CardListApp
 			if (removingCard != null)
 			{
 				_cardList.Remove(removingCard);
-				dataGridView1.DataSource = _cardList;
+				dataGridViewMain.DataSource = _cardList;
 			}
 			else
 			{
@@ -87,22 +128,22 @@ namespace CardListApp
 			newRecordForm.ShowDialog();
 			if (newRecordForm.DialogResult == DialogResult.OK)
 			{
-				if (!IsInTable(newRecordForm.NewCard))
+				if (newRecordForm.NewCard != null)
 				{
-					if (newRecordForm.NewCard != null)
+					if (!IsInTable(newRecordForm.NewCard))
 					{
 						_cardList.Add(newRecordForm.NewCard);
-						dataGridView1.DataSource = _cardList;
+						dataGridViewMain.DataSource = _cardList;
 					}
 					else
 					{
-						MessageBox.Show("You cant add empty record", "Error", MessageBoxButtons.OK,
+						MessageBox.Show("This record is already exist", "Error", MessageBoxButtons.OK,
 							MessageBoxIcon.Error);
 					}
 				}
 				else
 				{
-					MessageBox.Show("This record is already exist", "Error", MessageBoxButtons.OK,
+					MessageBox.Show("You cant add empty record", "Error", MessageBoxButtons.OK,
 						MessageBoxIcon.Error);
 				}
 			}
@@ -121,12 +162,41 @@ namespace CardListApp
 			if (newSearchForm.DialogResult == DialogResult.None) _cardList = newSearchForm.ResultList;
 		}
 
+		/// <summary>
+		///     Открытие окна с формой редактирования выбранной карточки
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void ModifyButton_Click(object sender, EventArgs e)
+		{
+			IsLabelVisible = false;
+			Size = new Size(860, 350);
+			if (dataGridViewMain.CurrentRow != null)
+			{
+				var newModifyForm = new AddRecordForm
+				{
+					NewCard = _cardList[dataGridViewMain.CurrentRow.Index]
+				};
+
+				newModifyForm.ShowDialog();
+
+				if (newModifyForm.DialogResult == DialogResult.OK)
+				{
+					if (newModifyForm.NewCard != null)
+						_cardList[dataGridViewMain.CurrentRow.Index] = newModifyForm.NewCard;
+					else
+						MessageBox.Show("You cant add empty record", "Error", MessageBoxButtons.OK,
+							MessageBoxIcon.Error);
+				}
+			}
+		}
+
 		#endregion
 
 		#region Save/Open
 
 		/// <summary>
-		/// Перегрузка SerializationBinder
+		///     Перегрузка SerializationBinder
 		/// </summary>
 		public class TypeNameSerializationBinder : SerializationBinder
 		{
@@ -216,7 +286,7 @@ namespace CardListApp
 						});
 				}
 
-				dataGridView1.DataSource = _cardList;
+				dataGridViewMain.DataSource = _cardList;
 			}
 		}
 
@@ -227,8 +297,109 @@ namespace CardListApp
 		/// </summary>
 		private void Remove_Click(object sender, EventArgs e)
 		{
-			if (dataGridView1.CurrentRow != null)
-				dataGridView1.Rows.Remove(dataGridView1.CurrentRow);
+			if (dataGridViewMain.CurrentRow != null)
+				dataGridViewMain.Rows.Remove(dataGridViewMain.CurrentRow);
+
+			SetDefaultWindowSize();
+		}
+
+		/// <summary>
+		///     Выводит информацию о карточке при клике на нее в таблице
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			IsLabelVisible = true;
+			Size = new Size(860, 690);
+			var currentCard = _cardList[dataGridViewMain.CurrentRow.Index];
+
+			if (currentCard is BookArticle book)
+			{
+				label7.Visible = label17.Visible = true;
+				label1.Text = "Title";
+				label2.Text = "Genre";
+				label3.Text = "Publishing house";
+				label4.Text = "City of publication";
+				label5.Text = "Year";
+				label6.Text = "Volume (pages)";
+				label7.Text = "AdditionalInfo";
+
+				label11.Text = book.Title;
+				label12.Text = book.MaterialType;
+				label13.Text = book.PublishingHouse;
+				label14.Text = book.CityOfPublication;
+				label15.Text = book.Year.ToString();
+				label16.Text = book.Volume.ToString();
+				label17.Text = book.AdditionalInfo;
+
+				dataGridViewAuthors.DataSource = book.Authors;
+			}
+
+			else if (currentCard is Dissertation dissertation)
+			{
+				label7.Visible = label17.Visible = false;
+
+				label1.Text = "Title";
+				label2.Text = "Page";
+				label3.Text = "Science degree";
+				label4.Text = "Specialization number";
+				label5.Text = "Year";
+				label6.Text = "City of publication";
+
+				label11.Text = dissertation.Title;
+				label12.Text = dissertation.Page.ToString();
+				label13.Text = dissertation.AuthorStatus;
+				label14.Text = dissertation.SpecializationNumber;
+				label15.Text = dissertation.Year.ToString();
+				label16.Text = dissertation.CityOfPublication;
+
+				var dissertationAuthor = new List<FullName>();
+				dissertationAuthor.Add(dissertation.FirstAuthor);
+				dataGridViewAuthors.DataSource = dissertationAuthor;
+			}
+
+			else if (currentCard is JournalArticle journal)
+			{
+				label7.Visible = label17.Visible = false;
+
+				label1.Text = "Title";
+				label2.Text = "Title of periodical";
+				label3.Text = "Journal number";
+				label4.Text = "Starting page";
+				label5.Text = "Last page";
+				label6.Text = "Year";
+
+				label11.Text = journal.Title;
+				label12.Text = journal.MaterialType;
+				label13.Text = journal.JournalNumber.ToString();
+				label14.Text = journal.FirstPage.ToString();
+				label15.Text = journal.LastPage.ToString();
+				label16.Text = journal.Year.ToString();
+
+				dataGridViewAuthors.DataSource = journal.Authors;
+			}
+
+			else if (currentCard is CollectionArticle collection)
+			{
+				label7.Visible = label17.Visible = false;
+
+				label1.Text = "Title";
+				label2.Text = "Theme of collection";
+				label3.Text = "City of publication";
+				label4.Text = "Date of publication";
+				label5.Text = "First page";
+				label6.Text = "Last page";
+
+				label11.Text = collection.Title;
+				label12.Text = collection.MaterialType;
+				label13.Text = collection.CityOfPublication;
+				label14.Text = collection.Date.ToShortDateString();
+				label15.Text = collection.FirstPage.ToString();
+				label16.Text = collection.LastPage.ToString();
+
+				dataGridViewAuthors.DataSource = collection.Authors;
+			}
 		}
 
 		#endregion

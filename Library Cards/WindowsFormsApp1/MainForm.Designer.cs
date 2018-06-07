@@ -29,10 +29,11 @@
 		private void InitializeComponent()
 		{
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.ModifyButton = new System.Windows.Forms.Button();
 			this.SearchButton = new System.Windows.Forms.Button();
 			this.RemoveButton = new System.Windows.Forms.Button();
 			this.AddCardButton = new System.Windows.Forms.Button();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dataGridViewMain = new System.Windows.Forms.DataGridView();
 			this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
 			this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
@@ -40,28 +41,57 @@
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.dataGridViewAuthors = new System.Windows.Forms.DataGridView();
+			this.label17 = new System.Windows.Forms.Label();
+			this.label16 = new System.Windows.Forms.Label();
+			this.label15 = new System.Windows.Forms.Label();
+			this.label14 = new System.Windows.Forms.Label();
+			this.label13 = new System.Windows.Forms.Label();
+			this.label12 = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.label7 = new System.Windows.Forms.Label();
+			this.label6 = new System.Windows.Forms.Label();
+			this.label5 = new System.Windows.Forms.Label();
+			this.label4 = new System.Windows.Forms.Label();
+			this.label3 = new System.Windows.Forms.Label();
+			this.label2 = new System.Windows.Forms.Label();
+			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
 			this.menuStrip1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuthors)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.ModifyButton);
 			this.groupBox1.Controls.Add(this.SearchButton);
 			this.groupBox1.Controls.Add(this.RemoveButton);
 			this.groupBox1.Controls.Add(this.AddCardButton);
-			this.groupBox1.Controls.Add(this.dataGridView1);
+			this.groupBox1.Controls.Add(this.dataGridViewMain);
 			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.groupBox1.Location = new System.Drawing.Point(13, 31);
+			this.groupBox1.Location = new System.Drawing.Point(12, 31);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(1101, 344);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Записи";
 			// 
+			// ModifyButton
+			// 
+			this.ModifyButton.Location = new System.Drawing.Point(331, 299);
+			this.ModifyButton.Name = "ModifyButton";
+			this.ModifyButton.Size = new System.Drawing.Size(112, 36);
+			this.ModifyButton.TabIndex = 6;
+			this.ModifyButton.Text = "Modify card";
+			this.ModifyButton.UseVisualStyleBackColor = true;
+			this.ModifyButton.Click += new System.EventHandler(this.ModifyButton_Click);
+			// 
 			// SearchButton
 			// 
-			this.SearchButton.Location = new System.Drawing.Point(494, 299);
+			this.SearchButton.Location = new System.Drawing.Point(656, 299);
 			this.SearchButton.Name = "SearchButton";
 			this.SearchButton.Size = new System.Drawing.Size(112, 36);
 			this.SearchButton.TabIndex = 5;
@@ -71,7 +101,7 @@
 			// 
 			// RemoveButton
 			// 
-			this.RemoveButton.Location = new System.Drawing.Point(982, 299);
+			this.RemoveButton.Location = new System.Drawing.Point(981, 299);
 			this.RemoveButton.Name = "RemoveButton";
 			this.RemoveButton.Size = new System.Drawing.Size(112, 36);
 			this.RemoveButton.TabIndex = 4;
@@ -89,17 +119,18 @@
 			this.AddCardButton.UseVisualStyleBackColor = true;
 			this.AddCardButton.Click += new System.EventHandler(this.AddButtonClick);
 			// 
-			// dataGridView1
+			// dataGridViewMain
 			// 
-			this.dataGridView1.AllowUserToAddRows = false;
-			this.dataGridView1.AllowUserToDeleteRows = false;
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(6, 26);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.ReadOnly = true;
-			this.dataGridView1.RowTemplate.Height = 24;
-			this.dataGridView1.Size = new System.Drawing.Size(1089, 267);
-			this.dataGridView1.TabIndex = 0;
+			this.dataGridViewMain.AllowUserToAddRows = false;
+			this.dataGridViewMain.AllowUserToDeleteRows = false;
+			this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewMain.Location = new System.Drawing.Point(6, 26);
+			this.dataGridViewMain.Name = "dataGridViewMain";
+			this.dataGridViewMain.ReadOnly = true;
+			this.dataGridViewMain.RowTemplate.Height = 24;
+			this.dataGridViewMain.Size = new System.Drawing.Size(1089, 267);
+			this.dataGridViewMain.TabIndex = 0;
+			this.dataGridViewMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
 			// 
 			// openFileDialog
 			// 
@@ -139,19 +170,185 @@
 			this.saveToolStripMenuItem.Text = "Save as...";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.dataGridViewAuthors);
+			this.groupBox2.Controls.Add(this.label17);
+			this.groupBox2.Controls.Add(this.label16);
+			this.groupBox2.Controls.Add(this.label15);
+			this.groupBox2.Controls.Add(this.label14);
+			this.groupBox2.Controls.Add(this.label13);
+			this.groupBox2.Controls.Add(this.label12);
+			this.groupBox2.Controls.Add(this.label11);
+			this.groupBox2.Controls.Add(this.label7);
+			this.groupBox2.Controls.Add(this.label6);
+			this.groupBox2.Controls.Add(this.label5);
+			this.groupBox2.Controls.Add(this.label4);
+			this.groupBox2.Controls.Add(this.label3);
+			this.groupBox2.Controls.Add(this.label2);
+			this.groupBox2.Controls.Add(this.label1);
+			this.groupBox2.Location = new System.Drawing.Point(12, 381);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(1101, 414);
+			this.groupBox2.TabIndex = 2;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Card Info";
+			// 
+			// dataGridViewAuthors
+			// 
+			this.dataGridViewAuthors.AllowUserToAddRows = false;
+			this.dataGridViewAuthors.AllowUserToDeleteRows = false;
+			this.dataGridViewAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewAuthors.Location = new System.Drawing.Point(557, 12);
+			this.dataGridViewAuthors.Name = "dataGridViewAuthors";
+			this.dataGridViewAuthors.ReadOnly = true;
+			this.dataGridViewAuthors.RowTemplate.Height = 24;
+			this.dataGridViewAuthors.Size = new System.Drawing.Size(538, 396);
+			this.dataGridViewAuthors.TabIndex = 14;
+			// 
+			// label17
+			// 
+			this.label17.AutoSize = true;
+			this.label17.Location = new System.Drawing.Point(223, 367);
+			this.label17.Name = "label17";
+			this.label17.Size = new System.Drawing.Size(54, 17);
+			this.label17.TabIndex = 13;
+			this.label17.Text = "label17";
+			// 
+			// label16
+			// 
+			this.label16.AutoSize = true;
+			this.label16.Location = new System.Drawing.Point(223, 311);
+			this.label16.Name = "label16";
+			this.label16.Size = new System.Drawing.Size(54, 17);
+			this.label16.TabIndex = 12;
+			this.label16.Text = "label16";
+			// 
+			// label15
+			// 
+			this.label15.AutoSize = true;
+			this.label15.Location = new System.Drawing.Point(223, 255);
+			this.label15.Name = "label15";
+			this.label15.Size = new System.Drawing.Size(54, 17);
+			this.label15.TabIndex = 11;
+			this.label15.Text = "label15";
+			// 
+			// label14
+			// 
+			this.label14.AutoSize = true;
+			this.label14.Location = new System.Drawing.Point(223, 199);
+			this.label14.Name = "label14";
+			this.label14.Size = new System.Drawing.Size(54, 17);
+			this.label14.TabIndex = 10;
+			this.label14.Text = "label14";
+			// 
+			// label13
+			// 
+			this.label13.AutoSize = true;
+			this.label13.Location = new System.Drawing.Point(223, 143);
+			this.label13.Name = "label13";
+			this.label13.Size = new System.Drawing.Size(54, 17);
+			this.label13.TabIndex = 9;
+			this.label13.Text = "label13";
+			// 
+			// label12
+			// 
+			this.label12.AutoSize = true;
+			this.label12.Location = new System.Drawing.Point(223, 87);
+			this.label12.Name = "label12";
+			this.label12.Size = new System.Drawing.Size(54, 17);
+			this.label12.TabIndex = 8;
+			this.label12.Text = "label12";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(223, 31);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(54, 17);
+			this.label11.TabIndex = 7;
+			this.label11.Text = "label11";
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.Location = new System.Drawing.Point(21, 369);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(46, 17);
+			this.label7.TabIndex = 6;
+			this.label7.Text = "label7";
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(21, 313);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(46, 17);
+			this.label6.TabIndex = 5;
+			this.label6.Text = "label6";
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(21, 257);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(46, 17);
+			this.label5.TabIndex = 4;
+			this.label5.Text = "label5";
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(21, 201);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(46, 17);
+			this.label4.TabIndex = 3;
+			this.label4.Text = "label4";
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(21, 145);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(46, 17);
+			this.label3.TabIndex = 2;
+			this.label3.Text = "label3";
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(21, 89);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(46, 17);
+			this.label2.TabIndex = 1;
+			this.label2.Text = "label2";
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(21, 33);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(46, 17);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "label1";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1125, 381);
+			this.ClientSize = new System.Drawing.Size(1125, 380);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.menuStrip1);
 			this.Name = "MainForm";
 			this.Text = "Library Cards";
 			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuthors)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -160,7 +357,7 @@
 		#endregion
 
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dataGridViewMain;
 		private System.ComponentModel.BackgroundWorker backgroundWorker1;
 		private System.Windows.Forms.Button AddCardButton;
 		private System.Windows.Forms.Button RemoveButton;
@@ -171,6 +368,23 @@
 		private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.Button SearchButton;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.Label label16;
+		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label label14;
+		private System.Windows.Forms.Label label13;
+		private System.Windows.Forms.Label label12;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.DataGridView dataGridViewAuthors;
+		private System.Windows.Forms.Button ModifyButton;
 	}
 }
 

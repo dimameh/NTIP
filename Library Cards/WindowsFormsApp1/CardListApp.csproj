@@ -55,6 +55,12 @@
     <Compile Include="AddRecordForm.Designer.cs">
       <DependentUpon>AddRecordForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CardControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardControl.Designer.cs">
+      <DependentUpon>CardControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,9 @@
     </Compile>
     <EmbeddedResource Include="AddRecordForm.resx">
       <DependentUpon>AddRecordForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardControl.resx">
+      <DependentUpon>CardControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
