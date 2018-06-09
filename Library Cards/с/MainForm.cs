@@ -21,35 +21,6 @@ namespace CardListApp
 			SetDefaultWindowSize();
 		}
 
-		public MainForm(string fileName)
-		{
-			InitializeComponent();
-			_cardList = new BindingList<ICard>();
-			Icon = new Icon("ico.ico");
-			RenameForm();
-			SetDefaultWindowSize();
-
-			//Открытие выбранного файла сериализатором
-			_cardList.Clear();
-
-			_currentFileName = fileName;
-			RenameForm();
-
-			if (openFileDialog.SafeFileName != null)
-			{
-				var binder = new TypeNameSerializationBinder("{0}, LibraryCards");
-				_cardList = JsonConvert.DeserializeObject<BindingList<ICard>>(File.ReadAllText(fileName),
-					new JsonSerializerSettings
-					{
-						TypeNameHandling = TypeNameHandling.Objects,
-						Binder = binder
-					});
-
-
-				dataGridViewMain.DataSource = _cardList;
-			}
-		}
-
 		#region Frontand changing methods
 
 		/// <summary>
