@@ -5,7 +5,11 @@ using NUnit.Framework;
 
 namespace UnitTests.LibraryCards
 {
-	internal class ArticleInCollectionTest
+    //TODO: Обычно, все юнит-тесты в один проект не суют. На один проект бизнес-логики создается один проект юнит-тестов. 
+    // В итоге, если из солюшена нужно будет отключить проект бизнес-логики, можно будет безопасно исключить и проект с юнит-тестами
+    // Проект с юнит-тестами соответственно именуется LibraryCards.UnitTests - так название проекта тестов показывает, какой проект бизнес-логики он тестирует.
+    // То есть, сейчас у тебя никакой серьезной ошибки нет (потому что проект бизнес-логики только один), но это информация на будущее.
+    internal class ArticleInCollectionTest
 	{
 		#region ConstructorTest
 
@@ -108,7 +112,8 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			Exception exception = null;
+            //TODO: Отлично, что сам догадался как организовать негативные юнит-тесты. Но вообще они делаются с помощью Assert.Throws<>
+            Exception exception = null;
 			try
 			{
 				var article = new CollectionArticle

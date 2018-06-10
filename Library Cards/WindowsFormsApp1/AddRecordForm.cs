@@ -9,10 +9,11 @@ namespace CardListApp
 		public AddRecordForm()
 		{
 			InitializeComponent();
-			Icon = new Icon("ico.ico");
-		}
+            //TODO: Иконка отваливается при открытии формы
+            //Icon = new Icon("ico.ico");
+        }
 
-		public ICard NewCard
+        public ICard NewCard
 		{
 			get => cardControl1.Card;
 			set => cardControl1.Card = value;

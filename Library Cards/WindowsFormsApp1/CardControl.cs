@@ -7,7 +7,10 @@ using LibraryCards;
 
 namespace WindowsFormsApp1
 {
-	public partial class CardControl : UserControl
+    //TODO: Кнопки Ok, Cancel, Random должны находиться на форме, а не на контроле
+    // Они же связаны с закрытием формы, так почему они располагаются на контроле?
+    //TODO: Здоровенный контрол получается. Не приходила мысль поделить его на более мелкие для простоты его редактирования? AuthorControl, BookControl, DissertationControl и т.д...
+    public partial class CardControl : UserControl
 	{
 		public CardControl()
 		{
@@ -178,14 +181,15 @@ namespace WindowsFormsApp1
 		/// </summary>
 		private BindingList<FullName> _authors;
 
-		#endregion
+        #endregion
 
-		#region Frontand changing methods
+        //TODO: фронтэнд пишется по-другому
+        #region Frontand changing methods
 
-		/// <summary>
-		///     Скрыть поле дополнительной информации
-		/// </summary>
-		private bool IsAdditionalInfoShow
+        /// <summary>
+        ///     Скрыть поле дополнительной информации
+        /// </summary>
+        private bool IsAdditionalInfoShow
 		{
 			set
 			{
@@ -226,11 +230,12 @@ namespace WindowsFormsApp1
 			_authors.Clear();
 		}
 
-		#endregion
+        #endregion
 
-		#region Random methods
+        #region Random methods
 
-		private static FullName GenerateFullName()
+        //TODO: Вынести в отдельный класс
+        private static FullName GenerateFullName()
 		{
 			string[] femaleNames =
 			{

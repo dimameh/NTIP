@@ -39,6 +39,7 @@ namespace CardListApp
 
 		public static void Associate()
 		{
+            //TODO: Вообще, это всё делается в скрипте InnoSetup
 			RegistryKey FileReg = Registry.CurrentUser.CreateSubKey("Software\\Classes\\.cardDB");
 			RegistryKey AppReg = Registry.CurrentUser.CreateSubKey("Software\\Classes\\Applications\\LibraryCardsTable.exe");
 			RegistryKey AppAssoc = Registry.CurrentUser.CreateSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\FileExts\\.cardDB");

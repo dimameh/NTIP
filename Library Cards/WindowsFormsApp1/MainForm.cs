@@ -8,16 +8,21 @@ using System.Windows.Forms;
 using LibraryCards;
 using Newtonsoft.Json;
 
+//TODO: А папка с проектом называется по-старому.
+//TODO: Почему-то в репозитории лежит две папки с формами вместо одной - лишний проект надо удалить
 namespace CardListApp
 {
-	public partial class MainForm : Form
+    //TODO: кнопки на формах обычно располагаются впритык на расстоянии марджина
+    public partial class MainForm : Form
 	{
 		public MainForm()
 		{
 			InitializeComponent();
 			_cardList = new BindingList<ICard>();
-			Icon = new Icon("ico.ico");
-			RenameForm();
+            //TODO: иконку можно задать в свойствах проекта и настройках формы в дизайнере - тогда она еще автоматически добавится в ресурсы
+            //TODO: Иконка отваливается при запуске приложения
+            //Icon = new Icon("ico.ico");
+            RenameForm();
 			SetDefaultWindowSize();
 		}
 
@@ -25,19 +30,23 @@ namespace CardListApp
 		{
 			InitializeComponent();
 			_cardList = new BindingList<ICard>();
-			Icon = new Icon("ico.ico");
+            //TODO: иконку можно задать в свойствах проекта и настройках формы в дизайнере - тогда она еще автоматически добавится в ресурсы
+            //TODO: Иконка отваливается при запуске приложения
+            Icon = new Icon("ico.ico");
 			RenameForm();
 			SetDefaultWindowSize();
 
-			//Открытие выбранного файла сериализатором
-			_cardList.Clear();
+            //Открытие выбранного файла сериализатором
+            //TODO: код повторяется с тем, что происходит в загрузке файлов - может нужно вынести в отдельный метод?
+            _cardList.Clear();
 
 			_currentFileName = fileName;
 			RenameForm();
-
-			if (openFileDialog.SafeFileName != null)
+            //TODO: зачем OpenFileDialog, если имя файла уже известно?
+            if (openFileDialog.SafeFileName != null)
 			{
-				var binder = new TypeNameSerializationBinder("{0}, LibraryCards");
+                //TODO: сериализацию вынести в отдельный класс
+                var binder = new TypeNameSerializationBinder("{0}, LibraryCards");
 				_cardList = JsonConvert.DeserializeObject<BindingList<ICard>>(File.ReadAllText(fileName),
 					new JsonSerializerSettings
 					{
@@ -83,14 +92,16 @@ namespace CardListApp
 		/// </summary>
 		private string _currentFileName = "New card list";
 
-		/// <summary>
-		///     True делает label'ы видимыми, falsе - скрывает
-		/// </summary>
-		private bool IsLabelVisible
+        //TODO: комментарий бесполезный - я так вижу, что он меняет видимость лейблов. А что за лейблы - непонятно?
+        /// <summary>
+        ///     True делает label'ы видимыми, falsе - скрывает
+        /// </summary>
+        private bool IsLabelVisible
 		{
 			set
 			{
-				label7.Visible = value;
+                //TODO: лейблы переименовать
+                label7.Visible = value;
 				label1.Visible = value;
 				label2.Visible = value;
 				label3.Visible = value;
@@ -137,7 +148,8 @@ namespace CardListApp
 			}
 			else
 			{
-				MessageBox.Show("No such record at list.", "Error", MessageBoxButtons.OK,
+                //TODO: Не надо этого сообщения. Зачем говорить об ошибке, если ничего не надо удалять?
+                MessageBox.Show("No such record at list.", "Error", MessageBoxButtons.OK,
 					MessageBoxIcon.Error);
 			}
 		}
@@ -199,7 +211,8 @@ namespace CardListApp
 		private void ModifyButton_Click(object sender, EventArgs e)
 		{
 			IsLabelVisible = false;
-			Size = new Size(860, 350);
+            //TODO: а размер-то чего меняется при модификации записи?
+            Size = new Size(860, 350);
 			if (dataGridViewMain.CurrentRow != null)
 			{
 				var newModifyForm = new AddRecordForm
@@ -220,14 +233,15 @@ namespace CardListApp
 			}
 		}
 
-		#endregion
+        #endregion
 
-		#region Save/Open
+        #region Save/Open
 
-		/// <summary>
-		///     Перегрузка SerializationBinder
-		/// </summary>
-		public class TypeNameSerializationBinder : SerializationBinder
+        //TODO: Лихо, но не нужно. Сериализация может работать и без этого. См. класс JsonSerializer и его настройки
+        /// <summary>
+        ///     Перегрузка SerializationBinder
+        /// </summary>
+        public class TypeNameSerializationBinder : SerializationBinder
 		{
 			public string TypeFormat { get; }
 
@@ -254,8 +268,9 @@ namespace CardListApp
 		/// </summary>
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//настройка окна сохранения файла
-			saveFileDialog.AddExtension = true;
+            //настройка окна сохранения файла
+            //TODO: это всё можно настроить через дизайнер, чтобы не валялось здесь
+            saveFileDialog.AddExtension = true;
 			saveFileDialog.CheckPathExists = true;
 			saveFileDialog.DefaultExt = ".cardDB";
 			saveFileDialog.InitialDirectory = "/data";
@@ -267,7 +282,8 @@ namespace CardListApp
 			//сериализация данных в файл JSon сериализацией
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				var savingList = JsonConvert.SerializeObject(_cardList, Formatting.Indented, new JsonSerializerSettings
+                //TODO: сериализацию вынести в отдельный класс
+                var savingList = JsonConvert.SerializeObject(_cardList, Formatting.Indented, new JsonSerializerSettings
 				{
 					TypeNameHandling = TypeNameHandling.Objects
 				});
@@ -283,8 +299,9 @@ namespace CardListApp
 		/// </summary>
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			//настройка окна сохранения файла
-			openFileDialog.AddExtension = true;
+            //настройка окна сохранения файла
+            //TODO: это всё можно настроить через дизайнер, чтобы не валялось здесь
+            openFileDialog.AddExtension = true;
 			openFileDialog.CheckPathExists = true;
 			openFileDialog.CheckFileExists = true;
 			openFileDialog.DefaultExt = ".cardDB";
@@ -299,14 +316,15 @@ namespace CardListApp
 			//Открытие выбранного файла сериализатором
 			if (openFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				_cardList.Clear();
+                _cardList.Clear();
 
 				_currentFileName = Path.GetFileName(openFileDialog.SafeFileName);
 				RenameForm();
 
 				if (openFileDialog.SafeFileName != null)
 				{
-					var binder = new TypeNameSerializationBinder("{0}, LibraryCards");
+                    //TODO: сериализацию вынести в отдельный класс
+                    var binder = new TypeNameSerializationBinder("{0}, LibraryCards");
 					_cardList = JsonConvert.DeserializeObject<BindingList<ICard>>(File.ReadAllText(openFileDialog.FileName),
 						new JsonSerializerSettings
 						{
@@ -340,12 +358,14 @@ namespace CardListApp
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			IsLabelVisible = true;
-			Size = new Size(860, 690);
+            //TODO: зачем играешься с формой наживую? Почему нельзя всегда отображать подробные данные о выбранной записи?
+            Size = new Size(860, 690);
 			var currentCard = _cardList[dataGridViewMain.CurrentRow.Index];
 
-			if (currentCard is BookArticle book)
-			{
-				label7.Visible = label17.Visible = true;
+            //TODO: У тебя есть CardControl, и он может показывать данные о карточке - зачем ты здесь дублируешь его функцоинальность?
+            if (currentCard is BookArticle book)
+			{                
+                label7.Visible = label17.Visible = true;
 				label1.Text = "Title";
 				label2.Text = "Genre";
 				label3.Text = "Publishing house";
