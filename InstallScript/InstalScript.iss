@@ -42,6 +42,9 @@ SetupIconFile=ico.ico
 ; Параметры сжатия
 Compression=lzma
 SolidCompression=yes
+
+;Изменить ассоциации
+ChangesAssociations = yes
 ;------------------------------------------------------------------------------
 ;   Устанавливаем языки для процесса установки
 ;------------------------------------------------------------------------------
@@ -87,3 +90,10 @@ Name: "{commondesktop}\{#Name}"; Filename: "{app}\{#ExeName}"; IconFilename: "{a
 ;   Секция запуска после инсталляции
 ;------------------------------------------------------------------------------
 Filename: {tmp}\dotNetFx40_Full_x86_x64.exe; Parameters: "/q:a /c:""install /l /q"""; Check: not IsRequiredDotNetDetected; StatusMsg: Microsoft Framework 4.0 is installed. Please wait...
+
+[Registry]
+
+Root: HKCR; Subkey: ".cardDB";                             ValueData: "{#Name}";          Flags: uninsdeletevalue; ValueType: string;  ValueName: ""
+Root: HKCR; Subkey: "{#Name}";                     ValueData: "Program {#Name}";  Flags: uninsdeletekey;   ValueType: string;  ValueName: ""
+Root: HKCR; Subkey: "{#Name}\DefaultIcon";             ValueData: "{app}\{#Name},0";               ValueType: string;  ValueName: ""
+Root: HKCR; Subkey: "{#Name}\shell\open\command";  ValueData: """{app}\{#Name}"" ""%1""";  ValueType: string;  ValueName: ""

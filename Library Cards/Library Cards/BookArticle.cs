@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace LibraryCards
 {
 	/// <summary>
 	///     Статья в книгу
 	/// </summary>
+	[DataContract]
 	public class BookArticle : ICard
 	{
 		#region Private переменные и методы
@@ -219,7 +221,7 @@ namespace LibraryCards
 		}
 
 		#region Get Set свойства
-
+		[DataMember]
 		public List<FullName> Authors
 		{
 			get
@@ -227,16 +229,19 @@ namespace LibraryCards
 				List<FullName> authorsCopy = new List<FullName>(_authors);
 				return authorsCopy;
 			}
+			set => SetAuthors(value);
 		}
 
 		/// <summary>
 		///     Возвращает и задает имя автора диссертиции
 		/// </summary>
+		
 		public FullName FirstAuthor => _firstAuthor;
 
 		/// <summary>
 		///     Возвращает и задает Название
 		/// </summary>
+		[DataMember]
 		public string Title
 		{
 			get => _title;
@@ -250,6 +255,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Тип материала
 		/// </summary>
+		[DataMember]
 		public string MaterialType
 		{
 			get => _materialType;
@@ -263,6 +269,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Город публикации
 		/// </summary>
+		[DataMember]
 		public string PublishingHouse
 		{
 			get => _publishingHouse;
@@ -276,6 +283,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Номер издательства и информацию о нем
 		/// </summary>
+		[DataMember]
 		public string AdditionalInfo
 		{
 			get => _additionalInfo;
@@ -285,6 +293,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Объем в количестве страниц
 		/// </summary>
+		[DataMember]
 		public int Volume
 		{
 			get => _volume;
@@ -300,6 +309,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает год издания
 		/// </summary>
+		[DataMember]
 		public int Year
 		{
 			get => _year;
@@ -317,6 +327,7 @@ namespace LibraryCards
 		///     Возвращает и задает Город, в котором был представлен сборник
 		/// </summary>
 		/// <returns>город, в котором был представлен сборник</returns>
+		[DataMember]
 		public string CityOfPublication
 		{
 			get => _cityOfPublication;

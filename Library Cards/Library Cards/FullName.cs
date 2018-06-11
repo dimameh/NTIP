@@ -1,11 +1,13 @@
 ﻿using System;
 using Newtonsoft.Json;
+using System.Runtime.Serialization;
 
 namespace LibraryCards
 {
 	/// <summary>
 	///     ФИО
 	/// </summary>
+	[DataContract]
 	public class FullName
 	{
 		#region Private переменные и методы
@@ -181,6 +183,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Имя
 		/// </summary>
+		[DataMember]
 		public string Name
 		{
 			get => _name;
@@ -196,6 +199,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Фамилию
 		/// </summary>
+		[DataMember]
 		public string Surname
 		{
 			get => _surname;
@@ -211,6 +215,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Отчество
 		/// </summary>
+		[DataMember]
 		public string Patronymic
 		{
 			get => _patronymic;

@@ -5,10 +5,6 @@ using NUnit.Framework;
 
 namespace UnitTests.LibraryCards
 {
-    //TODO: Обычно, все юнит-тесты в один проект не суют. На один проект бизнес-логики создается один проект юнит-тестов. 
-    // В итоге, если из солюшена нужно будет отключить проект бизнес-логики, можно будет безопасно исключить и проект с юнит-тестами
-    // Проект с юнит-тестами соответственно именуется LibraryCards.UnitTests - так название проекта тестов показывает, какой проект бизнес-логики он тестирует.
-    // То есть, сейчас у тебя никакой серьезной ошибки нет (потому что проект бизнес-логики только один), но это информация на будущее.
     internal class ArticleInCollectionTest
 	{
 		#region ConstructorTest
@@ -79,10 +75,12 @@ namespace UnitTests.LibraryCards
 			TestName = "Тестирование конструктора c полем MaterialType при передаче \" \"")]
 		[TestCase("2013/06/30", "Энерго- и ресурсосбережение - XXI век",
 			" материалы XI международной научно-практической интернет-конференции", 237, 239, "Орел",
-			TestName = "Тестирование конструктора c полем MaterialType, при передаче \" материалы XI международной научно-практической интернет-конференции\"")]
+			TestName =
+				"Тестирование конструктора c полем MaterialType, при передаче \" материалы XI международной научно-практической интернет-конференции\"")]
 		[TestCase("2013/06/30", "Энерго- и ресурсосбережение - XXI век",
 			"материалы XI международной научно-практической интернет-конференции ", 237, 239, "Орел",
-			TestName = "Тестирование конструктора c полем MaterialType,  при передаче \"материалы XI международной научно-практической интернет-конференции \"")]
+			TestName =
+				"Тестирование конструктора c полем MaterialType,  при передаче \"материалы XI международной научно-практической интернет-конференции \"")]
 		[TestCase("2013/06/30", "Энерго- и ресурсосбережение - XXI век",
 			"материалы XI международной научно-практической интернет-конференции", -1, 239, "Орел",
 			TestName = "Тестирование конструктора c полем FirstPage при передаче \"-1\"")]
@@ -97,7 +95,8 @@ namespace UnitTests.LibraryCards
 			TestName = "Тестирование конструктора c полем LastPage при передаче \"0\"")]
 		[TestCase("2013/06/30", "Энерго- и ресурсосбережение - XXI век",
 			"материалы XI международной научно-практической интернет-конференции", 237, 236, "Орел",
-			TestName = "Тестирование конструктора c допустимым полем LastPage, но меньшим чем поле FirstPage  при передаче \"237 и 236\"")]
+			TestName =
+				"Тестирование конструктора c допустимым полем LastPage, но меньшим чем поле FirstPage  при передаче \"237 и 236\"")]
 		[TestCase("2013/06/30", "Энерго- и ресурсосбережение - XXI век",
 			"материалы XI международной научно-практической интернет-конференции", 237, 239, "орел",
 			TestName = "Тестирование конструктора c полем City которое не является именем собственным, \"орел\"")]
@@ -112,27 +111,20 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-            //TODO: Отлично, что сам догадался как организовать негативные юнит-тесты. Но вообще они делаются с помощью Assert.Throws<>
-            Exception exception = null;
-			try
-			{
-				var article = new CollectionArticle
-				(
-					authors,
-					date,
-					title,
-					materialType,
-					firstPage,
-					lastPage,
-					cityOfPublication
-				);
-			}
-			catch (Exception ex)
-			{
-				exception = ex;
-			}
-
-			Assert.IsNotNull(exception);
+			Assert.Throws<Exception>(
+				delegate
+				{
+					new CollectionArticle
+					(
+						authors,
+						date,
+						title,
+						materialType,
+						firstPage,
+						lastPage,
+						cityOfPublication
+					);
+				});
 		}
 
 		[Test]
@@ -218,17 +210,11 @@ namespace UnitTests.LibraryCards
 				239,
 				"Орел"
 			);
-			Exception exception = null;
-			try
-			{
-				article.Title = title;
-			}
-			catch (Exception ex)
-			{
-				exception = ex;
-			}
-
-			Assert.IsNotNull(exception);
+			Assert.Throws<Exception>(
+				delegate
+				{
+					article.Title = title;
+				});
 		}
 
 		[Test]

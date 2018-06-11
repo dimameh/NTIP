@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace LibraryCards
 {
 	/// <summary>
 	///     Статья в диссертации
 	/// </summary>
+	[DataContract]
 	public class Dissertation : ICard
 	{
 		#region Private переменные и методы
@@ -158,6 +160,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает имя автора диссертиции
 		/// </summary>
+		[DataMember]
 		public FullName FirstAuthor
 		{
 			get => _firstAuthor;
@@ -177,6 +180,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Название
 		/// </summary>
+		[DataMember]
 		public string Title
 		{
 			get => _title;
@@ -190,6 +194,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает страницу на которую ссылается автор
 		/// </summary>
+		[DataMember]
 		public int Page
 		{
 			get => _page;
@@ -209,6 +214,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает научную степень автора диссертации
 		/// </summary>
+		[DataMember]
 		public string AuthorStatus
 		{
 			get => _scienceDegree;
@@ -223,6 +229,7 @@ namespace LibraryCards
 		///     Возвращает и задает год публикации диссертации
 		/// </summary>
 		/// <returns>год публикации диссертации</returns>
+		[DataMember]
 		public int Year
 		{
 			get => _year;
@@ -241,6 +248,7 @@ namespace LibraryCards
 		///     Возвращает и задает Город, в котором был представлен сборник
 		/// </summary>
 		/// <returns>город, в котором был представлен сборник</returns>
+		[DataMember]
 		public string CityOfPublication
 		{
 			get => _cityOfPublication;
@@ -295,6 +303,7 @@ namespace LibraryCards
 		///     Возвращает и задает номер специализации в виде строки string "00.00.00"
 		/// </summary>
 		/// <returns>номер специализации в виде строки string "00.00.00"</returns>
+		[DataMember]
 		public string SpecializationNumber
 		{
 			get => _specializationNumber;

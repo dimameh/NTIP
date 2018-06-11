@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace LibraryCards
 {
 	/// <summary>
 	///     Статья в журнале
 	/// </summary>
+	[DataContract]
 	public class JournalArticle : ICard
 	{
 		#region Private переменные и методы
@@ -213,13 +215,17 @@ namespace LibraryCards
 		}
 
 		#region Get Set свойства
-
+		[DataMember]
 		public List<FullName> Authors
 		{
 			get
 			{
 				List<FullName> authorsCopy = new List<FullName>(_authors);
 				return authorsCopy;
+			}
+			set
+			{
+				SetAuthors(value);
 			}
 		}
 
@@ -234,6 +240,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Название
 		/// </summary>
+		[DataMember]
 		public string Title
 		{
 			get => _title;
@@ -247,6 +254,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Тип материала
 		/// </summary>
+		[DataMember]
 		public string MaterialType
 		{
 			get => _materialType;
@@ -260,6 +268,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает номер журнала
 		/// </summary>
+		[DataMember]
 		public int JournalNumber
 		{
 			get => _journalNumber;
@@ -276,6 +285,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Номер первой страницы
 		/// </summary>
+		[DataMember]
 		public int FirstPage
 		{
 			get => _firstPage;
@@ -295,6 +305,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Номер последней страницы
 		/// </summary>
+		[DataMember]
 		public int LastPage
 		{
 			get => _lastPage;
@@ -311,6 +322,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает год издания
 		/// </summary>
+		[DataMember]
 		public int Year
 		{
 			get => _year;

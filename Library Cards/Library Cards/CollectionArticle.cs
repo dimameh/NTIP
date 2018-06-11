@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+using System.Runtime.Serialization;
 
 namespace LibraryCards
 {
 	/// <summary>
 	///     Статья в сборнике
 	/// </summary>
+	[DataContract]
 	public class CollectionArticle : ICard
 	{
 		#region Private переменные и методы
@@ -214,7 +214,7 @@ namespace LibraryCards
 		}
 
 		#region Get Set свойства
-
+		[DataMember]
 		public List<FullName> Authors
 		{
 			get
@@ -222,6 +222,7 @@ namespace LibraryCards
 				List<FullName> authorsCopy = new List<FullName>(_authors);
 				return authorsCopy;
 			}
+			set => SetAuthors(value);
 		}
 
 		/// <summary>
@@ -232,6 +233,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Название
 		/// </summary>
+		[DataMember]
 		public string Title
 		{
 			get => _title;
@@ -245,6 +247,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Тип материала
 		/// </summary>
+		[DataMember]
 		public string MaterialType
 		{
 			get => _materialType;
@@ -258,6 +261,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Номер первой страницы
 		/// </summary>
+		[DataMember]
 		public int FirstPage
 		{
 			get => _firstPage;
@@ -277,6 +281,7 @@ namespace LibraryCards
 		/// <summary>
 		///     Возвращает и задает Номер последней страницы
 		/// </summary>
+		[DataMember]
 		public int LastPage
 		{
 			get => _lastPage;
@@ -294,6 +299,7 @@ namespace LibraryCards
 		///     Возвращает и задает Дату публикации
 		/// </summary>
 		/// <returns>дата публикации</returns>
+		[DataMember]
 		public DateTime Date
 		{
 			get => _date;
@@ -310,6 +316,7 @@ namespace LibraryCards
 		///     Возвращает и задает Город, в котором был представлен сборник
 		/// </summary>
 		/// <returns>город, в котором был представлен сборник</returns>
+		[DataMember]
 		public string CityOfPublication
 		{
 			get => _cityOfPublication;
