@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using LibraryCards;
 using NUnit.Framework;
+using NUnit.Framework.Internal;
 
 namespace UnitTests.LibraryCards
 {

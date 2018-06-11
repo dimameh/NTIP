@@ -67,6 +67,7 @@
 			this.PatronymicTextBox.Name = "PatronymicTextBox";
 			this.PatronymicTextBox.Size = new System.Drawing.Size(217, 22);
 			this.PatronymicTextBox.TabIndex = 21;
+			this.PatronymicTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PatronymicTextBox_KeyPress_1);
 			// 
 			// SurnameTextBox
 			// 
@@ -75,6 +76,7 @@
 			this.SurnameTextBox.Name = "SurnameTextBox";
 			this.SurnameTextBox.Size = new System.Drawing.Size(217, 22);
 			this.SurnameTextBox.TabIndex = 20;
+			this.SurnameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SurnameTextBox_KeyPress_1);
 			// 
 			// label10
 			// 
@@ -101,6 +103,7 @@
 			this.NameTextBox.Name = "NameTextBox";
 			this.NameTextBox.Size = new System.Drawing.Size(217, 22);
 			this.NameTextBox.TabIndex = 19;
+			this.NameTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NameTextBox_KeyPress);
 			// 
 			// label8
 			// 
@@ -120,6 +123,7 @@
 			this.RemoveButton.TabIndex = 23;
 			this.RemoveButton.Text = "Remove";
 			this.RemoveButton.UseVisualStyleBackColor = true;
+			this.RemoveButton.Click += new System.EventHandler(this.RemoveAuthor_Click);
 			// 
 			// AddAuthor
 			// 
@@ -130,6 +134,7 @@
 			this.AddAuthor.TabIndex = 22;
 			this.AddAuthor.Text = "Add";
 			this.AddAuthor.UseVisualStyleBackColor = true;
+			this.AddAuthor.Click += new System.EventHandler(this.AddAuthor_Click);
 			// 
 			// dataGridView1
 			// 

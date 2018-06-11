@@ -37,10 +37,10 @@
 			this.OKButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.RandomButton = new System.Windows.Forms.Button();
-			this.bookControl1 = new CardListApp.BookControl();
-			this.collectionControl1 = new CardListApp.CollectionControl();
-			this.dissertationControl1 = new CardListApp.DissertationControl();
 			this.journalControl1 = new CardListApp.JournalControl();
+			this.dissertationControl1 = new CardListApp.DissertationControl();
+			this.collectionControl1 = new CardListApp.CollectionControl();
+			this.bookControl1 = new CardListApp.BookControl();
 			this.authorsControl1 = new CardListApp.AuthorsControl();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -139,6 +139,36 @@
 			this.RandomButton.UseVisualStyleBackColor = true;
 			this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
 			// 
+			// journalControl1
+			// 
+			this.journalControl1.Location = new System.Drawing.Point(5, 66);
+			this.journalControl1.Name = "journalControl1";
+			this.journalControl1.Size = new System.Drawing.Size(627, 145);
+			this.journalControl1.TabIndex = 18;
+			this.journalControl1.Title = "";
+			this.journalControl1.TitleOfPeriodical = "";
+			// 
+			// dissertationControl1
+			// 
+			this.dissertationControl1.CityOfPublication = "";
+			this.dissertationControl1.Location = new System.Drawing.Point(5, 66);
+			this.dissertationControl1.Name = "dissertationControl1";
+			this.dissertationControl1.ScienceDegree = "";
+			this.dissertationControl1.Size = new System.Drawing.Size(627, 145);
+			this.dissertationControl1.SpecializationNumber = "  .  .";
+			this.dissertationControl1.TabIndex = 17;
+			this.dissertationControl1.Title = "";
+			// 
+			// collectionControl1
+			// 
+			this.collectionControl1.City = "";
+			this.collectionControl1.Location = new System.Drawing.Point(5, 66);
+			this.collectionControl1.Name = "collectionControl1";
+			this.collectionControl1.Size = new System.Drawing.Size(627, 145);
+			this.collectionControl1.TabIndex = 16;
+			this.collectionControl1.ThemeOfCollection = "";
+			this.collectionControl1.Title = "";
+			// 
 			// bookControl1
 			// 
 			this.bookControl1.AdditionalInfo = "";
@@ -152,39 +182,9 @@
 			this.bookControl1.TabIndex = 15;
 			this.bookControl1.Title = "";
 			// 
-			// collectionControl1
-			// 
-			this.collectionControl1.City = "";
-			this.collectionControl1.Location = new System.Drawing.Point(5, 66);
-			this.collectionControl1.Name = "collectionControl1";
-			this.collectionControl1.Size = new System.Drawing.Size(627, 145);
-			this.collectionControl1.TabIndex = 16;
-			this.collectionControl1.ThemeOfCollection = "";
-			this.collectionControl1.Title = "";
-			// 
-			// dissertationControl1
-			// 
-			this.dissertationControl1.CityOfPublication = "";
-			this.dissertationControl1.Location = new System.Drawing.Point(5, 66);
-			this.dissertationControl1.Name = "dissertationControl1";
-			this.dissertationControl1.ScienceDegree = "";
-			this.dissertationControl1.Size = new System.Drawing.Size(627, 145);
-			this.dissertationControl1.SpecializationNumber = "  .  .";
-			this.dissertationControl1.TabIndex = 17;
-			this.dissertationControl1.Title = "";
-			// 
-			// journalControl1
-			// 
-			this.journalControl1.Location = new System.Drawing.Point(5, 66);
-			this.journalControl1.Name = "journalControl1";
-			this.journalControl1.Size = new System.Drawing.Size(627, 145);
-			this.journalControl1.TabIndex = 18;
-			this.journalControl1.Title = "";
-			this.journalControl1.TitleOfPeriodical = "";
-			// 
 			// authorsControl1
 			// 
-			this.authorsControl1.Location = new System.Drawing.Point(5, 247);
+			this.authorsControl1.Location = new System.Drawing.Point(4, 247);
 			this.authorsControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.authorsControl1.Name = "authorsControl1";
 			this.authorsControl1.Size = new System.Drawing.Size(627, 143);

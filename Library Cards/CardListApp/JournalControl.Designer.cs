@@ -104,7 +104,6 @@
 			// LastPageTextBox
 			// 
 			this.LastPageTextBox.Location = new System.Drawing.Point(369, 106);
-			this.LastPageTextBox.MaxLength = 4;
 			this.LastPageTextBox.Name = "LastPageTextBox";
 			this.LastPageTextBox.Size = new System.Drawing.Size(116, 22);
 			this.LastPageTextBox.TabIndex = 5;

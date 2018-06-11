@@ -43,11 +43,11 @@
 			this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.dataGridViewAuthors = new System.Windows.Forms.DataGridView();
-			this.bookControl1 = new CardListApp.BookControl();
-			this.collectionControl1 = new CardListApp.CollectionControl();
-			this.dissertationControl1 = new CardListApp.DissertationControl();
 			this.journalControl1 = new CardListApp.JournalControl();
+			this.dissertationControl1 = new CardListApp.DissertationControl();
+			this.collectionControl1 = new CardListApp.CollectionControl();
+			this.bookControl1 = new CardListApp.BookControl();
+			this.dataGridViewAuthors = new System.Windows.Forms.DataGridView();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
 			this.menuStrip1.SuspendLayout();
@@ -68,7 +68,7 @@
 			this.groupBox1.Size = new System.Drawing.Size(1101, 344);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Записи";
+			this.groupBox1.Text = "Cards";
 			// 
 			// ModifyButton
 			// 
@@ -186,17 +186,35 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Card Info";
 			// 
-			// dataGridViewAuthors
+			// journalControl1
 			// 
-			this.dataGridViewAuthors.AllowUserToAddRows = false;
-			this.dataGridViewAuthors.AllowUserToDeleteRows = false;
-			this.dataGridViewAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridViewAuthors.Location = new System.Drawing.Point(639, 12);
-			this.dataGridViewAuthors.Name = "dataGridViewAuthors";
-			this.dataGridViewAuthors.ReadOnly = true;
-			this.dataGridViewAuthors.RowTemplate.Height = 24;
-			this.dataGridViewAuthors.Size = new System.Drawing.Size(456, 180);
-			this.dataGridViewAuthors.TabIndex = 0;
+			this.journalControl1.Location = new System.Drawing.Point(6, 21);
+			this.journalControl1.Name = "journalControl1";
+			this.journalControl1.Size = new System.Drawing.Size(627, 145);
+			this.journalControl1.TabIndex = 4;
+			this.journalControl1.Title = "";
+			this.journalControl1.TitleOfPeriodical = "";
+			// 
+			// dissertationControl1
+			// 
+			this.dissertationControl1.CityOfPublication = "";
+			this.dissertationControl1.Location = new System.Drawing.Point(6, 21);
+			this.dissertationControl1.Name = "dissertationControl1";
+			this.dissertationControl1.ScienceDegree = "";
+			this.dissertationControl1.Size = new System.Drawing.Size(627, 145);
+			this.dissertationControl1.SpecializationNumber = "  .  .";
+			this.dissertationControl1.TabIndex = 3;
+			this.dissertationControl1.Title = "";
+			// 
+			// collectionControl1
+			// 
+			this.collectionControl1.City = "";
+			this.collectionControl1.Location = new System.Drawing.Point(6, 21);
+			this.collectionControl1.Name = "collectionControl1";
+			this.collectionControl1.Size = new System.Drawing.Size(627, 145);
+			this.collectionControl1.TabIndex = 2;
+			this.collectionControl1.ThemeOfCollection = "";
+			this.collectionControl1.Title = "";
 			// 
 			// bookControl1
 			// 
@@ -211,35 +229,17 @@
 			this.bookControl1.TabIndex = 1;
 			this.bookControl1.Title = "";
 			// 
-			// collectionControl1
+			// dataGridViewAuthors
 			// 
-			this.collectionControl1.City = "";
-			this.collectionControl1.Location = new System.Drawing.Point(6, 21);
-			this.collectionControl1.Name = "collectionControl1";
-			this.collectionControl1.Size = new System.Drawing.Size(627, 145);
-			this.collectionControl1.TabIndex = 2;
-			this.collectionControl1.ThemeOfCollection = "";
-			this.collectionControl1.Title = "";
-			// 
-			// dissertationControl1
-			// 
-			this.dissertationControl1.CityOfPublication = "";
-			this.dissertationControl1.Location = new System.Drawing.Point(6, 21);
-			this.dissertationControl1.Name = "dissertationControl1";
-			this.dissertationControl1.ScienceDegree = "";
-			this.dissertationControl1.Size = new System.Drawing.Size(627, 145);
-			this.dissertationControl1.SpecializationNumber = "  .  .";
-			this.dissertationControl1.TabIndex = 3;
-			this.dissertationControl1.Title = "";
-			// 
-			// journalControl1
-			// 
-			this.journalControl1.Location = new System.Drawing.Point(6, 21);
-			this.journalControl1.Name = "journalControl1";
-			this.journalControl1.Size = new System.Drawing.Size(627, 145);
-			this.journalControl1.TabIndex = 4;
-			this.journalControl1.Title = "";
-			this.journalControl1.TitleOfPeriodical = "";
+			this.dataGridViewAuthors.AllowUserToAddRows = false;
+			this.dataGridViewAuthors.AllowUserToDeleteRows = false;
+			this.dataGridViewAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridViewAuthors.Location = new System.Drawing.Point(639, 12);
+			this.dataGridViewAuthors.Name = "dataGridViewAuthors";
+			this.dataGridViewAuthors.ReadOnly = true;
+			this.dataGridViewAuthors.RowTemplate.Height = 24;
+			this.dataGridViewAuthors.Size = new System.Drawing.Size(456, 180);
+			this.dataGridViewAuthors.TabIndex = 0;
 			// 
 			// MainForm
 			// 

@@ -100,7 +100,7 @@ namespace CardListApp
 		private void ReadOnlyNumbers(KeyPressEventArgs e)
 		{
 			//e.KeyChar != (Char)Keys.Back - нужно для того чтобы не блокировалось нажатие клавиши backspace
-			if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char) Keys.Back)
+			if (char.IsDigit(e.KeyChar) && e.KeyChar != (char) Keys.Back)
 				CantInputSpace(e);
 			else
 				e.Handled = true;

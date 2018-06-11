@@ -15,7 +15,7 @@ namespace CardListApp
 #if !DEBUG
 			RandomButton.Visible = false;
 #endif
-
+			ReadOnly = false;
 			journalControl1.Visible = false;
 			collectionControl1.Visible = false;
 			dissertationControl1.Visible = false;
@@ -233,7 +233,7 @@ namespace CardListApp
 					collectionControl1.Title = "Collection";
 					collectionControl1.ThemeOfCollection = "Theme of collection";
 					collectionControl1.City = "City";
-					collectionControl1.Date = new DateTime(27 / 08 / 1998);
+					collectionControl1.Date = new DateTime(1998,8,27);
 					collectionControl1.FirstPage = 222;
 					collectionControl1.LastPage = 333;
 					authorsControl1.SetAuthors(collectionAuthors);

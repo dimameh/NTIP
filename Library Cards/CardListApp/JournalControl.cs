@@ -92,7 +92,7 @@ namespace CardListApp
 		private void ReadOnlyNumbers(KeyPressEventArgs e)
 		{
 			//e.KeyChar != (Char)Keys.Back - нужно для того чтобы не блокировалось нажатие клавиши backspace
-			if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char) Keys.Back)
+			if (char.IsDigit(e.KeyChar) || e.KeyChar == (char) Keys.Back)
 				CantInputSpace(e);
 			else
 				e.Handled = true;
@@ -106,7 +106,7 @@ namespace CardListApp
 		{
 			//Допусаем ввод только буквы и пробелы
 			//e.KeyChar != (Char)Keys.Back - нужно для того чтобы не блокировалось нажатие клавиши backspace
-			if (char.IsLetter(e.KeyChar) || e.KeyChar == ' ' || e.KeyChar == (char) Keys.Back)
+			if (char.IsLetter(e.KeyChar) || e.KeyChar == ' ' || e.KeyChar != (char) Keys.Back)
 				CantStartWithSpace(e, text);
 			else
 				e.Handled = true;
@@ -161,17 +161,17 @@ namespace CardListApp
 
 		private void TitleOfPeriodical_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			ReadOnlyNumbers(e);
+			ReadOnlyChar(e, TitleOfPeriodicalTextBox.Text);
 		}
 
 		private void JournalNumber_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			ReadOnlyChar(e, JournalNumberTextBox.Text);
+			ReadOnlyNumbers(e);
 		}
 
 		private void StartingPage_KeyPress(object sender, KeyPressEventArgs e)
 		{
-			ReadOnlyChar(e, StartingPageTextBox.Text);
+			ReadOnlyNumbers(e);
 		}
 
 		private void LastPage_KeyPress(object sender, KeyPressEventArgs e)

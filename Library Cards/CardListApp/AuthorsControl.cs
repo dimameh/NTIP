@@ -36,7 +36,7 @@ namespace CardListApp
 				NameTextBox.ReadOnly = value;
 				SurnameTextBox.ReadOnly = value;
 				PatronymicTextBox.ReadOnly = value;
-				AddAuthor.Enabled = RemoveButton.Enabled = value;
+				AddAuthor.Enabled = RemoveButton.Enabled = !value;
 			}
 		}
 

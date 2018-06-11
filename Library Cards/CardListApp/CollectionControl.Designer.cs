@@ -69,7 +69,7 @@
 			// DateMaskedTextBox
 			// 
 			this.DateMaskedTextBox.Location = new System.Drawing.Point(139, 105);
-			this.DateMaskedTextBox.Mask = "00/00/00";
+			this.DateMaskedTextBox.Mask = "00/00/0000";
 			this.DateMaskedTextBox.Name = "DateMaskedTextBox";
 			this.DateMaskedTextBox.Size = new System.Drawing.Size(89, 22);
 			this.DateMaskedTextBox.TabIndex = 15;
@@ -80,6 +80,7 @@
 			this.LastPageTextBox.Name = "LastPageTextBox";
 			this.LastPageTextBox.Size = new System.Drawing.Size(117, 22);
 			this.LastPageTextBox.TabIndex = 14;
+			this.LastPageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.LastPage_KeyPress);
 			// 
 			// LastPageLabel
 			// 
@@ -102,10 +103,10 @@
 			// FirstPageTextBox
 			// 
 			this.FirstPageTextBox.Location = new System.Drawing.Point(311, 105);
-			this.FirstPageTextBox.MaxLength = 4;
 			this.FirstPageTextBox.Name = "FirstPageTextBox";
 			this.FirstPageTextBox.Size = new System.Drawing.Size(104, 22);
 			this.FirstPageTextBox.TabIndex = 5;
+			this.FirstPageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FirstPage_KeyPress);
 			// 
 			// FirstPageLabel
 			// 
@@ -122,6 +123,7 @@
 			this.CityTextBox.Name = "CityTextBox";
 			this.CityTextBox.Size = new System.Drawing.Size(476, 22);
 			this.CityTextBox.TabIndex = 3;
+			this.CityTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.City_KeyPress);
 			// 
 			// CityLabel
 			// 
@@ -138,6 +140,7 @@
 			this.ThemeTextBox.Name = "ThemeTextBox";
 			this.ThemeTextBox.Size = new System.Drawing.Size(476, 22);
 			this.ThemeTextBox.TabIndex = 2;
+			this.ThemeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Theme_KeyPress);
 			// 
 			// ThemeOfCollectionLabel
 			// 
@@ -154,6 +157,7 @@
 			this.TitleTextBox.Name = "TitleTextBox";
 			this.TitleTextBox.Size = new System.Drawing.Size(476, 22);
 			this.TitleTextBox.TabIndex = 1;
+			this.TitleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Title_KeyPress);
 			// 
 			// TitleLabel
 			// 
