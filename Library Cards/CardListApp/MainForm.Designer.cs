@@ -44,20 +44,10 @@
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.dataGridViewAuthors = new System.Windows.Forms.DataGridView();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label16 = new System.Windows.Forms.Label();
-			this.label17 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label12 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label14 = new System.Windows.Forms.Label();
+			this.bookControl1 = new CardListApp.BookControl();
+			this.collectionControl1 = new CardListApp.CollectionControl();
+			this.dissertationControl1 = new CardListApp.DissertationControl();
+			this.journalControl1 = new CardListApp.JournalControl();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
 			this.menuStrip1.SuspendLayout();
@@ -184,24 +174,14 @@
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.label14);
-			this.groupBox2.Controls.Add(this.label13);
-			this.groupBox2.Controls.Add(this.label12);
-			this.groupBox2.Controls.Add(this.label11);
-			this.groupBox2.Controls.Add(this.label17);
-			this.groupBox2.Controls.Add(this.label16);
-			this.groupBox2.Controls.Add(this.label15);
-			this.groupBox2.Controls.Add(this.label7);
-			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Controls.Add(this.label5);
-			this.groupBox2.Controls.Add(this.label4);
-			this.groupBox2.Controls.Add(this.label3);
-			this.groupBox2.Controls.Add(this.label2);
-			this.groupBox2.Controls.Add(this.label1);
+			this.groupBox2.Controls.Add(this.journalControl1);
+			this.groupBox2.Controls.Add(this.dissertationControl1);
+			this.groupBox2.Controls.Add(this.collectionControl1);
+			this.groupBox2.Controls.Add(this.bookControl1);
 			this.groupBox2.Controls.Add(this.dataGridViewAuthors);
 			this.groupBox2.Location = new System.Drawing.Point(12, 381);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(1101, 414);
+			this.groupBox2.Size = new System.Drawing.Size(1101, 203);
 			this.groupBox2.TabIndex = 2;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Card Info";
@@ -211,144 +191,61 @@
 			this.dataGridViewAuthors.AllowUserToAddRows = false;
 			this.dataGridViewAuthors.AllowUserToDeleteRows = false;
 			this.dataGridViewAuthors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridViewAuthors.Location = new System.Drawing.Point(630, 12);
+			this.dataGridViewAuthors.Location = new System.Drawing.Point(639, 12);
 			this.dataGridViewAuthors.Name = "dataGridViewAuthors";
 			this.dataGridViewAuthors.ReadOnly = true;
 			this.dataGridViewAuthors.RowTemplate.Height = 24;
-			this.dataGridViewAuthors.Size = new System.Drawing.Size(465, 396);
+			this.dataGridViewAuthors.Size = new System.Drawing.Size(456, 180);
 			this.dataGridViewAuthors.TabIndex = 0;
 			// 
-			// label1
+			// bookControl1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(17, 33);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(46, 17);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "label1";
+			this.bookControl1.AdditionalInfo = "";
+			this.bookControl1.CityOfPublication = "";
+			this.bookControl1.Genre = "";
+			this.bookControl1.Location = new System.Drawing.Point(6, 20);
+			this.bookControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.bookControl1.Name = "bookControl1";
+			this.bookControl1.PublishingHouse = "";
+			this.bookControl1.Size = new System.Drawing.Size(627, 178);
+			this.bookControl1.TabIndex = 1;
+			this.bookControl1.Title = "";
 			// 
-			// label2
+			// collectionControl1
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(17, 90);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(46, 17);
-			this.label2.TabIndex = 2;
-			this.label2.Text = "label2";
+			this.collectionControl1.City = "";
+			this.collectionControl1.Location = new System.Drawing.Point(6, 21);
+			this.collectionControl1.Name = "collectionControl1";
+			this.collectionControl1.Size = new System.Drawing.Size(627, 145);
+			this.collectionControl1.TabIndex = 2;
+			this.collectionControl1.ThemeOfCollection = "";
+			this.collectionControl1.Title = "";
 			// 
-			// label3
+			// dissertationControl1
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(17, 147);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(46, 17);
-			this.label3.TabIndex = 3;
-			this.label3.Text = "label3";
+			this.dissertationControl1.CityOfPublication = "";
+			this.dissertationControl1.Location = new System.Drawing.Point(6, 21);
+			this.dissertationControl1.Name = "dissertationControl1";
+			this.dissertationControl1.ScienceDegree = "";
+			this.dissertationControl1.Size = new System.Drawing.Size(627, 145);
+			this.dissertationControl1.SpecializationNumber = "  .  .";
+			this.dissertationControl1.TabIndex = 3;
+			this.dissertationControl1.Title = "";
 			// 
-			// label4
+			// journalControl1
 			// 
-			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(17, 204);
-			this.label4.Name = "label4";
-			this.label4.Size = new System.Drawing.Size(46, 17);
-			this.label4.TabIndex = 4;
-			this.label4.Text = "label4";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(17, 261);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(46, 17);
-			this.label5.TabIndex = 5;
-			this.label5.Text = "label5";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(17, 318);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(46, 17);
-			this.label6.TabIndex = 6;
-			this.label6.Text = "label6";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(17, 375);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(46, 17);
-			this.label7.TabIndex = 7;
-			this.label7.Text = "label7";
-			// 
-			// label15
-			// 
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(192, 261);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(54, 17);
-			this.label15.TabIndex = 8;
-			this.label15.Text = "label15";
-			// 
-			// label16
-			// 
-			this.label16.AutoSize = true;
-			this.label16.Location = new System.Drawing.Point(192, 318);
-			this.label16.Name = "label16";
-			this.label16.Size = new System.Drawing.Size(54, 17);
-			this.label16.TabIndex = 9;
-			this.label16.Text = "label16";
-			// 
-			// label17
-			// 
-			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(192, 375);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(54, 17);
-			this.label17.TabIndex = 10;
-			this.label17.Text = "label17";
-			// 
-			// label11
-			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(192, 33);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(54, 17);
-			this.label11.TabIndex = 11;
-			this.label11.Text = "label11";
-			// 
-			// label12
-			// 
-			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(192, 90);
-			this.label12.Name = "label12";
-			this.label12.Size = new System.Drawing.Size(54, 17);
-			this.label12.TabIndex = 12;
-			this.label12.Text = "label12";
-			// 
-			// label13
-			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(192, 147);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(54, 17);
-			this.label13.TabIndex = 13;
-			this.label13.Text = "label13";
-			// 
-			// label14
-			// 
-			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(192, 204);
-			this.label14.Name = "label14";
-			this.label14.Size = new System.Drawing.Size(54, 17);
-			this.label14.TabIndex = 14;
-			this.label14.Text = "label14";
+			this.journalControl1.Location = new System.Drawing.Point(6, 21);
+			this.journalControl1.Name = "journalControl1";
+			this.journalControl1.Size = new System.Drawing.Size(627, 145);
+			this.journalControl1.TabIndex = 4;
+			this.journalControl1.Title = "";
+			this.journalControl1.TitleOfPeriodical = "";
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1125, 801);
+			this.ClientSize = new System.Drawing.Size(1125, 592);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.menuStrip1);
@@ -360,7 +257,6 @@
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridViewAuthors)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -383,21 +279,11 @@
 		private System.Windows.Forms.Button SearchButton;
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.Button ModifyButton;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.DataGridView dataGridViewAuthors;
-		private System.Windows.Forms.Label label14;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.Label label12;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.Label label17;
-		private System.Windows.Forms.Label label16;
-		private System.Windows.Forms.Label label15;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label label2;
+		private JournalControl journalControl1;
+		private DissertationControl dissertationControl1;
+		private CollectionControl collectionControl1;
+		private BookControl bookControl1;
 	}
 }
 

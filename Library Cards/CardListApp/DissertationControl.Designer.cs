@@ -61,32 +61,32 @@
 			this.FieldsBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FieldsBox2.Location = new System.Drawing.Point(3, 3);
 			this.FieldsBox2.Name = "FieldsBox2";
-			this.FieldsBox2.Size = new System.Drawing.Size(753, 300);
+			this.FieldsBox2.Size = new System.Drawing.Size(621, 139);
 			this.FieldsBox2.TabIndex = 8;
 			this.FieldsBox2.TabStop = false;
 			this.FieldsBox2.Text = "Fields";
 			// 
 			// SpecializationNumberMaskedTextBox
 			// 
-			this.SpecializationNumberMaskedTextBox.Location = new System.Drawing.Point(248, 262);
+			this.SpecializationNumberMaskedTextBox.Location = new System.Drawing.Point(159, 105);
 			this.SpecializationNumberMaskedTextBox.Mask = "00/00/00";
 			this.SpecializationNumberMaskedTextBox.Name = "SpecializationNumberMaskedTextBox";
-			this.SpecializationNumberMaskedTextBox.Size = new System.Drawing.Size(492, 22);
+			this.SpecializationNumberMaskedTextBox.Size = new System.Drawing.Size(77, 22);
 			this.SpecializationNumberMaskedTextBox.TabIndex = 15;
 			this.SpecializationNumberMaskedTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SpecializationNumber_KeyPress);
 			// 
 			// CityTextBox
 			// 
-			this.CityTextBox.Location = new System.Drawing.Point(248, 173);
+			this.CityTextBox.Location = new System.Drawing.Point(158, 77);
 			this.CityTextBox.Name = "CityTextBox";
-			this.CityTextBox.Size = new System.Drawing.Size(492, 22);
+			this.CityTextBox.Size = new System.Drawing.Size(457, 22);
 			this.CityTextBox.TabIndex = 14;
 			this.CityTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.City_KeyPress);
 			// 
 			// SpecializationNumberLabel
 			// 
 			this.SpecializationNumberLabel.AutoSize = true;
-			this.SpecializationNumberLabel.Location = new System.Drawing.Point(6, 265);
+			this.SpecializationNumberLabel.Location = new System.Drawing.Point(6, 108);
 			this.SpecializationNumberLabel.Name = "SpecializationNumberLabel";
 			this.SpecializationNumberLabel.Size = new System.Drawing.Size(147, 17);
 			this.SpecializationNumberLabel.TabIndex = 13;
@@ -95,7 +95,7 @@
 			// CityLabel
 			// 
 			this.CityLabel.AutoSize = true;
-			this.CityLabel.Location = new System.Drawing.Point(6, 173);
+			this.CityLabel.Location = new System.Drawing.Point(6, 80);
 			this.CityLabel.Name = "CityLabel";
 			this.CityLabel.Size = new System.Drawing.Size(120, 17);
 			this.CityLabel.TabIndex = 11;
@@ -103,17 +103,17 @@
 			// 
 			// YearTextBox
 			// 
-			this.YearTextBox.Location = new System.Drawing.Point(248, 218);
+			this.YearTextBox.Location = new System.Drawing.Point(286, 105);
 			this.YearTextBox.MaxLength = 4;
 			this.YearTextBox.Name = "YearTextBox";
-			this.YearTextBox.Size = new System.Drawing.Size(492, 22);
+			this.YearTextBox.Size = new System.Drawing.Size(132, 22);
 			this.YearTextBox.TabIndex = 5;
 			this.YearTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Year_KeyPress);
 			// 
 			// YearLabel
 			// 
 			this.YearLabel.AutoSize = true;
-			this.YearLabel.Location = new System.Drawing.Point(6, 220);
+			this.YearLabel.Location = new System.Drawing.Point(242, 108);
 			this.YearLabel.Name = "YearLabel";
 			this.YearLabel.Size = new System.Drawing.Size(38, 17);
 			this.YearLabel.TabIndex = 9;
@@ -121,16 +121,16 @@
 			// 
 			// ScienceDegreeTextBox
 			// 
-			this.ScienceDegreeTextBox.Location = new System.Drawing.Point(248, 123);
+			this.ScienceDegreeTextBox.Location = new System.Drawing.Point(158, 49);
 			this.ScienceDegreeTextBox.Name = "ScienceDegreeTextBox";
-			this.ScienceDegreeTextBox.Size = new System.Drawing.Size(492, 22);
+			this.ScienceDegreeTextBox.Size = new System.Drawing.Size(457, 22);
 			this.ScienceDegreeTextBox.TabIndex = 3;
 			this.ScienceDegreeTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ScienceDegree_KeyPress);
 			// 
 			// ScienceDegreeLabel
 			// 
 			this.ScienceDegreeLabel.AutoSize = true;
-			this.ScienceDegreeLabel.Location = new System.Drawing.Point(6, 126);
+			this.ScienceDegreeLabel.Location = new System.Drawing.Point(6, 52);
 			this.ScienceDegreeLabel.Name = "ScienceDegreeLabel";
 			this.ScienceDegreeLabel.Size = new System.Drawing.Size(107, 17);
 			this.ScienceDegreeLabel.TabIndex = 5;
@@ -138,16 +138,16 @@
 			// 
 			// PageTextBox
 			// 
-			this.PageTextBox.Location = new System.Drawing.Point(248, 76);
+			this.PageTextBox.Location = new System.Drawing.Point(471, 105);
 			this.PageTextBox.Name = "PageTextBox";
-			this.PageTextBox.Size = new System.Drawing.Size(492, 22);
+			this.PageTextBox.Size = new System.Drawing.Size(144, 22);
 			this.PageTextBox.TabIndex = 2;
 			this.PageTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Page_KeyPress);
 			// 
 			// PageLabel
 			// 
 			this.PageLabel.AutoSize = true;
-			this.PageLabel.Location = new System.Drawing.Point(6, 79);
+			this.PageLabel.Location = new System.Drawing.Point(424, 108);
 			this.PageLabel.Name = "PageLabel";
 			this.PageLabel.Size = new System.Drawing.Size(41, 17);
 			this.PageLabel.TabIndex = 3;
@@ -155,16 +155,16 @@
 			// 
 			// TitleTextBox
 			// 
-			this.TitleTextBox.Location = new System.Drawing.Point(248, 29);
+			this.TitleTextBox.Location = new System.Drawing.Point(158, 21);
 			this.TitleTextBox.Name = "TitleTextBox";
-			this.TitleTextBox.Size = new System.Drawing.Size(492, 22);
+			this.TitleTextBox.Size = new System.Drawing.Size(457, 22);
 			this.TitleTextBox.TabIndex = 1;
 			this.TitleTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Title_KeyPress);
 			// 
 			// TitleLabel
 			// 
 			this.TitleLabel.AutoSize = true;
-			this.TitleLabel.Location = new System.Drawing.Point(6, 32);
+			this.TitleLabel.Location = new System.Drawing.Point(6, 24);
 			this.TitleLabel.Name = "TitleLabel";
 			this.TitleLabel.Size = new System.Drawing.Size(35, 17);
 			this.TitleLabel.TabIndex = 0;
@@ -176,7 +176,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.FieldsBox2);
 			this.Name = "DissertationControl";
-			this.Size = new System.Drawing.Size(760, 308);
+			this.Size = new System.Drawing.Size(627, 145);
 			this.FieldsBox2.ResumeLayout(false);
 			this.FieldsBox2.PerformLayout();
 			this.ResumeLayout(false);

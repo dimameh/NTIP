@@ -14,7 +14,7 @@ namespace CardListApp
 			InitializeComponent();
 			_cardList = new BindingList<ICard>();
 			RenameForm();
-			IsLabelVisible = false;
+			DisableControls();
 		}
 
 		#region Frontand changing methods
@@ -25,6 +25,19 @@ namespace CardListApp
 		private void RenameForm()
 		{
 			Text = _currentFileName + " - Library Cards";
+		}
+
+		private void DisableControls()
+		{
+			bookControl1.Visible = false;
+			journalControl1.Visible = false;
+			dissertationControl1.Visible = false;
+			collectionControl1.Visible = false;
+
+			bookControl1.ReadOnly = true;
+			journalControl1.ReadOnly = true;
+			dissertationControl1.ReadOnly = true;
+			collectionControl1.ReadOnly = true;
 		}
 
 		#endregion
@@ -57,33 +70,6 @@ namespace CardListApp
 		/// </summary>
 		private string _currentFileName = "New card list";
 
-		/// <summary>
-		///     True делает label'ы с дополнительной информацией видимыми, falsе - скрывает
-		/// </summary>
-		private bool IsLabelVisible
-		{
-			set
-			{
-				//TODO: лейблы переименовать
-				label7.Visible = value;
-				label1.Visible = value;
-				label2.Visible = value;
-				label3.Visible = value;
-				label4.Visible = value;
-				label5.Visible = value;
-				label6.Visible = value;
-				label7.Visible = value;
-
-				label11.Visible = value;
-				label12.Visible = value;
-				label13.Visible = value;
-				label14.Visible = value;
-				label15.Visible = value;
-				label16.Visible = value;
-				label17.Visible = value;
-			}
-		}
-
 		#endregion
 
 		#region Click events
@@ -95,7 +81,11 @@ namespace CardListApp
 		/// </summary>
 		private void AddButtonClick(object sender, EventArgs e)
 		{
-			var newRecordForm = new AddRecordForm();
+			DisableControls();
+			var newRecordForm = new AddRecordForm
+			{
+				ReadOnly = false
+			};
 			newRecordForm.ShowDialog();
 			if (newRecordForm.DialogResult == DialogResult.OK)
 			{
@@ -125,6 +115,7 @@ namespace CardListApp
 		/// </summary>
 		private void SearchButton_Click(object sender, EventArgs e)
 		{
+			DisableControls();
 			var listCopy = new BindingList<ICard>(_cardList);
 
 			var newSearchForm = new SearchForm(listCopy);
@@ -140,12 +131,13 @@ namespace CardListApp
 		/// <param name="e"></param>
 		private void ModifyButton_Click(object sender, EventArgs e)
 		{
-			IsLabelVisible = false;
+			DisableControls();
 			if (dataGridViewMain.CurrentRow != null)
 			{
 				var newModifyForm = new AddRecordForm
 				{
-					Card = _cardList[dataGridViewMain.CurrentRow.Index]
+					Card = _cardList[dataGridViewMain.CurrentRow.Index],
+					ReadOnly = false
 				};
 
 				newModifyForm.ShowDialog();
@@ -203,7 +195,7 @@ namespace CardListApp
 			if (dataGridViewMain.CurrentRow != null)
 			{
 				dataGridViewMain.Rows.Remove(dataGridViewMain.CurrentRow);
-				IsLabelVisible = false;
+				DisableControls();
 				dataGridViewAuthors.DataSource = null;
 			}
 		}
@@ -216,47 +208,33 @@ namespace CardListApp
 		private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			var currentCard = _cardList[dataGridViewMain.CurrentRow.Index];
-			IsLabelVisible = true;
-			//TODO: У тебя есть CardControl, и он может показывать данные о карточке - зачем ты здесь дублируешь его функцоинальность?
+			DisableControls();
+			
 			if (currentCard is BookArticle book)
 			{
-				label7.Visible = label17.Visible = true;
-				label1.Text = "Title";
-				label2.Text = "Genre";
-				label3.Text = "Publishing house";
-				label4.Text = "City of publication";
-				label5.Text = "Year";
-				label6.Text = "Volume (pages)";
-				label7.Text = "AdditionalInfo";
+				bookControl1.Visible = true;
 
-				label11.Text = book.Title;
-				label12.Text = book.MaterialType;
-				label13.Text = book.PublishingHouse;
-				label14.Text = book.CityOfPublication;
-				label15.Text = book.Year.ToString();
-				label16.Text = book.Volume.ToString();
-				label17.Text = book.AdditionalInfo;
+				bookControl1.Title = book.Title;
+				bookControl1.Genre = book.MaterialType;
+				bookControl1.PublishingHouse = book.PublishingHouse;
+				bookControl1.CityOfPublication = book.CityOfPublication;
+				bookControl1.Year = book.Year;
+				bookControl1.Volume = book.Volume;
+				bookControl1.AdditionalInfo = book.AdditionalInfo;
 
 				dataGridViewAuthors.DataSource = book.Authors;
 			}
 
 			else if (currentCard is Dissertation dissertation)
 			{
-				label7.Visible = label17.Visible = false;
+				dissertationControl1.Visible = true;
 
-				label1.Text = "Title";
-				label2.Text = "Page";
-				label3.Text = "Science degree";
-				label4.Text = "Specialization number";
-				label5.Text = "Year";
-				label6.Text = "City of publication";
-
-				label11.Text = dissertation.Title;
-				label12.Text = dissertation.Page.ToString();
-				label13.Text = dissertation.AuthorStatus;
-				label14.Text = dissertation.SpecializationNumber;
-				label15.Text = dissertation.Year.ToString();
-				label16.Text = dissertation.CityOfPublication;
+				dissertationControl1.Title = dissertation.Title;
+				dissertationControl1.Page = dissertation.Page;
+				dissertationControl1.ScienceDegree = dissertation.AuthorStatus;
+				dissertationControl1.SpecializationNumber = dissertation.SpecializationNumber;
+				dissertationControl1.Year = dissertation.Year;
+				dissertationControl1.CityOfPublication = dissertation.CityOfPublication;
 
 				var dissertationAuthor = new List<FullName>();
 				dissertationAuthor.Add(dissertation.FirstAuthor);
@@ -265,42 +243,28 @@ namespace CardListApp
 
 			else if (currentCard is JournalArticle journal)
 			{
-				label7.Visible = label17.Visible = false;
-
-				label1.Text = "Title";
-				label2.Text = "Title of periodical";
-				label3.Text = "Journal number";
-				label4.Text = "Starting page";
-				label5.Text = "Last page";
-				label6.Text = "Year";
-
-				label11.Text = journal.Title;
-				label12.Text = journal.MaterialType;
-				label13.Text = journal.JournalNumber.ToString();
-				label14.Text = journal.FirstPage.ToString();
-				label15.Text = journal.LastPage.ToString();
-				label16.Text = journal.Year.ToString();
+				journalControl1.Visible = true;
+				
+				journalControl1.Title = journal.Title;
+				journalControl1.TitleOfPeriodical = journal.MaterialType;
+				journalControl1.JournalNumber = journal.JournalNumber;
+				journalControl1.FirstPage = journal.FirstPage;
+				journalControl1.LastPage = journal.LastPage;
+				journalControl1.Year = journal.Year;
 
 				dataGridViewAuthors.DataSource = journal.Authors;
 			}
 
 			else if (currentCard is CollectionArticle collection)
 			{
-				label7.Visible = label17.Visible = false;
+				collectionControl1.Visible = true;
 
-				label1.Text = "Title";
-				label2.Text = "Theme of collection";
-				label3.Text = "City of publication";
-				label4.Text = "Date of publication";
-				label5.Text = "First page";
-				label6.Text = "Last page";
-
-				label11.Text = collection.Title;
-				label12.Text = collection.MaterialType;
-				label13.Text = collection.CityOfPublication;
-				label14.Text = collection.Date.ToShortDateString();
-				label15.Text = collection.FirstPage.ToString();
-				label16.Text = collection.LastPage.ToString();
+				collectionControl1.Title = collection.Title;
+				collectionControl1.ThemeOfCollection = collection.MaterialType;
+				collectionControl1.City = collection.CityOfPublication;
+				collectionControl1.Date = collection.Date;
+				collectionControl1.FirstPage = collection.FirstPage;
+				collectionControl1.LastPage = collection.LastPage;
 
 				dataGridViewAuthors.DataSource = collection.Authors;
 			}

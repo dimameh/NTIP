@@ -61,30 +61,30 @@
 			this.FieldsBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.FieldsBox2.Location = new System.Drawing.Point(3, 3);
 			this.FieldsBox2.Name = "FieldsBox2";
-			this.FieldsBox2.Size = new System.Drawing.Size(753, 300);
+			this.FieldsBox2.Size = new System.Drawing.Size(621, 139);
 			this.FieldsBox2.TabIndex = 9;
 			this.FieldsBox2.TabStop = false;
 			this.FieldsBox2.Text = "Fields";
 			// 
 			// DateMaskedTextBox
 			// 
-			this.DateMaskedTextBox.Location = new System.Drawing.Point(248, 170);
+			this.DateMaskedTextBox.Location = new System.Drawing.Point(139, 105);
 			this.DateMaskedTextBox.Mask = "00/00/00";
 			this.DateMaskedTextBox.Name = "DateMaskedTextBox";
-			this.DateMaskedTextBox.Size = new System.Drawing.Size(492, 22);
+			this.DateMaskedTextBox.Size = new System.Drawing.Size(89, 22);
 			this.DateMaskedTextBox.TabIndex = 15;
 			// 
 			// LastPageTextBox
 			// 
-			this.LastPageTextBox.Location = new System.Drawing.Point(248, 262);
+			this.LastPageTextBox.Location = new System.Drawing.Point(498, 105);
 			this.LastPageTextBox.Name = "LastPageTextBox";
-			this.LastPageTextBox.Size = new System.Drawing.Size(492, 22);
+			this.LastPageTextBox.Size = new System.Drawing.Size(117, 22);
 			this.LastPageTextBox.TabIndex = 14;
 			// 
 			// LastPageLabel
 			// 
 			this.LastPageLabel.AutoSize = true;
-			this.LastPageLabel.Location = new System.Drawing.Point(6, 265);
+			this.LastPageLabel.Location = new System.Drawing.Point(421, 108);
 			this.LastPageLabel.Name = "LastPageLabel";
 			this.LastPageLabel.Size = new System.Drawing.Size(71, 17);
 			this.LastPageLabel.TabIndex = 13;
@@ -93,7 +93,7 @@
 			// DateLabel
 			// 
 			this.DateLabel.AutoSize = true;
-			this.DateLabel.Location = new System.Drawing.Point(6, 173);
+			this.DateLabel.Location = new System.Drawing.Point(6, 108);
 			this.DateLabel.Name = "DateLabel";
 			this.DateLabel.Size = new System.Drawing.Size(127, 17);
 			this.DateLabel.TabIndex = 11;
@@ -101,16 +101,16 @@
 			// 
 			// FirstPageTextBox
 			// 
-			this.FirstPageTextBox.Location = new System.Drawing.Point(248, 218);
+			this.FirstPageTextBox.Location = new System.Drawing.Point(311, 105);
 			this.FirstPageTextBox.MaxLength = 4;
 			this.FirstPageTextBox.Name = "FirstPageTextBox";
-			this.FirstPageTextBox.Size = new System.Drawing.Size(492, 22);
+			this.FirstPageTextBox.Size = new System.Drawing.Size(104, 22);
 			this.FirstPageTextBox.TabIndex = 5;
 			// 
 			// FirstPageLabel
 			// 
 			this.FirstPageLabel.AutoSize = true;
-			this.FirstPageLabel.Location = new System.Drawing.Point(6, 220);
+			this.FirstPageLabel.Location = new System.Drawing.Point(234, 108);
 			this.FirstPageLabel.Name = "FirstPageLabel";
 			this.FirstPageLabel.Size = new System.Drawing.Size(71, 17);
 			this.FirstPageLabel.TabIndex = 9;
@@ -118,15 +118,15 @@
 			// 
 			// CityTextBox
 			// 
-			this.CityTextBox.Location = new System.Drawing.Point(248, 123);
+			this.CityTextBox.Location = new System.Drawing.Point(139, 77);
 			this.CityTextBox.Name = "CityTextBox";
-			this.CityTextBox.Size = new System.Drawing.Size(492, 22);
+			this.CityTextBox.Size = new System.Drawing.Size(476, 22);
 			this.CityTextBox.TabIndex = 3;
 			// 
 			// CityLabel
 			// 
 			this.CityLabel.AutoSize = true;
-			this.CityLabel.Location = new System.Drawing.Point(6, 126);
+			this.CityLabel.Location = new System.Drawing.Point(6, 80);
 			this.CityLabel.Name = "CityLabel";
 			this.CityLabel.Size = new System.Drawing.Size(119, 17);
 			this.CityLabel.TabIndex = 5;
@@ -134,15 +134,15 @@
 			// 
 			// ThemeTextBox
 			// 
-			this.ThemeTextBox.Location = new System.Drawing.Point(248, 76);
+			this.ThemeTextBox.Location = new System.Drawing.Point(139, 49);
 			this.ThemeTextBox.Name = "ThemeTextBox";
-			this.ThemeTextBox.Size = new System.Drawing.Size(492, 22);
+			this.ThemeTextBox.Size = new System.Drawing.Size(476, 22);
 			this.ThemeTextBox.TabIndex = 2;
 			// 
 			// ThemeOfCollectionLabel
 			// 
 			this.ThemeOfCollectionLabel.AutoSize = true;
-			this.ThemeOfCollectionLabel.Location = new System.Drawing.Point(6, 79);
+			this.ThemeOfCollectionLabel.Location = new System.Drawing.Point(6, 52);
 			this.ThemeOfCollectionLabel.Name = "ThemeOfCollectionLabel";
 			this.ThemeOfCollectionLabel.Size = new System.Drawing.Size(131, 17);
 			this.ThemeOfCollectionLabel.TabIndex = 3;
@@ -150,15 +150,15 @@
 			// 
 			// TitleTextBox
 			// 
-			this.TitleTextBox.Location = new System.Drawing.Point(248, 29);
+			this.TitleTextBox.Location = new System.Drawing.Point(139, 21);
 			this.TitleTextBox.Name = "TitleTextBox";
-			this.TitleTextBox.Size = new System.Drawing.Size(492, 22);
+			this.TitleTextBox.Size = new System.Drawing.Size(476, 22);
 			this.TitleTextBox.TabIndex = 1;
 			// 
 			// TitleLabel
 			// 
 			this.TitleLabel.AutoSize = true;
-			this.TitleLabel.Location = new System.Drawing.Point(6, 32);
+			this.TitleLabel.Location = new System.Drawing.Point(6, 24);
 			this.TitleLabel.Name = "TitleLabel";
 			this.TitleLabel.Size = new System.Drawing.Size(35, 17);
 			this.TitleLabel.TabIndex = 0;
@@ -170,7 +170,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.Controls.Add(this.FieldsBox2);
 			this.Name = "CollectionControl";
-			this.Size = new System.Drawing.Size(760, 306);
+			this.Size = new System.Drawing.Size(627, 145);
 			this.FieldsBox2.ResumeLayout(false);
 			this.FieldsBox2.PerformLayout();
 			this.ResumeLayout(false);

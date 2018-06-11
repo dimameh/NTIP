@@ -37,10 +37,10 @@
 			this.OKButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.RandomButton = new System.Windows.Forms.Button();
-			this.journalControl1 = new CardListApp.JournalControl();
-			this.dissertationControl1 = new CardListApp.DissertationControl();
-			this.collectionControl1 = new CardListApp.CollectionControl();
 			this.bookControl1 = new CardListApp.BookControl();
+			this.collectionControl1 = new CardListApp.CollectionControl();
+			this.dissertationControl1 = new CardListApp.DissertationControl();
+			this.journalControl1 = new CardListApp.JournalControl();
 			this.authorsControl1 = new CardListApp.AuthorsControl();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -54,7 +54,7 @@
 			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.groupBox1.Location = new System.Drawing.Point(5, 5);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(753, 68);
+			this.groupBox1.Size = new System.Drawing.Size(627, 55);
 			this.groupBox1.TabIndex = 6;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Select the type of record";
@@ -63,7 +63,7 @@
 			// 
 			this.CollectionRadioButton.AutoSize = true;
 			this.CollectionRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.CollectionRadioButton.Location = new System.Drawing.Point(597, 30);
+			this.CollectionRadioButton.Location = new System.Drawing.Point(515, 21);
 			this.CollectionRadioButton.Name = "CollectionRadioButton";
 			this.CollectionRadioButton.Size = new System.Drawing.Size(104, 24);
 			this.CollectionRadioButton.TabIndex = 3;
@@ -75,7 +75,7 @@
 			// 
 			this.JournalRadioButton.AutoSize = true;
 			this.JournalRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.JournalRadioButton.Location = new System.Drawing.Point(426, 30);
+			this.JournalRadioButton.Location = new System.Drawing.Point(352, 21);
 			this.JournalRadioButton.Name = "JournalRadioButton";
 			this.JournalRadioButton.Size = new System.Drawing.Size(85, 24);
 			this.JournalRadioButton.TabIndex = 2;
@@ -87,7 +87,7 @@
 			// 
 			this.DissertationRadioButton.AutoSize = true;
 			this.DissertationRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.DissertationRadioButton.Location = new System.Drawing.Point(219, 30);
+			this.DissertationRadioButton.Location = new System.Drawing.Point(153, 21);
 			this.DissertationRadioButton.Name = "DissertationRadioButton";
 			this.DissertationRadioButton.Size = new System.Drawing.Size(121, 24);
 			this.DissertationRadioButton.TabIndex = 1;
@@ -100,7 +100,7 @@
 			this.BookRadioButton.AutoSize = true;
 			this.BookRadioButton.Checked = true;
 			this.BookRadioButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.BookRadioButton.Location = new System.Drawing.Point(65, 30);
+			this.BookRadioButton.Location = new System.Drawing.Point(10, 21);
 			this.BookRadioButton.Name = "BookRadioButton";
 			this.BookRadioButton.Size = new System.Drawing.Size(68, 24);
 			this.BookRadioButton.TabIndex = 0;
@@ -112,9 +112,9 @@
 			// OKButton
 			// 
 			this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.OKButton.Location = new System.Drawing.Point(5, 778);
+			this.OKButton.Location = new System.Drawing.Point(12, 395);
 			this.OKButton.Name = "OKButton";
-			this.OKButton.Size = new System.Drawing.Size(208, 24);
+			this.OKButton.Size = new System.Drawing.Size(125, 24);
 			this.OKButton.TabIndex = 12;
 			this.OKButton.Text = "OK";
 			this.OKButton.UseVisualStyleBackColor = true;
@@ -122,85 +122,87 @@
 			// CancelButton
 			// 
 			this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.CancelButton.Location = new System.Drawing.Point(546, 778);
+			this.CancelButton.Location = new System.Drawing.Point(506, 395);
 			this.CancelButton.Name = "CancelButton";
-			this.CancelButton.Size = new System.Drawing.Size(208, 24);
+			this.CancelButton.Size = new System.Drawing.Size(125, 24);
 			this.CancelButton.TabIndex = 13;
 			this.CancelButton.Text = "Cancel";
 			this.CancelButton.UseVisualStyleBackColor = true;
 			// 
 			// RandomButton
 			// 
-			this.RandomButton.Location = new System.Drawing.Point(272, 778);
+			this.RandomButton.Location = new System.Drawing.Point(259, 395);
 			this.RandomButton.Name = "RandomButton";
-			this.RandomButton.Size = new System.Drawing.Size(208, 24);
+			this.RandomButton.Size = new System.Drawing.Size(125, 24);
 			this.RandomButton.TabIndex = 14;
 			this.RandomButton.Text = "Random";
 			this.RandomButton.UseVisualStyleBackColor = true;
 			this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
-			// 
-			// journalControl1
-			// 
-			this.journalControl1.Location = new System.Drawing.Point(5, 80);
-			this.journalControl1.Name = "journalControl1";
-			this.journalControl1.Size = new System.Drawing.Size(761, 307);
-			this.journalControl1.TabIndex = 10;
-			this.journalControl1.Title = "";
-			this.journalControl1.TitleOfPeriodical = "";
-			// 
-			// dissertationControl1
-			// 
-			this.dissertationControl1.CityOfPublication = "";
-			this.dissertationControl1.Location = new System.Drawing.Point(5, 79);
-			this.dissertationControl1.Name = "dissertationControl1";
-			this.dissertationControl1.ScienceDegree = "";
-			this.dissertationControl1.Size = new System.Drawing.Size(760, 308);
-			this.dissertationControl1.SpecializationNumber = "  .  .";
-			this.dissertationControl1.TabIndex = 9;
-			this.dissertationControl1.Title = "";
-			// 
-			// collectionControl1
-			// 
-			this.collectionControl1.City = "";
-			this.collectionControl1.Location = new System.Drawing.Point(5, 79);
-			this.collectionControl1.Name = "collectionControl1";
-			this.collectionControl1.Size = new System.Drawing.Size(760, 306);
-			this.collectionControl1.TabIndex = 8;
-			this.collectionControl1.ThemeOfCollection = "";
-			this.collectionControl1.Title = "";
 			// 
 			// bookControl1
 			// 
 			this.bookControl1.AdditionalInfo = "";
 			this.bookControl1.CityOfPublication = "";
 			this.bookControl1.Genre = "";
-			this.bookControl1.Location = new System.Drawing.Point(5, 79);
+			this.bookControl1.Location = new System.Drawing.Point(5, 65);
+			this.bookControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.bookControl1.Name = "bookControl1";
 			this.bookControl1.PublishingHouse = "";
-			this.bookControl1.Size = new System.Drawing.Size(760, 353);
-			this.bookControl1.TabIndex = 7;
+			this.bookControl1.Size = new System.Drawing.Size(627, 178);
+			this.bookControl1.TabIndex = 15;
 			this.bookControl1.Title = "";
+			// 
+			// collectionControl1
+			// 
+			this.collectionControl1.City = "";
+			this.collectionControl1.Location = new System.Drawing.Point(5, 66);
+			this.collectionControl1.Name = "collectionControl1";
+			this.collectionControl1.Size = new System.Drawing.Size(627, 145);
+			this.collectionControl1.TabIndex = 16;
+			this.collectionControl1.ThemeOfCollection = "";
+			this.collectionControl1.Title = "";
+			// 
+			// dissertationControl1
+			// 
+			this.dissertationControl1.CityOfPublication = "";
+			this.dissertationControl1.Location = new System.Drawing.Point(5, 66);
+			this.dissertationControl1.Name = "dissertationControl1";
+			this.dissertationControl1.ScienceDegree = "";
+			this.dissertationControl1.Size = new System.Drawing.Size(627, 145);
+			this.dissertationControl1.SpecializationNumber = "  .  .";
+			this.dissertationControl1.TabIndex = 17;
+			this.dissertationControl1.Title = "";
+			// 
+			// journalControl1
+			// 
+			this.journalControl1.Location = new System.Drawing.Point(5, 66);
+			this.journalControl1.Name = "journalControl1";
+			this.journalControl1.Size = new System.Drawing.Size(627, 145);
+			this.journalControl1.TabIndex = 18;
+			this.journalControl1.Title = "";
+			this.journalControl1.TitleOfPeriodical = "";
 			// 
 			// authorsControl1
 			// 
-			this.authorsControl1.Location = new System.Drawing.Point(5, 438);
+			this.authorsControl1.Location = new System.Drawing.Point(5, 247);
+			this.authorsControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
 			this.authorsControl1.Name = "authorsControl1";
-			this.authorsControl1.Size = new System.Drawing.Size(756, 334);
-			this.authorsControl1.TabIndex = 15;
+			this.authorsControl1.Size = new System.Drawing.Size(627, 143);
+			this.authorsControl1.TabIndex = 19;
 			// 
 			// AddRecordForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(766, 810);
+			this.ClientSize = new System.Drawing.Size(639, 425);
 			this.Controls.Add(this.authorsControl1);
-			this.Controls.Add(this.RandomButton);
-			this.Controls.Add(this.CancelButton);
-			this.Controls.Add(this.OKButton);
 			this.Controls.Add(this.journalControl1);
 			this.Controls.Add(this.dissertationControl1);
 			this.Controls.Add(this.collectionControl1);
 			this.Controls.Add(this.bookControl1);
+			this.Controls.Add(this.RandomButton);
+			this.Controls.Add(this.CancelButton);
+			this.Controls.Add(this.OKButton);
 			this.Controls.Add(this.groupBox1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "AddRecordForm";
@@ -219,13 +221,13 @@
 		private System.Windows.Forms.RadioButton JournalRadioButton;
 		private System.Windows.Forms.RadioButton DissertationRadioButton;
 		private System.Windows.Forms.RadioButton BookRadioButton;
+		private System.Windows.Forms.Button OKButton;
+		private System.Windows.Forms.Button CancelButton;
+		private System.Windows.Forms.Button RandomButton;
 		private BookControl bookControl1;
 		private CollectionControl collectionControl1;
 		private DissertationControl dissertationControl1;
 		private JournalControl journalControl1;
-		private System.Windows.Forms.Button OKButton;
-		private System.Windows.Forms.Button CancelButton;
-		private System.Windows.Forms.Button RandomButton;
 		private AuthorsControl authorsControl1;
 	}
 }

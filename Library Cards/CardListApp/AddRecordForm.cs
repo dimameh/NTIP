@@ -141,6 +141,18 @@ namespace CardListApp
 			}
 		}
 
+		public bool ReadOnly
+		{
+			set
+			{
+				authorsControl1.ReadOnly = value;
+				journalControl1.ReadOnly = value;
+				collectionControl1.ReadOnly = value;
+				dissertationControl1.ReadOnly = value;
+				bookControl1.ReadOnly = value;
+			}
+		}
+
 		private void BookRadioButton_CheckedChanged(object sender, EventArgs e)
 		{
 			journalControl1.Visible = false;
@@ -211,7 +223,7 @@ namespace CardListApp
 					journalControl1.FirstPage = 111;
 					journalControl1.LastPage = 222;
 					journalControl1.JournalNumber = 333;
-					journalControl1.Year = 2018;
+					journalControl1.Year = 2016;
 					authorsControl1.SetAuthors(journalAuthors);
 					break;
 				default:
