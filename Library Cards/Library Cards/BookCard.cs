@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 namespace LibraryCards
 {
 	/// <summary>
-	///     Статья в книгу
+	///     Карточка книги
 	/// </summary>
 	[DataContract]
-	public class BookArticle : ICard
+	public class BookCard : ICard
 	{
 		#region Private переменные и методы
 
@@ -78,7 +78,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		/// Формирует ошибку если поле начинается или заканчивается пробелом либо путое или null
+		/// Формирует ошибку если поле начинается или заканчивается пробелом либо пустое или null
 		/// </summary>
 		/// <param name="value"></param>
 		private void StringExceptions(string value)
@@ -111,7 +111,7 @@ namespace LibraryCards
 		/// <param name="volume"></param>
 		/// <param name="cityOfPublication"></param>
 		/// <param name="additionalInfo"></param>
-		public BookArticle(List<FullName> authors, string title, string materialType, string publishingHouse, int year,
+		public BookCard(List<FullName> authors, string title, string materialType, string publishingHouse, int year,
 			int volume, string cityOfPublication, string additionalInfo = "")
 		{
 			SetAuthors(authors);
@@ -221,6 +221,9 @@ namespace LibraryCards
 		}
 
 		#region Get Set свойства
+		/// <summary>
+		/// Авторы издания
+		/// </summary>
 		[DataMember]
 		public List<FullName> Authors
 		{
@@ -233,13 +236,12 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает имя автора диссертиции
+		///     Возвращает и задает имя первого автора издания
 		/// </summary>
-		
 		public FullName FirstAuthor => _firstAuthor;
 
 		/// <summary>
-		///     Возвращает и задает Название
+		///     Возвращает и задает название
 		/// </summary>
 		[DataMember]
 		public string Title
@@ -253,7 +255,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Тип материала
+		///     Возвращает и задает жанр издания
 		/// </summary>
 		[DataMember]
 		public string MaterialType
@@ -267,7 +269,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Город публикации
+		///     Возвращает и задает издательство
 		/// </summary>
 		[DataMember]
 		public string PublishingHouse
@@ -281,7 +283,8 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Номер издательства и информацию о нем
+		///     Возвращает и задает номер издательства и информацию о нем
+		///		Необязательное поле
 		/// </summary>
 		[DataMember]
 		public string AdditionalInfo
@@ -291,7 +294,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Объем в количестве страниц
+		///     Возвращает и задает объем издания в количестве страниц
 		/// </summary>
 		[DataMember]
 		public int Volume
@@ -324,7 +327,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Город, в котором был представлен сборник
+		///     Возвращает и задает город, в котором был представлено издание
 		/// </summary>
 		/// <returns>город, в котором был представлен сборник</returns>
 		[DataMember]
@@ -381,7 +384,7 @@ namespace LibraryCards
 		#endregion
 
 		/// <summary>
-		///     Формирует строку типа string которая ялвяется библиографической информацией об издании, оформленной по ГОСТу 7.1 -
+		///     Формирует строку типа string которая является библиографической информацией об издании, оформленной по ГОСТу 7.1 -
 		///     2003 "Библиографическая запись"
 		/// </summary>
 		/// <returns>Всю информацию об издании</returns>

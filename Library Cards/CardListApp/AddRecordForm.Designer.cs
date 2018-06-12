@@ -37,11 +37,11 @@
 			this.OKButton = new System.Windows.Forms.Button();
 			this.CancelButton = new System.Windows.Forms.Button();
 			this.RandomButton = new System.Windows.Forms.Button();
-			this.journalControl1 = new CardListApp.JournalControl();
-			this.dissertationControl1 = new CardListApp.DissertationControl();
-			this.collectionControl1 = new CardListApp.CollectionControl();
-			this.bookControl1 = new CardListApp.BookControl();
-			this.authorsControl1 = new CardListApp.AuthorsControl();
+			this.journalControl = new CardListApp.JournalControl();
+			this.dissertationControl = new CardListApp.DissertationControl();
+			this.collectionControl = new CardListApp.CollectionControl();
+			this.bookControl = new CardListApp.BookControl();
+			this.authorsControl = new CardListApp.AuthorsControl();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -139,67 +139,67 @@
 			this.RandomButton.UseVisualStyleBackColor = true;
 			this.RandomButton.Click += new System.EventHandler(this.RandomButton_Click);
 			// 
-			// journalControl1
+			// journalControl
 			// 
-			this.journalControl1.Location = new System.Drawing.Point(5, 66);
-			this.journalControl1.Name = "journalControl1";
-			this.journalControl1.Size = new System.Drawing.Size(627, 145);
-			this.journalControl1.TabIndex = 18;
-			this.journalControl1.Title = "";
-			this.journalControl1.TitleOfPeriodical = "";
+			this.journalControl.Location = new System.Drawing.Point(5, 66);
+			this.journalControl.Name = "journalControl";
+			this.journalControl.Size = new System.Drawing.Size(627, 145);
+			this.journalControl.TabIndex = 18;
+			this.journalControl.Title = "";
+			this.journalControl.TitleOfPeriodical = "";
 			// 
-			// dissertationControl1
+			// dissertationControl
 			// 
-			this.dissertationControl1.CityOfPublication = "";
-			this.dissertationControl1.Location = new System.Drawing.Point(5, 66);
-			this.dissertationControl1.Name = "dissertationControl1";
-			this.dissertationControl1.ScienceDegree = "";
-			this.dissertationControl1.Size = new System.Drawing.Size(627, 145);
-			this.dissertationControl1.SpecializationNumber = "  .  .";
-			this.dissertationControl1.TabIndex = 17;
-			this.dissertationControl1.Title = "";
+			this.dissertationControl.CityOfPublication = "";
+			this.dissertationControl.Location = new System.Drawing.Point(5, 66);
+			this.dissertationControl.Name = "dissertationControl";
+			this.dissertationControl.ScienceDegree = "";
+			this.dissertationControl.Size = new System.Drawing.Size(627, 145);
+			this.dissertationControl.SpecializationNumber = "  .  .";
+			this.dissertationControl.TabIndex = 17;
+			this.dissertationControl.Title = "";
 			// 
-			// collectionControl1
+			// collectionControl
 			// 
-			this.collectionControl1.City = "";
-			this.collectionControl1.Location = new System.Drawing.Point(5, 66);
-			this.collectionControl1.Name = "collectionControl1";
-			this.collectionControl1.Size = new System.Drawing.Size(627, 145);
-			this.collectionControl1.TabIndex = 16;
-			this.collectionControl1.ThemeOfCollection = "";
-			this.collectionControl1.Title = "";
+			this.collectionControl.City = "";
+			this.collectionControl.Location = new System.Drawing.Point(5, 66);
+			this.collectionControl.Name = "collectionControl";
+			this.collectionControl.Size = new System.Drawing.Size(627, 145);
+			this.collectionControl.TabIndex = 16;
+			this.collectionControl.ThemeOfCollection = "";
+			this.collectionControl.Title = "";
 			// 
-			// bookControl1
+			// bookControl
 			// 
-			this.bookControl1.AdditionalInfo = "";
-			this.bookControl1.CityOfPublication = "";
-			this.bookControl1.Genre = "";
-			this.bookControl1.Location = new System.Drawing.Point(5, 65);
-			this.bookControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.bookControl1.Name = "bookControl1";
-			this.bookControl1.PublishingHouse = "";
-			this.bookControl1.Size = new System.Drawing.Size(627, 178);
-			this.bookControl1.TabIndex = 15;
-			this.bookControl1.Title = "";
+			this.bookControl.AdditionalInfo = "";
+			this.bookControl.CityOfPublication = "";
+			this.bookControl.Genre = "";
+			this.bookControl.Location = new System.Drawing.Point(5, 65);
+			this.bookControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.bookControl.Name = "bookControl";
+			this.bookControl.PublishingHouse = "";
+			this.bookControl.Size = new System.Drawing.Size(627, 178);
+			this.bookControl.TabIndex = 15;
+			this.bookControl.Title = "";
 			// 
-			// authorsControl1
+			// authorsControl
 			// 
-			this.authorsControl1.Location = new System.Drawing.Point(4, 247);
-			this.authorsControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-			this.authorsControl1.Name = "authorsControl1";
-			this.authorsControl1.Size = new System.Drawing.Size(627, 143);
-			this.authorsControl1.TabIndex = 19;
+			this.authorsControl.Location = new System.Drawing.Point(4, 247);
+			this.authorsControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+			this.authorsControl.Name = "authorsControl";
+			this.authorsControl.Size = new System.Drawing.Size(627, 143);
+			this.authorsControl.TabIndex = 19;
 			// 
 			// AddRecordForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(639, 425);
-			this.Controls.Add(this.authorsControl1);
-			this.Controls.Add(this.journalControl1);
-			this.Controls.Add(this.dissertationControl1);
-			this.Controls.Add(this.collectionControl1);
-			this.Controls.Add(this.bookControl1);
+			this.Controls.Add(this.authorsControl);
+			this.Controls.Add(this.journalControl);
+			this.Controls.Add(this.dissertationControl);
+			this.Controls.Add(this.collectionControl);
+			this.Controls.Add(this.bookControl);
 			this.Controls.Add(this.RandomButton);
 			this.Controls.Add(this.CancelButton);
 			this.Controls.Add(this.OKButton);
@@ -224,10 +224,10 @@
 		private System.Windows.Forms.Button OKButton;
 		private System.Windows.Forms.Button CancelButton;
 		private System.Windows.Forms.Button RandomButton;
-		private BookControl bookControl1;
-		private CollectionControl collectionControl1;
-		private DissertationControl dissertationControl1;
-		private JournalControl journalControl1;
-		private AuthorsControl authorsControl1;
+		private BookControl bookControl;
+		private CollectionControl collectionControl;
+		private DissertationControl dissertationControl;
+		private JournalControl journalControl;
+		private AuthorsControl authorsControl;
 	}
 }

@@ -18,7 +18,7 @@ namespace CardListApp
 		{
 			set
 			{
-				if (value is CollectionArticle article)
+				if (value is CollectionCard article)
 				{
 					TitleTextBox.Text = article.Title;
 					ThemeTextBox.Text = article.MaterialType;

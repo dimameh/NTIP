@@ -5,52 +5,52 @@ using System.Runtime.Serialization;
 namespace LibraryCards
 {
 	/// <summary>
-	///     Статья в журнале
+	///     Карточка сборника
 	/// </summary>
 	[DataContract]
-	public class JournalArticle : ICard
+	public class CollectionCard : ICard
 	{
 		#region Private переменные и методы
 
 		/// <summary>
-		///     Первый автор статьи
+		///     Первый автор сборника
 		/// </summary>
 		private FullName _firstAuthor;
 
 		/// <summary>
-		///     Автор(ры) статьи
+		///     Авторы сборника
 		/// </summary>
 		private List<FullName> _authors;
 
 		/// <summary>
-		///     Название статьи
+		///     Название/тема сборника
 		/// </summary>
 		private string _title;
 
 		/// <summary>
-		///     Название периодического издания
+		///     Информация о тематике сборника и о том откуда взяты материалы для него
 		/// </summary>
 		private string _materialType;
 
 		/// <summary>
-		///     Номер выпуска
-		/// </summary>
-		private int _journalNumber;
-
-		/// <summary>
-		///     Начальная страница статьи
+		///     Первая ссылаемая страница
 		/// </summary>
 		private int _firstPage;
 
 		/// <summary>
-		///     Последняя страница статьи
+		///     Последняя ссылаемая страница
 		/// </summary>
 		private int _lastPage;
 
 		/// <summary>
-		///     Год выпуска
+		///     Дата публикации
 		/// </summary>
-		private int _year;
+		private DateTime _date;
+
+		/// <summary>
+		///     Город публикации
+		/// </summary>
+		private string _cityOfPublication;
 
 		/// <summary>
 		///     Формирует ошибку если одно из полей не заполнено
@@ -59,29 +59,28 @@ namespace LibraryCards
 		{
 			if (FirstAuthor == null)
 				throw new Exception("No authors");
-			if (FirstAuthor == null)
-				if (Title == "")
-					throw new Exception("No title");
-				else if (MaterialType == "")
-					throw new Exception("No material type");
-				else if (JournalNumber == -1)
-					throw new Exception("No journal number");
-				else if (Year == -1)
-					throw new Exception("No year");
-				else if (FirstPage == -1)
-					throw new Exception("No first page");
-				else if (LastPage == -1) throw new Exception("No last page");
+			if (Title == "")
+				throw new Exception("No title");
+			if (MaterialType == "")
+				throw new Exception("No material type");
+			if (FirstPage == -1)
+				throw new Exception("No first page");
+			if (LastPage == -1)
+				throw new Exception("No last page");
+			if (Date == new DateTime(1, 1, 1))
+				throw new Exception("No date");
+			if (CityOfPublication == "") throw new Exception("No city");
 		}
 
 		/// <summary>
-		/// Формирует ошибку если поле начинается или заканчивается пробелом либо путое или null
+		/// Формирует ошибку если поле начинается или заканчивается пробелом либо пустое или null
 		/// </summary>
 		/// <param name="value"></param>
 		private void StringExceptions(string value)
 		{
 			if (!string.IsNullOrEmpty(value))
 			{
-				if (value[0] == ' ' || value[value.Length-1] == ' ')
+				if (value[0] == ' ' || value[value.Length - 1] == ' ')
 				{
 					throw new Exception("Title can't start or end with a space");
 				}
@@ -97,25 +96,25 @@ namespace LibraryCards
 		#region Конструктор
 
 		/// <summary>
-		///     Конструктор с доп. параметрами
+		///     Конструктор с заданием всех параметров
 		/// </summary>
 		/// <param name="authors"></param>
+		/// <param name="date"></param>
 		/// <param name="title"></param>
 		/// <param name="materialType"></param>
-		/// <param name="journalNumber"></param>
 		/// <param name="firstPage"></param>
 		/// <param name="lastPage"></param>
-		/// <param name="year"></param>
-		public JournalArticle(List<FullName> authors, string title, string materialType, int journalNumber, int firstPage,
-			int lastPage, int year)
+		/// <param name="cityOfPublication"></param>
+		public CollectionCard(List<FullName> authors, DateTime date, string title, string materialType, int firstPage,
+			int lastPage, string cityOfPublication)
 		{
 			SetAuthors(authors);
 			Title = title;
 			MaterialType = materialType;
-			JournalNumber = journalNumber;
 			FirstPage = firstPage;
 			LastPage = lastPage;
-			Year = year;
+			Date = date;
+			CityOfPublication = cityOfPublication;
 		}
 
 		#endregion
@@ -215,6 +214,9 @@ namespace LibraryCards
 		}
 
 		#region Get Set свойства
+		/// <summary>
+		/// Авторы издания
+		/// </summary>
 		[DataMember]
 		public List<FullName> Authors
 		{
@@ -223,22 +225,16 @@ namespace LibraryCards
 				List<FullName> authorsCopy = new List<FullName>(_authors);
 				return authorsCopy;
 			}
-			set
-			{
-				SetAuthors(value);
-			}
+			set => SetAuthors(value);
 		}
 
 		/// <summary>
-		///     Возвращает имя автора статьи
+		///     Возвращает и задает имя первого автора издания
 		/// </summary>
-		public FullName FirstAuthor
-		{
-			get => new FullName(_firstAuthor);
-		}
+		public FullName FirstAuthor => _firstAuthor;
 
 		/// <summary>
-		///     Возвращает и задает Название
+		///     Возвращает и задает название
 		/// </summary>
 		[DataMember]
 		public string Title
@@ -252,7 +248,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Тип материала
+		///     Возвращает и задает тип материала
 		/// </summary>
 		[DataMember]
 		public string MaterialType
@@ -266,24 +262,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает номер журнала
-		/// </summary>
-		[DataMember]
-		public int JournalNumber
-		{
-			get => _journalNumber;
-			set
-			{
-				if (value >= 0) _journalNumber = value;
-				else
-				{
-					throw new Exception("JournalNumber can't be lower than 0");
-				}
-			}
-		}
-
-		/// <summary>
-		///     Возвращает и задает Номер первой страницы
+		///     Возвращает и задает номер первой страницы
 		/// </summary>
 		[DataMember]
 		public int FirstPage
@@ -303,7 +282,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Номер последней страницы
+		///     Возвращает и задает номер последней страницы
 		/// </summary>
 		[DataMember]
 		public int LastPage
@@ -314,24 +293,77 @@ namespace LibraryCards
 				if (value >= FirstPage) _lastPage = value;
 				else
 				{
-					throw new Exception("LastPage can't be less than FirstPage");
+					throw new Exception("LastPage can't be less than FirstPage or less or equal 0");
 				}
 			}
 		}
 
 		/// <summary>
-		///     Возвращает и задает год издания
+		///     Возвращает и задает дату публикации
 		/// </summary>
 		[DataMember]
-		public int Year
+		public DateTime Date
 		{
-			get => _year;
+			get => _date;
 			set
 			{
-				if (value > 0 && value <= DateTime.Now.Year) _year = value;
+				if (value > new DateTime(1, 1, 1) && value <= DateTime.Now)
+					_date = value;
+				else
+					throw new Exception("Wrong date");
+			}
+		}
+
+		/// <summary>
+		///     Возвращает и задает город, в котором был представлен сборник
+		/// </summary>
+		[DataMember]
+		public string CityOfPublication
+		{
+			get => _cityOfPublication;
+			set
+			{
+				bool isCompoundWord = false;
+				for (int i = 0; i < value.Length; i++)
+				{
+					if (value[i] == ' ')
+					{
+						isCompoundWord = true;
+						break;
+					}
+				}
+				if (!isCompoundWord)
+				{
+					if (FullName.IsProperNoun(value))
+						_cityOfPublication = value;
+					else
+						throw new Exception("City must be proper noun");
+				}
 				else
 				{
-					throw new Exception("Year can't be lower than 0 and bigger than today\'s");
+					for (int i = 0; i < value.Length-1; i++)
+					{
+						if (value[i] == ' ' && value[i + 1] == ' ')
+						{
+							throw new Exception("Too many spaces in the city name");
+						}
+					}
+					if (value[0] == ' ' || value[value.Length - 1] == ' ')
+					{
+						throw new Exception("City can't begin or end by space symbol");
+					}
+
+					string[] city = value.Split(' ');
+
+					for (int i = 0; i < city.Length; i++)
+					{
+						if (!FullName.IsProperNoun(city[i]))
+						{
+							throw new Exception("City must be proper noun");
+						}
+					}
+
+					_cityOfPublication = value;
 				}
 			}
 		}
@@ -339,7 +371,7 @@ namespace LibraryCards
 		#endregion
 
 		/// <summary>
-		///     Формирует строку типа string которая ялвяется библиографической информацией об издании, оформленной по ГОСТу 7.1 -
+		///     Формирует строку типа string которая является библиографической информацией об издании, оформленной по ГОСТу 7.1 -
 		///     2003 "Библиографическая запись"
 		/// </summary>
 		/// <returns>Всю информацию об издании</returns>
@@ -349,6 +381,7 @@ namespace LibraryCards
 			{
 				//Проверка заполнены ли все поля
 				FillingExceptions();
+
 				//составные части результирующей строки
 				//Все авторы издания
 				var allAuthors = "";
@@ -357,12 +390,11 @@ namespace LibraryCards
 				allAuthors += _authors[_authors.Count - 1].GetInitials() + ' ' + _authors[_authors.Count - 1].Surname;
 				allAuthors += ' ';
 				//Первая часть карточки, один автор, название и тип материала
-				FullName tempQualifier = FirstAuthor;
-				var firstPart = tempQualifier.Surname + ", " + tempQualifier.Name[0] + ". " + tempQualifier.Patronymic[0] + '.' + ' ' + Title + " / " + allAuthors + " // ";
+				var firstPart = FirstAuthor.GetSurnameWithInitials() + ' ' + Title + " / " + allAuthors + " // ";
 
 				//Информация о публикации
-				var publicationInfo = MaterialType + ". - " + Year + ". - №" + JournalNumber + ". - C. " + FirstPage + ' ' +
-				                      LastPage + '.';
+				var publicationInfo = MaterialType + ", " + Date.ToLongDateString() + ", г. " + CityOfPublication + ". - " +
+				                      CityOfPublication + ", " + Date.Year + ". - C. " + FirstPage + '-' + LastPage + '.';
 				//Генерация нужной строки
 
 				return firstPart + publicationInfo;

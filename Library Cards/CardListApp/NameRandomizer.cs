@@ -4,7 +4,7 @@ using LibraryCards;
 
 namespace CardListApp
 {
-	internal class NameRandomizer
+	internal static class NameRandomizer
 	{
 		public static FullName GenerateFullName()
 		{

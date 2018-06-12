@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\..\Library cards Setup\LibraryCardsAppAssembly\LibraryCards.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -48,15 +49,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BookArticle.cs" />
-    <Compile Include="Dissertation.cs" />
+    <Compile Include="BookCard.cs" />
+    <Compile Include="DissertationCard.cs" />
     <Compile Include="ICard.cs" />
-    <Compile Include="JournalArticle.cs" />
-    <Compile Include="CollectionArticle.cs" />
+    <Compile Include="JournalCard.cs" />
+    <Compile Include="CollectionCard.cs" />
     <Compile Include="FullName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

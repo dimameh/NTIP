@@ -18,7 +18,7 @@ namespace CardListApp
 		{
 			set
 			{
-				if (value is JournalArticle article)
+				if (value is JournalCard article)
 				{
 					TitleTextBox.Text = article.Title;
 					TitleOfPeriodicalTextBox.Text = article.MaterialType;

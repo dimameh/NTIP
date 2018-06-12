@@ -26,7 +26,7 @@ namespace UnitTests.LibraryCards
 		public string ConstructorTest(string title, int page, string authorStatus, int year, string cityOfPublication,
 			string specializationNumber)
 		{
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				title,
@@ -96,7 +96,7 @@ namespace UnitTests.LibraryCards
 			Exception exception = null;
 			try
 			{
-				var dissertation = new Dissertation
+				var dissertation = new DissertationCard
 				(
 					new FullName("Мех", "Дмитрий", "Александрович"),
 					title,
@@ -125,7 +125,7 @@ namespace UnitTests.LibraryCards
 		public string FirstAuthorTest(string name, string surname, string patronymic)
 		{
 			FullName author = new FullName(surname, name, patronymic);
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				author,
 				"Особенности регулирования труда творческих работников театров",
@@ -145,7 +145,7 @@ namespace UnitTests.LibraryCards
 		{
 			FullName author = new FullName("Mekh", "Dmitriy", "Alexandrovich");
 
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				author,
 				"Особенности регулирования труда творческих работников театров",
@@ -179,7 +179,7 @@ namespace UnitTests.LibraryCards
 		public string AuthorStatusTest(string status)
 		{
 			FullName author = new FullName("Mekh", "Dmitriy", "Alexadrovich");
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				author,
 				"Особенности регулирования труда творческих работников театров",
@@ -203,7 +203,7 @@ namespace UnitTests.LibraryCards
 		public void AuthorStatusExceptionsTest(string status)
 		{
 			FullName author = new FullName("Mekh", "Dmitriy", "Alexadrovich");
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				author,
 				"Особенности регулирования труда творческих работников театров",
@@ -253,7 +253,7 @@ namespace UnitTests.LibraryCards
 		public void SpecializationNumberExceptionTest(string specializationNumber)
 		{
 			FullName author = new FullName("Mekh", "Dmitriy", "Alexadrovich");
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				author,
 				"Особенности регулирования труда творческих работников театров",
@@ -283,7 +283,7 @@ namespace UnitTests.LibraryCards
 		public string SpecializationNumberTest(string specializationNumber)
 		{
 			FullName author = new FullName("Mekh", "Dmitriy", "Alexadrovich");
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				author,
 				"Особенности регулирования труда творческих работников театров",
@@ -317,7 +317,7 @@ namespace UnitTests.LibraryCards
 		public string BiblyographyInfoTest(string title, int page, string authorStatus, int year, string cityOfPublication,
 			string specializationNumber)
 		{
-			var dissertation = new Dissertation
+			var dissertation = new DissertationCard
 			(
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				title,

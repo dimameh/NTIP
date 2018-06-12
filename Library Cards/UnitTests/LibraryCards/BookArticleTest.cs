@@ -33,7 +33,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				title,
@@ -133,7 +133,7 @@ namespace UnitTests.LibraryCards
 			Exception exception = null;
 			try
 			{
-				var bookArticle = new BookArticle
+				var bookArticle = new BookCard
 				(
 					authors,
 					title,
@@ -160,7 +160,7 @@ namespace UnitTests.LibraryCards
 			Exception exception = null;
 			try
 			{
-				var bookArticle = new BookArticle
+				var bookArticle = new BookCard
 				(
 					authors,
 					"Информатика",
@@ -188,7 +188,7 @@ namespace UnitTests.LibraryCards
 			Exception exception = null;
 			try
 			{
-				var bookArticle = new BookArticle
+				var bookArticle = new BookCard
 				(
 					authors,
 					"Информатика",
@@ -225,7 +225,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				"Математика",
@@ -259,7 +259,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				"Математика",
@@ -292,7 +292,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				"Математика",
@@ -328,7 +328,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				"Математика",
@@ -358,7 +358,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				"Математика",
@@ -395,7 +395,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				"Математика",
@@ -439,7 +439,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				title,
@@ -465,7 +465,7 @@ namespace UnitTests.LibraryCards
 			};
 			Exception exception = null;
 
-			var bookArticle = new BookArticle
+			var bookArticle = new BookCard
 			(
 				authors,
 				"Информатика",

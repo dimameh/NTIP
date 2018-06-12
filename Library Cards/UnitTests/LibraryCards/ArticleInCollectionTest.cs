@@ -24,7 +24,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				date,
@@ -115,7 +115,7 @@ namespace UnitTests.LibraryCards
 			Assert.Throws<Exception>(
 				delegate
 				{
-					new CollectionArticle
+					new CollectionCard
 					(
 						authors,
 						date,
@@ -137,7 +137,7 @@ namespace UnitTests.LibraryCards
 			Exception exception = null;
 			try
 			{
-				var article = new CollectionArticle
+				var article = new CollectionCard
 				(
 					authors,
 					new DateTime(2013, 06, 30),
@@ -164,7 +164,7 @@ namespace UnitTests.LibraryCards
 			Exception exception = null;
 			try
 			{
-				var article = new CollectionArticle
+				var article = new CollectionCard
 				(
 					authors,
 					new DateTime(2013, 06, 30),
@@ -201,7 +201,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -228,7 +228,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -259,7 +259,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -297,7 +297,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -330,7 +330,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -367,7 +367,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -400,7 +400,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -441,7 +441,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),
@@ -485,7 +485,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				date,
@@ -509,7 +509,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var article = new CollectionArticle
+			var article = new CollectionCard
 			(
 				authors,
 				new DateTime(2013, 06, 30),

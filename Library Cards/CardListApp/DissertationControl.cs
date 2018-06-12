@@ -18,7 +18,7 @@ namespace CardListApp
 		{
 			set
 			{
-				if (value is Dissertation article)
+				if (value is DissertationCard article)
 				{
 					TitleTextBox.Text = article.Title;
 					PageTextBox.Text = article.Page.ToString();

@@ -89,23 +89,34 @@ namespace CardListApp
 			newRecordForm.ShowDialog();
 			if (newRecordForm.DialogResult == DialogResult.OK)
 			{
-				if (newRecordForm.Card != null)
+				try
 				{
-					if (!IsInTable(newRecordForm.Card))
+					if (newRecordForm.Card != null)
 					{
-						_cardList.Add(newRecordForm.Card);
-						dataGridViewMain.DataSource = _cardList;
+
+						if (!IsInTable(newRecordForm.Card))
+						{
+							_cardList.Add(newRecordForm.Card);
+							dataGridViewMain.DataSource = _cardList;
+						}
+						else
+						{
+							MessageBox.Show("This record is already exist", "Error", MessageBoxButtons.OK,
+								MessageBoxIcon.Error);
+						}
+
 					}
 					else
 					{
-						MessageBox.Show("This record is already exist", "Error", MessageBoxButtons.OK,
+						MessageBox.Show("You cant add empty record", "Error", MessageBoxButtons.OK,
 							MessageBoxIcon.Error);
 					}
 				}
-				else
+				catch (Exception exception)
 				{
-					MessageBox.Show("You cant add empty record", "Error", MessageBoxButtons.OK,
+					MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK,
 						MessageBoxIcon.Error);
+					newRecordForm.DialogResult = DialogResult.Cancel;
 				}
 			}
 		}
@@ -210,7 +221,7 @@ namespace CardListApp
 			var currentCard = _cardList[dataGridViewMain.CurrentRow.Index];
 			DisableControls();
 			
-			if (currentCard is BookArticle book)
+			if (currentCard is BookCard book)
 			{
 				bookControl1.Visible = true;
 
@@ -225,7 +236,7 @@ namespace CardListApp
 				dataGridViewAuthors.DataSource = book.Authors;
 			}
 
-			else if (currentCard is Dissertation dissertation)
+			else if (currentCard is DissertationCard dissertation)
 			{
 				dissertationControl1.Visible = true;
 
@@ -241,7 +252,7 @@ namespace CardListApp
 				dataGridViewAuthors.DataSource = dissertationAuthor;
 			}
 
-			else if (currentCard is JournalArticle journal)
+			else if (currentCard is JournalCard journal)
 			{
 				journalControl1.Visible = true;
 				
@@ -255,7 +266,7 @@ namespace CardListApp
 				dataGridViewAuthors.DataSource = journal.Authors;
 			}
 
-			else if (currentCard is CollectionArticle collection)
+			else if (currentCard is CollectionCard collection)
 			{
 				collectionControl1.Visible = true;
 

@@ -18,7 +18,7 @@ namespace CardListApp
 		{
 			set
 			{
-				if (value is BookArticle book)
+				if (value is BookCard book)
 				{
 					TitleTextBox.Text = book.Title;
 					GenreTextBox.Text = book.MaterialType;

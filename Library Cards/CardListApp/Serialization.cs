@@ -7,16 +7,16 @@ using LibraryCards;
 
 namespace CardListApp
 {
-	internal class Serialization
+	internal static class Serialization
 	{
 		private static readonly IEnumerable<Type> TypeList = new List<Type>
 		{
 			typeof(List<FullName>),
 			typeof(FullName),
-			typeof(BookArticle),
-			typeof(CollectionArticle),
-			typeof(Dissertation),
-			typeof(JournalArticle)
+			typeof(BookCard),
+			typeof(CollectionCard),
+			typeof(DissertationCard),
+			typeof(JournalCard)
 		};
 
 		private static readonly DataContractJsonSerializer Serializer =

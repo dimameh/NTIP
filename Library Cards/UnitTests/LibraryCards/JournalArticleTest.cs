@@ -26,7 +26,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				title,
@@ -90,7 +90,7 @@ namespace UnitTests.LibraryCards
 			Exception exception = null;
 			try
 			{
-				var journal = new JournalArticle
+				var journal = new JournalCard
 				(
 					authors,
 					title,
@@ -125,7 +125,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				"Глубокая переработка отходов виноделия с применением экстракции диоксидом углерода",
@@ -152,7 +152,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				"Глубокая переработка отходов виноделия с применением экстракции диоксидом углерода",
@@ -192,7 +192,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				"Глубокая переработка отходов виноделия с применением экстракции диоксидом углерода",
@@ -219,7 +219,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				"Глубокая переработка отходов виноделия с применением экстракции диоксидом углерода",
@@ -259,7 +259,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				"Глубокая переработка отходов виноделия с применением экстракции диоксидом углерода",
@@ -292,7 +292,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				"Глубокая переработка отходов виноделия с применением экстракции диоксидом углерода",
@@ -325,7 +325,7 @@ namespace UnitTests.LibraryCards
 				new FullName("Мех", "Дмитрий", "Александрович"),
 				new FullName("Mekh", "Dmitriy", "Alexandrovich")
 			};
-			var journal = new JournalArticle
+			var journal = new JournalCard
 			(
 				authors,
 				title,

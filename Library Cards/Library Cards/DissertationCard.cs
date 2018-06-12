@@ -4,10 +4,10 @@ using System.Runtime.Serialization;
 namespace LibraryCards
 {
 	/// <summary>
-	///     Статья в диссертации
+	///     Карточка диссертации
 	/// </summary>
 	[DataContract]
-	public class Dissertation : ICard
+	public class DissertationCard : ICard
 	{
 		#region Private переменные и методы
 
@@ -37,7 +37,7 @@ namespace LibraryCards
 		private int _year;
 
 		/// <summary>
-		///     город публикации
+		///     Город публикации
 		/// </summary>
 		private string _cityOfPublication;
 
@@ -91,7 +91,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		/// Формирует ошибку если поле начинается или заканчивается пробелом либо путое или null
+		/// Формирует ошибку если поле начинается или заканчивается пробелом либо пустое или null
 		/// </summary>
 		/// <param name="value"></param>
 		private void StringExceptions(string value)
@@ -122,7 +122,7 @@ namespace LibraryCards
 		/// <param name="year"></param>
 		/// <param name="cityOfPublication"></param>
 		/// <param name="specializationNumber"></param>
-		public Dissertation(FullName author, string title, int page, string authorStatus, int year, string cityOfPublication,
+		public DissertationCard(FullName author, string title, int page, string authorStatus, int year, string cityOfPublication,
 			string specializationNumber)
 		{
 			_firstAuthor = author;
@@ -139,7 +139,7 @@ namespace LibraryCards
 		#region Public методы
 
 		/// <summary>
-		///     Задать новый списов авторов
+		///     Задать автора
 		/// </summary>
 		/// <param name="authors"></param>
 		public void SetAuthor(FullName author)
@@ -158,7 +158,7 @@ namespace LibraryCards
 		#region Get Set свойства
 
 		/// <summary>
-		///     Возвращает и задает имя автора диссертиции
+		///     Возвращает и задает имя первого автора издания
 		/// </summary>
 		[DataMember]
 		public FullName FirstAuthor
@@ -178,7 +178,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Название
+		///     Возвращает и задает название диссертации
 		/// </summary>
 		[DataMember]
 		public string Title
@@ -192,7 +192,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает страницу на которую ссылается автор
+		///     Возвращает и задает страницу диссертации
 		/// </summary>
 		[DataMember]
 		public int Page
@@ -245,7 +245,7 @@ namespace LibraryCards
 		}
 
 		/// <summary>
-		///     Возвращает и задает Город, в котором был представлен сборник
+		///     Возвращает и задает город, в котором была представлена диссертация
 		/// </summary>
 		/// <returns>город, в котором был представлен сборник</returns>
 		[DataMember]
@@ -319,7 +319,7 @@ namespace LibraryCards
 		#endregion
 
 		/// <summary>
-		///     Формирует строку типа string которая ялвяется библиографической информацией об издании, оформленной по ГОСТу 7.1 -
+		///     Формирует строку типа string которая является библиографической информацией об издании, оформленной по ГОСТу 7.1 -
 		///     2003 "Библиографическая запись"
 		/// </summary>
 		/// <returns>Всю информацию об издании</returns>
